@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Start &mdash; TuyaOpen Development Guide 1.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/quick_start/index.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=1f29e9d3"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Command Line Flashing Guide" href="cli-flash.html" />
+    <link rel="prev" title="TuyaOpen Development Guide" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-dependencies">Install Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#clone-repository">Clone Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-and-compilation">Setup and Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step1-set-environment-variables">step1. Set Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step2-select-project-to-compile">step2. Select Project to Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step3-compile">step3. Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step4-menuconfig-configuration">step4. menuconfig Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#flashing-and-authorization">Flashing and Authorization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-flashing">Command Line Flashing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gui-tool-flashing">GUI Tool Flashing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cli-flash.html">Command Line Flashing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gui-flash.html">GUI Flashing Tool Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#command-list">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#check-version">Check Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#environment-check">Environment Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#create-project">Create Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#project-compilation">Project Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#configuration-management">Configuration Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Example Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#select-the-project-to-be-compiled">Select the project to be compiled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#compile-the-example">Compile the example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">Application Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#create-a-product-and-obtain-the-product-pid">Create a product and obtain the product PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#confirm-the-tuyaopen-authorization-code">Confirm the TuyaOpen authorization code:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#build-and-flash">Build and Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#network-configuration-and-device-activation">Network Configuration and Device Activation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#typical-applications-of-tuyaopen">Typical Applications of TuyaOpen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#directory">Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#supported-hardware">Supported Hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">Peripheral Development And Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">Adding and Adapting Platforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#platform-adaptation">Platform Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#generate-new-platform-directory">Generate New Platform Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#completing-adaptation">Completing Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig-configuration">Kconfig Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#updating-platform-config-yaml">Updating platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#interface-implementation">Interface Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#example-projects">Example Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#submission">Submission</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">Adding and Adapting Boards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#board-naming">Board Naming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#mandatory-fields">Mandatory Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#optional-fields">Optional Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#naming-rules">Naming Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#adding-new-board">Adding New Board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#create-directory">Create Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-kconfig-file">Add Kconfig File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-board-to-selection-list">Add Board to Selection List</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#application-adaptation">Application Adaptation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#contribution">Contribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#making-changes">Making Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#preparation">Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#submitting-pull-requests">Submitting Pull Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">Coding Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#directories-and-files">Directories and Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#header-files">Header Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#file-header-description">File Header Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-naming">Function Naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#input-parameters">Input Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#return-values">Return Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-declaration">Function Declaration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#comments">Comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#indentation">Indentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#spaces-and-parentheses">Spaces and Parentheses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#loops">Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">Do-While</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#conditionals-statements">Conditionals Statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else-statements">if-else if-else statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">Switch-Case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#macros-and-enums">Macros and Enums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#code-formatting">Code Formatting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">Environment setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">Build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#already-pulled-latest-source-code-via-git-pull-but-still-encounter-compilation-errors-when-building-apps">1. Already pulled latest source code via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> but still encounter compilation errors when building apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen Development Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quick Start</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/en/quick_start/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../index.html" class="btn btn-neutral float-left" title="TuyaOpen Development Guide" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cli-flash.html" class="btn btn-neutral float-right" title="Command Line Flashing Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h1>
+<section id="install-dependencies">
+<h2>Install Dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading"></a></h2>
+<section id="ubuntu-and-debian">
+<h3>Ubuntu and Debian<a class="headerlink" href="#ubuntu-and-debian" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>lcov<span class="w"> </span>cmake-curses-gui<span class="w"> </span>build-essential<span class="w"> </span>ninja-build<span class="w"> </span>wget<span class="w"> </span>git<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>python3-venv<span class="w"> </span>libc6-i386<span class="w"> </span>libsystemd-dev
+</pre></div>
+</div>
+</section>
+<section id="macos">
+<h3>macOS<a class="headerlink" href="#macos" title="Link to this heading"></a></h3>
+<p>Please run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">tos</span><span class="w"> </span><span class="n">check</span>
+</pre></div>
+</div>
+<p>to check system dependencies and install them as prompted.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since version v1.1.0, we use ninja as the build tool to accelerate compilation. Please install ninja if you encounter compilation errors.</p>
+</div>
+</section>
+</section>
+<section id="clone-repository">
+<h2>Clone Repository<a class="headerlink" href="#clone-repository" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tuya/TuyaOpen.git
+</pre></div>
+</div>
+<p>The TuyaOpen repository contains multiple submodules. The tos tool will <strong>automatically check and download submodules before compilation</strong>, or you can manually download them using:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">git</span><span class="w"> </span><span class="n">submodule</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="o">--</span><span class="n">init</span>
+</pre></div>
+</div>
+</section>
+<section id="setup-and-compilation">
+<h2>Setup and Compilation<a class="headerlink" href="#setup-and-compilation" title="Link to this heading"></a></h2>
+<section id="step1-set-environment-variables">
+<h3>step1. Set Environment Variables<a class="headerlink" href="#step1-set-environment-variables" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>TuyaOpen
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$PWD</span>
+</pre></div>
+</div>
+<p>Or add the TuyaOpen path to system environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vim<span class="w"> </span>~/.bashrc
+<span class="c1"># Add the following content</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/path/to/your/TuyaOpen
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">/path/to/your/TuyaOpen</span></code> with the actual path to your TuyaOpen directory.</p>
+</div>
+<p>After adding the environment variable with vim, enter <code class="docutils literal notranslate"><span class="pre">:wq</span></code> to save, and use <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code> to activate the environment variables.
+For detailed usage of tos command, please refer to <a class="reference internal" href="../tos_guide/index.html"><span class="doc">tos command</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TuyaOpen uses the tos command for compilation, debugging and other operations. The tos command will search for the TuyaOpen repository based on the path set in environment variables.</p>
+</div>
+</section>
+<section id="step2-select-project-to-compile">
+<h3>step2. Select Project to Compile<a class="headerlink" href="#step2-select-project-to-compile" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Method 1</strong>: Compile example</p></li>
+</ul>
+<p>Select an example to compile using:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="w"> </span><span class="n">TuyaOpen</span>
+<span class="n">tos</span><span class="w"> </span><span class="n">set_example</span>
+</pre></div>
+</div>
+<p>After platform selection, the <code class="docutils literal notranslate"><span class="pre">examples</span></code> directory will be updated with platform-specific examples.</p>
+<p>More example information: <a class="reference internal" href="../examples/index.html"><span class="doc">Example Projects</span></a>.</p>
+<ul class="simple">
+<li><p><strong>Method 2</strong>: Compile app</p></li>
+</ul>
+<p>Select an app to compile (e.g. <a class="reference external" href="https://github.com/tuya/TuyaOpen/tree/master/apps/tuya_cloud/switch_demo">apps/tuya_cloud/switch_demo</a>) and navigate to its directory.</p>
+<p>Use:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">tos</span><span class="w"> </span><span class="n">config_choice</span>
+</pre></div>
+</div>
+<p>to select target platform or board.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>TuyaOpen/apps/tuya_cloud/switch_demo/config<span class="o">]</span><span class="w"> </span>is<span class="w"> </span>empty.
+Using<span class="w"> </span>boards<span class="w"> </span>default<span class="w"> </span>config<span class="w"> </span>file.
+<span class="o">========================</span>
+Configs
+<span class="w">  </span><span class="m">1</span>.<span class="w"> </span>BK7231X.config
+<span class="w">  </span><span class="m">2</span>.<span class="w"> </span>ESP32-C3.config
+<span class="w">  </span><span class="m">3</span>.<span class="w"> </span>ESP32.config
+<span class="w">  </span><span class="m">4</span>.<span class="w"> </span>ESP32-S3.config
+<span class="w">  </span><span class="m">5</span>.<span class="w"> </span>LN882H.config
+<span class="w">  </span><span class="m">6</span>.<span class="w"> </span>T2.config
+<span class="w">  </span><span class="m">7</span>.<span class="w"> </span>T3.config
+<span class="w">  </span><span class="m">8</span>.<span class="w"> </span>T5AI.config
+<span class="w">  </span><span class="m">9</span>.<span class="w"> </span>Ubuntu.config
+------------------------
+Please<span class="w"> </span><span class="k">select</span>:
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">config_choice</span></code> command reads configuration files in the project’s <code class="docutils literal notranslate"><span class="pre">config</span></code> directory and generates <code class="docutils literal notranslate"><span class="pre">app_default.config</span></code> for the current project.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>After switching config with <code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">config_choice</span></code>, tos will automatically clean previously generated intermediate files.</p>
+</div>
+</section>
+<section id="step3-compile">
+<h3>step3. Compile<a class="headerlink" href="#step3-compile" title="Link to this heading"></a></h3>
+<p>Navigate to the target project directory (examples or apps) and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>apps/tuya_cloud/switch_demo
+tos<span class="w"> </span>build
+</pre></div>
+</div>
+<p>Compiled binaries will be located in <code class="docutils literal notranslate"><span class="pre">.build/&lt;project&gt;/bin</span></code> directory of the current project, e.g. <code class="docutils literal notranslate"><span class="pre">apps/tuya_cloud/switch_demo/.build/bin</span></code>.</p>
+<p>Output files include:</p>
+<ul class="simple">
+<li><p>switch_demo_QIO_1.0.0.bin: Complete firmware with bootloader for flashing</p></li>
+<li><p>switch_demo_UA_1.0.0.bin: Application firmware without bootloader (must be flashed to correct address based on platform/chip)</p></li>
+<li><p>switch_demo_UG_1.0.0.bin: OTA upgrade file (cannot run directly after flashing)</p></li>
+</ul>
+<p>Default project name matches directory name, version defaults to <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>. Modify via <code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">menuconfig</span></code>.</p>
+</section>
+<section id="step4-menuconfig-configuration">
+<h3>step4. menuconfig Configuration<a class="headerlink" href="#step4-menuconfig-configuration" title="Link to this heading"></a></h3>
+<p>To modify project configuration, navigate to target project directory and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>apps/tuya_cloud/switch_demo
+tos<span class="w"> </span>menuconfig
+</pre></div>
+</div>
+<p>Configure the project and recompile after saving changes.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Changing chip/board via <code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">menuconfig</span></code> will automatically clean previous build artifacts.</p>
+</div>
+</section>
+</section>
+<section id="flashing-and-authorization">
+<h2>Flashing and Authorization<a class="headerlink" href="#flashing-and-authorization" title="Link to this heading"></a></h2>
+<section id="command-line-flashing">
+<h3>Command Line Flashing<a class="headerlink" href="#command-line-flashing" title="Link to this heading"></a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">flash</span></code> for one-click flashing: <a class="reference internal" href="cli-flash.html"><span class="doc">CLI Flashing</span></a></p>
+</section>
+<section id="gui-tool-flashing">
+<h3>GUI Tool Flashing<a class="headerlink" href="#gui-tool-flashing" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">tyutool</span> <span class="pre">gui</span></code> provides complete graphical flashing solution with serial debugging, firmware flashing and authorization management.
+Currently supports T2/T3/T5AI/BK7231N/LN882H/ESP32 chips via serial flashing, available for Windows/Linux/macOS:</p>
+<ul class="simple">
+<li><p>Windows:<a class="reference external" href="https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/win_tyutool_gui.zip">tyutool_win</a></p></li>
+<li><p>Linux:<a class="reference external" href="https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/tyutool_gui.tar.gz">tyutool_linux.tar</a></p></li>
+<li><p>macOS_x86:<a class="reference external" href="https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/darwin_x86_tyutool_gui.tar.gz">tyutool_mac_x86</a></p></li>
+<li><p>macOS_arm64:<a class="reference external" href="https://images.tuyacn.com/smart/embed/package/vscode/data/ide_serial/darwin_arm64_tyutool_gui.tar.gz">tyutool_mac_arm64.zip</a></p></li>
+</ul>
+<p>For GUI flashing tutorial: <a class="reference internal" href="gui-flash.html"><span class="doc">GUI Flashing</span></a></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli-flash.html">Command Line Flashing Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui-flash.html">GUI Flashing Tool Guide</a></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="TuyaOpen Development Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cli-flash.html" class="btn btn-neutral float-right" title="Command Line Flashing Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2025, Tuya Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="index.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1294 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLUETOOTH &mdash; TuyaOpen Development Guide 1.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/tkl-api/tkl_bluetooth.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=1f29e9d3"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#install-dependencies">Install Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#clone-repository">Clone Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#setup-and-compilation">Setup and Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1-set-environment-variables">step1. Set Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2-select-project-to-compile">step2. Select Project to Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3-compile">step3. Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig-configuration">step4. menuconfig Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#flashing-and-authorization">Flashing and Authorization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#command-line-flashing">Command Line Flashing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui-tool-flashing">GUI Tool Flashing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">Command Line Flashing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI Flashing Tool Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#command-list">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#check-version">Check Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#environment-check">Environment Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#create-project">Create Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#project-compilation">Project Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#configuration-management">Configuration Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Example Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#select-the-project-to-be-compiled">Select the project to be compiled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#compile-the-example">Compile the example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">Application Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#create-a-product-and-obtain-the-product-pid">Create a product and obtain the product PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#confirm-the-tuyaopen-authorization-code">Confirm the TuyaOpen authorization code:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#build-and-flash">Build and Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#network-configuration-and-device-activation">Network Configuration and Device Activation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#typical-applications-of-tuyaopen">Typical Applications of TuyaOpen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#directory">Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#supported-hardware">Supported Hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">Peripheral Development And Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">Adding and Adapting Platforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#platform-adaptation">Platform Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#generate-new-platform-directory">Generate New Platform Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#completing-adaptation">Completing Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig-configuration">Kconfig Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#updating-platform-config-yaml">Updating platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#interface-implementation">Interface Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#example-projects">Example Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#submission">Submission</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">Adding and Adapting Boards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#board-naming">Board Naming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#mandatory-fields">Mandatory Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#optional-fields">Optional Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#naming-rules">Naming Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#adding-new-board">Adding New Board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#create-directory">Create Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-kconfig-file">Add Kconfig File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-board-to-selection-list">Add Board to Selection List</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#application-adaptation">Application Adaptation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#contribution">Contribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#making-changes">Making Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#preparation">Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#submitting-pull-requests">Submitting Pull Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">Coding Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#directories-and-files">Directories and Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#header-files">Header Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#file-header-description">File Header Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-naming">Function Naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#input-parameters">Input Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#return-values">Return Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-declaration">Function Declaration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#comments">Comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#indentation">Indentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#spaces-and-parentheses">Spaces and Parentheses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#loops">Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">Do-While</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#conditionals-statements">Conditionals Statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else-statements">if-else if-else statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">Switch-Case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#macros-and-enums">Macros and Enums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#code-formatting">Code Formatting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">Environment setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">Build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#already-pulled-latest-source-code-via-git-pull-but-still-encounter-compilation-errors-when-building-apps">1. Already pulled latest source code via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> but still encounter compilation errors when building apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen Development Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">BLUETOOTH</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/en/tkl-api/tkl_bluetooth.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bluetooth">
+<h1>BLUETOOTH<a class="headerlink" href="#bluetooth" title="Link to this heading"></a></h1>
+</section>
+<section id="api-description">
+<h1>API Description<a class="headerlink" href="#api-description" title="Link to this heading"></a></h1>
+<section id="tkl-ble-stack-init">
+<h2>tkl_ble_stack_init<a class="headerlink" href="#tkl-ble-stack-init" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_stack_init</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">role</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Initialize the BLE protocol stack</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>role</td>
+<td>BLE role configuration</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Definition</th>
+<th style="text-align: left;">Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">TKL_BLE_ROLE_SERVER</td>
+<td style="text-align: left;">BLE Server</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">TKL_BLE_ROLE_CLIENT</td>
+<td style="text-align: left;">BLE Client</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-stack-deinit">
+<h2>tkl_ble_stack_deinit<a class="headerlink" href="#tkl-ble-stack-deinit" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_stack_deinit</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">role</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Deinitialize the BLE protocol stack</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>role</td>
+<td>BLE role, as shown below</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Definition</th>
+<th style="text-align: left;">Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">TKL_BLE_ROLE_SERVER</td>
+<td style="text-align: left;">BLE Server</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">TKL_BLE_ROLE_CLIENT</td>
+<td style="text-align: left;">BLE Client</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-callback-register">
+<h2>tkl_ble_gap_callback_register<a class="headerlink" href="#tkl-ble-gap-callback-register" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_callback_register</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TKL_BLE_GAP_EVT_FUNC_CB</span><span class="w"> </span><span class="n">gap_evt</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Register the GAP callback function</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>gap_evt</td>
+<td>Register the GAP callback function, as defined below</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">TKL_BLE_GAP_EVT_FUNC_CB</span><span class="p">)(</span><span class="n">TKL_BLE_GAP_PARAMS_EVT_T</span><span class="w"> </span><span class="o">*</span><span class="n">p_event</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>TKL_BLE_GAP_PARAMS_EVT_T</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">TKL_BLE_GAP_EVT_TYPE_E</span><span class="w">          </span><span class="n">type</span><span class="p">;</span><span class="w">           </span><span class="cm">/**&lt; Gap Event */</span>
+<span class="w">      </span><span class="kt">uint16_t</span><span class="w">                        </span><span class="n">conn_handle</span><span class="p">;</span><span class="w">    </span><span class="cm">/**&lt; Connection Handle */</span>
+<span class="w">      </span><span class="kt">int</span><span class="w">                           </span><span class="n">result</span><span class="p">;</span><span class="w">         </span><span class="cm">/**&lt; Will Refer to HOST STACK Error Code */</span>
+
+<span class="w">      </span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="n">TKL_BLE_GAP_CONNECT_EVT_T</span><span class="w">       </span><span class="n">connect</span><span class="p">;</span><span class="w">        </span><span class="cm">/**&lt; Receive connect callback, This value can be used with TKL_BLE_EVT_PERIPHERAL_CONNECT and TKL_BLE_EVT_CENTRAL_CONNECT_DISCOVERY*/</span>
+<span class="w">          </span><span class="n">TKL_BLE_GAP_DISCONNECT_EVT_T</span><span class="w">    </span><span class="n">disconnect</span><span class="p">;</span><span class="w">     </span><span class="cm">/**&lt; Receive disconnect callback*/</span>
+<span class="w">          </span><span class="n">TKL_BLE_GAP_ADV_REPORT_T</span><span class="w">        </span><span class="n">adv_report</span><span class="p">;</span><span class="w">     </span><span class="cm">/**&lt; Receive Adv and Respond report*/</span>
+<span class="w">          </span><span class="n">TKL_BLE_GAP_CONN_PARAMS_T</span><span class="w">       </span><span class="n">conn_param</span><span class="p">;</span><span class="w">     </span><span class="cm">/**&lt; We will update connect parameters.This value can be used with TKL_BLE_EVT_CONN_PARAM_REQ and TKL_BLE_EVT_CONN_PARAM_UPDATE*/</span>
+<span class="w">          </span><span class="kt">char</span><span class="w">                          </span><span class="n">link_rssi</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; Peer device RSSI value */</span>
+<span class="w">      </span><span class="p">}</span><span class="n">gap_event</span><span class="p">;</span>
+
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">TKL_BLE_GAP_PARAMS_EVT_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatt-callback-register">
+<h2>tkl_ble_gatt_callback_register<a class="headerlink" href="#tkl-ble-gatt-callback-register" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatt_callback_register</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TKL_BLE_GATT_EVT_FUNC_CB</span><span class="w"> </span><span class="n">gatt_evt</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Register the GATT callback function</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>gatt_evt</td>
+<td>GATT callback function</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">TKL_BLE_GATT_EVT_FUNC_CB</span><span class="p">)(</span><span class="n">TKL_BLE_GATT_PARAMS_EVT_T</span><span class="w"> </span><span class="o">*</span><span class="n">p_event</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>TKL_BLE_GATT_PARAMS_EVT_T</strong></p>
+<p>GATT event definition as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TKL_BLE_GATT_EVT_TYPE_E</span><span class="w">             </span><span class="n">type</span><span class="p">;</span><span class="w">           </span><span class="cm">/**&lt; Gatt Event */</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                            </span><span class="n">conn_handle</span><span class="p">;</span><span class="w">    </span><span class="cm">/**&lt; Connection Handle */</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">                               </span><span class="n">result</span><span class="p">;</span><span class="w">         </span><span class="cm">/**&lt; Will Refer to HOST STACK Error Code */</span>
+
+<span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w">                        </span><span class="n">exchange_mtu</span><span class="p">;</span><span class="w">   </span><span class="cm">/**&lt; This value can be used with TKL_BLE_GATT_EVT_MTU_REQUEST and TKL_BLE_GATT_EVT_MTU_RSP*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_GATT_SVC_DISC_TYPE_T</span><span class="w">    </span><span class="n">svc_disc</span><span class="p">;</span><span class="w">       </span><span class="cm">/**&lt; Discovery All Service */</span>
+<span class="w">        </span><span class="n">TKL_BLE_GATT_CHAR_DISC_TYPE_T</span><span class="w">   </span><span class="n">char_disc</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; Discovery Specific Characteristic */</span>
+<span class="w">        </span><span class="n">TKL_BLE_GATT_DESC_DISC_TYPE_T</span><span class="w">   </span><span class="n">desc_disc</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; Discovery Specific Descriptors*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_NOTIFY_RESULT_EVT_T</span><span class="w">     </span><span class="n">notify_result</span><span class="p">;</span><span class="w">  </span><span class="cm">/**&lt; This value can be used with TKL_BLE_GATT_EVT_NOTIFY_TX*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_DATA_REPORT_T</span><span class="w">           </span><span class="n">write_report</span><span class="p">;</span><span class="w">   </span><span class="cm">/**&lt; This value can be used with TKL_BLE_GATT_EVT_WRITE_REQ*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_DATA_REPORT_T</span><span class="w">           </span><span class="n">data_report</span><span class="p">;</span><span class="w">    </span><span class="cm">/**&lt; This value can be used with TKL_BLE_GATT_EVT_NOTIFY_INDICATE_RX*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_DATA_REPORT_T</span><span class="w">           </span><span class="n">data_read</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; After we do read attr in central mode, we will get the callback*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_SUBSCRBE_EVT_T</span><span class="w">          </span><span class="n">subscribe</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; ccc callback event, used with TKL_BLE_GATT_EVT_SUBSCRIBE*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_READ_CHAR_EVT_T</span><span class="w">         </span><span class="n">char_read</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; read char event, used with TKL_BLE_GATT_EVT_READ_CHAR_VALUE*/</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">gatt_event</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TKL_BLE_GATT_PARAMS_EVT_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-addr-set">
+<h2>tkl_ble_gap_addr_set<a class="headerlink" href="#tkl-ble-gap-addr-set" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_addr_set</span><span class="p">(</span><span class="n">TKL_BLE_GAP_ADDR_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_peer_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Set the BLE MAC address</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>p_peer_addr</td>
+<td>MAC address, optional public/random</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<ul class="simple">
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+<li><p><strong>Remarks</strong></p>
+<p>Generally, the module has a MAC address after production and does not need to be configured.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-address-get">
+<h2>tkl_ble_gap_address_get<a class="headerlink" href="#tkl-ble-gap-address-get" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_address_get</span><span class="p">(</span><span class="n">TKL_BLE_GAP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">p_peer_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Read the BLE device MAC address</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[out]</td>
+<td>p_peer_addr</td>
+<td>Device MAC address</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<ul class="simple">
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+<li><p><strong>Remarks</strong></p>
+<p>Rarely used</p>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-adv-start">
+<h2>tkl_ble_gap_adv_start<a class="headerlink" href="#tkl-ble-gap-adv-start" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_adv_start</span><span class="p">(</span><span class="n">TKL_BLE_GAP_ADV_PARAMS_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_adv_params</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Start BLE advertising</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>p_adv_params</td>
+<td>Advertising parameters, as shown below</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TKL_BLE_GAP_ADV_PARAMS_T</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">adv_type</span><span class="p">;</span><span class="w">                   </span><span class="cm">/**&lt; Adv Type. Refer to TKL_BLE_GAP_ADV_TYPE_CONN_SCANNABLE_UNDIRECTED etc. */</span>
+<span class="w">    </span><span class="n">TKL_BLE_GAP_ADDR_T</span><span class="w">      </span><span class="n">direct_addr</span><span class="p">;</span><span class="w">                </span><span class="cm">/**&lt; For Directed Advertising, you can fill in direct address */</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                </span><span class="n">adv_interval_min</span><span class="p">;</span><span class="w">           </span><span class="cm">/**&lt; Range: 0x0020 to 0x4000  Time = N * 0.625 msec Time Range: 20 ms to 10.24 sec */</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                </span><span class="n">adv_interval_max</span><span class="p">;</span><span class="w">           </span><span class="cm">/**&lt; Range: 0x0020 to 0x4000  Time = N * 0.625 msec Time Range: 20 ms to 10.24 sec */</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">adv_channel_map</span><span class="p">;</span><span class="w">            </span><span class="cm">/**&lt; Advertising Channel Map, 0x01 = adv channel index 37,  0x02 = adv channel index 38,</span>
+<span class="cm">                                                                0x04 = adv channel index 39. Default Value: 0x07 */</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TKL_BLE_GAP_ADV_PARAMS_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-adv-stop">
+<h2>tkl_ble_gap_adv_stop<a class="headerlink" href="#tkl-ble-gap-adv-stop" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_adv_stop</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Stop BLE advertising</p>
+</li>
+<li><p>Parameters:</p>
+<p>None</p>
+</li>
+<li><p>Return Value:</p>
+<ul class="simple">
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-adv-rsp-data-set">
+<h2>tkl_ble_gap_adv_rsp_data_set<a class="headerlink" href="#tkl-ble-gap-adv-rsp-data-set" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_adv_rsp_data_set</span><span class="p">(</span><span class="n">TKL_BLE_DATA_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_adv</span><span class="p">,</span><span class="w"> </span><span class="n">TKL_BLE_DATA_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_scan_rsp</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Set advertising data</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>p_adv</td>
+<td>Advertising data</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_scan_rsp</td>
+<td>Scan response data</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-adv-rsp-data-update">
+<h2>tkl_ble_gap_adv_rsp_data_update<a class="headerlink" href="#tkl-ble-gap-adv-rsp-data-update" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_adv_rsp_data_update</span><span class="p">(</span><span class="n">TKL_BLE_DATA_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_adv</span><span class="p">,</span><span class="w"> </span><span class="n">TKL_BLE_DATA_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_scan_rsp</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Update advertising data</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>p_adv</td>
+<td>Advertising data</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_scan_rsp</td>
+<td>Scan response data</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-scan-start">
+<h2>tkl_ble_gap_scan_start<a class="headerlink" href="#tkl-ble-gap-scan-start" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_scan_start</span><span class="p">(</span><span class="n">TKL_BLE_GAP_SCAN_PARAMS_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_scan_params</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Start scanning</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>p_scan_params</td>
+<td>Scan parameters, as shown below</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TKL_BLE_GAP_SCAN_PARAMS_T</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">extended</span><span class="p">;</span><span class="w">                   </span><span class="cm">/**&lt; If 1, the scanner will accept extended advertising packets.</span>
+<span class="cm">                                                            If set to 0, the scanner will not receive advertising packets</span>
+<span class="cm">                                                            on secondary advertising channels, and will not be able</span>
+<span class="cm">                                                            to receive long advertising PDUs. */</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">active</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                 </span><span class="cm">/**&lt; [Tuya Need]!!!! If 1, perform active scanning by sending scan requests.</span>
+<span class="cm">                                                            This parameter is ignored when used with @ref tkl_ble_gap_connect. */</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">scan_phys</span><span class="p">;</span><span class="w">                  </span><span class="cm">/**&lt; Refer to @TKL_BLE_GAP_PHY_1MBPS. TKL_BLE_GAP_PHY_2MBPS */</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                </span><span class="n">interval</span><span class="p">;</span><span class="w">                   </span><span class="cm">/**&lt; Scan interval in 625 us units. */</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                </span><span class="n">window</span><span class="p">;</span><span class="w">                     </span><span class="cm">/**&lt; Scan window in 625 us units. */</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                </span><span class="n">timeout</span><span class="p">;</span><span class="w">                    </span><span class="cm">/**&lt; Scan timeout in 10 ms units. */</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">scan_channel_map</span><span class="p">;</span><span class="w">           </span><span class="cm">/**&lt; Scan Channel Index, refer to @TKL_BLE_GAP_ADV_PARAMS_T */</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TKL_BLE_GAP_SCAN_PARAMS_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Return Value:</p>
+<ul class="simple">
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+<li><p>Remarks</p>
+<p>tkl_ble_gap_scan_start is used when enabling the controller or supporting the central mode.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-scan-stop">
+<h2>tkl_ble_gap_scan_stop<a class="headerlink" href="#tkl-ble-gap-scan-stop" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_scan_stop</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Stop Bluetooth scanning</p>
+</li>
+<li><p>Parameters:</p>
+<p>None</p>
+</li>
+<li><p>Return Value:</p>
+<ul class="simple">
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-connect">
+<h2>tkl_ble_gap_connect<a class="headerlink" href="#tkl-ble-gap-connect" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_connect</span><span class="p">(</span><span class="n">TKL_BLE_GAP_ADDR_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_peer_addr</span><span class="p">,</span><span class="w"> </span><span class="n">TKL_BLE_GAP_SCAN_PARAMS_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_scan_params</span><span class="p">,</span><span class="w"> </span><span class="n">TKL_BLE_GAP_CONN_PARAMS_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_conn_params</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>As a client, initiate a connection.</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>p_peer_addr</td>
+<td>Peer address</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_scan_params</td>
+<td>Scan parameters</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_conn_params</td>
+<td>Connection parameters</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<ul class="simple">
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+<li><p><strong>Explanation</strong></p>
+<p>Only needed when adapting as a central.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-disconnect">
+<h2>tkl_ble_gap_disconnect<a class="headerlink" href="#tkl-ble-gap-disconnect" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_disconnect</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">hci_reason</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Disconnect BLE connection</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>Connection handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_conn_params</td>
+<td>Disconnect reason, use 0x13 for active disconnection in normal cases.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<ul class="simple">
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+<li><p><strong>Remarks</strong></p>
+<p>Used by both client and server.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-conn-param-update">
+<h2>tkl_ble_gap_conn_param_update<a class="headerlink" href="#tkl-ble-gap-conn-param-update" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_conn_param_update</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="n">TKL_BLE_GAP_CONN_PARAMS_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_conn_params</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Update GAP connection parameters</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>Connection handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_conn_params</td>
+<td>Connection parameters</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatts-service-add">
+<h2>tkl_ble_gatts_service_add<a class="headerlink" href="#tkl-ble-gatts-service-add" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatts_service_add</span><span class="p">(</span><span class="n">TKL_BLE_GATTS_PARAMS_T</span><span class="w"> </span><span class="o">*</span><span class="n">p_service</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>GATT add service, used by server.</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in/out]</td>
+<td>p_service</td>
+<td>GATT service</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TKL_BLE_GATTS_PARAMS_T</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                     </span><span class="n">svc_num</span><span class="p">;</span><span class="w">                </span><span class="cm">/**&lt; If we only use service(0xFD50), the svc_num will be set into 1 */</span>
+<span class="w">    </span><span class="n">TKL_BLE_SERVICE_PARAMS_T</span><span class="w">    </span><span class="o">*</span><span class="n">p_service</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TKL_BLE_GATTS_PARAMS_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>TKL_BLE_SERVICE_PARAMS_T</strong></p>
+<p>Handle is issued as 0xFF by default, and the corresponding handle value will be updated after the service is added.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                    </span><span class="n">handle</span><span class="p">;</span><span class="w">                 </span><span class="cm">/**&lt; After init the service, we will get the svc-handle */</span>
+
+<span class="w">    </span><span class="n">TKL_BLE_UUID_T</span><span class="w">              </span><span class="n">svc_uuid</span><span class="p">;</span><span class="w">               </span><span class="cm">/**&lt; Service UUID */</span>
+<span class="w">    </span><span class="n">TKL_BLE_SERVICE_TYPE_E</span><span class="w">      </span><span class="n">type</span><span class="p">;</span><span class="w">                   </span><span class="cm">/**&lt; Service Type */</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                     </span><span class="n">char_num</span><span class="p">;</span><span class="w">               </span><span class="cm">/**&lt; Number of characteristic */</span>
+<span class="w">    </span><span class="n">TKL_BLE_CHAR_PARAMS_T</span><span class="w">       </span><span class="o">*</span><span class="n">p_char</span><span class="p">;</span><span class="w">                </span><span class="cm">/**&lt; Pointer of characteristic */</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TKL_BLE_SERVICE_PARAMS_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatts-value-set">
+<h2>tkl_ble_gatts_value_set<a class="headerlink" href="#tkl-ble-gatts-value-set" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatts_value_set</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">char_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>GATT update attribute value, such as configuring read characteristic, can use this function to update</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>Connection handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>char_handle</td>
+<td>Characteristic handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_data</td>
+<td>Data</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>length</td>
+<td>Data length</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatts-value-get">
+<h2>tkl_ble_gatts_value_get<a class="headerlink" href="#tkl-ble-gatts-value-get" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatts_value_get</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">char_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>GATT read attribute value, not used yet</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>Connection handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>char_handle</td>
+<td>Characteristic handle</td>
+</tr>
+<tr>
+<td>[out]</td>
+<td>p_data</td>
+<td>Read data</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>length</td>
+<td>Read length</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatts-value-notify">
+<h2>tkl_ble_gatts_value_notify<a class="headerlink" href="#tkl-ble-gatts-value-notify" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatts_value_notify</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">char_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Server sends notification data.</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>Connection handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>char_handle</td>
+<td>Characteristic handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_data</td>
+<td>Notification data</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>length</td>
+<td>Notification data length</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatts-value-indicate">
+<h2>tkl_ble_gatts_value_indicate<a class="headerlink" href="#tkl-ble-gatts-value-indicate" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatts_value_indicate</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">char_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Server sends indication data.</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>Connection handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>char_handle</td>
+<td>Characteristic handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_data</td>
+<td>Indication data</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>length</td>
+<td>Indication data length</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatts-exchange-mtu-reply">
+<h2>tkl_ble_gatts_exchange_mtu_reply<a class="headerlink" href="#tkl-ble-gatts-exchange-mtu-reply" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatts_exchange_mtu_reply</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">server_rx_mtu</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Server configures MTU, i.e., replies to the client’s MTU exchange request by sending an MTU exchange response to the client</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>Connection handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>server_rx_mtu</td>
+<td>Server-side receive MTU size</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK : Success</p></li>
+<li><p>Others : Failure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2025, Tuya Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="tkl_bluetooth.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

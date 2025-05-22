@@ -1,0 +1,1142 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>network &mdash; TuyaOpen 开发指南 1.3.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/tkl-api/tkl_network.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4ebe3ea6"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">快速上手</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id2">安装依赖</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id3">克隆仓库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id4">设置与编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1">step1. 设置环境变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2">step2. 选择待编译项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3">step3. 编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig">step4. menuconfig 配置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id5">烧录与授权</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#id6">命令行烧录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui">GUI 工具烧录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">命令行烧录指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI 烧录工具指南</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos 使用指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id1">命令列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id2">使用示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id3">查看版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id4">环境检测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id5">创建项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id6">项目编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id7">配置管理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">示例工程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id2">选择待编译项目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id3">编译示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">应用开发</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#pid">创建产品并获取产品的 PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#tuyaopen">TuyaOpen 授权码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id3">编译烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id4">配网激活</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id5">TuyaOpen 典型应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT 应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id1">目录结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id2">支持硬件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id3">编译</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI 应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">外设开发与应用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">platform 新增与适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id2">移植适配 platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id3">生成新 platform 目录</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id4">完成编译适配</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig">Kconfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-yaml">修改platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id5">编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#default-config">修改 default.config 默认值</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id6">完成接口适配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id7">示例程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id8">测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id10">提交</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">board 新增和适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id1">定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id2">board 命名</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id3">必选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id4">可选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id5">命名规则</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id6">新增 board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id7">新建文件夹</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#kconfig">添加 Kconfig 文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id8">将 Board 添加到选择列表中</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id9">适配应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id10">贡献代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">贡献指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id2">修改内容</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id3">准备工作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id4">提交 Push Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">编码风格指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id2">目录与文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id3">头文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id4">文件头描述信息</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id5">函数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id6">函数名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id7">入参</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id8">返回值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id9">函数声明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id10">注释</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id11">缩进</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id12">空格与括号</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id13">循环</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">do-while 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id14">条件判断</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else">if-else if-else 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">switch-case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id15">宏与枚举</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id16">格式化代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">环境搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#git-pull-tuyaopen-master-apps">1. 已经通过 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> 拉取 TuyaOpen 仓库 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支最新源代码，但在编译具体 apps 下项目时候编译依然出错</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen 开发指南</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">network</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/zh/tkl-api/tkl_network.md" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="network">
+<h1>network<a class="headerlink" href="#network" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">tkl_network.c</span></code> 文件提供了一系列网络通信过程中所需的 API，以适配不同的网络接口。这些 API 包括创建套接字、连接、绑定、监听、发送数据、接收数据、设置和获取套接字选项等网络操作。文件定义了对网络 API 的常见处理，并允许通过这些封装的函数来实现跨平台的网络通信。</p>
+<section id="api">
+<h2>API 说明<a class="headerlink" href="#api" title="Link to this heading"></a></h2>
+<section id="tkl-net-get-errno">
+<h3>tkl_net_get_errno<a class="headerlink" href="#tkl-net-get-errno" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_get_errno</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id1">
+<h4>功能<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<p>获取网络错误码。</p>
+</section>
+<section id="id2">
+<h4>参数<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<p>无参数。</p>
+</section>
+<section id="id3">
+<h4>返回值<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<p>成功时返回 0，否则返回特定于目标系统的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-fd-set">
+<h3>tkl_net_fd_set<a class="headerlink" href="#tkl-net-fd-set" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_fd_set</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_FD_SET_T</span><span class="o">*</span><span class="w"> </span><span class="n">fds</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id4">
+<h4>功能<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<p>将文件描述符添加到集合中。</p>
+</section>
+<section id="id5">
+<h4>参数<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：待添加的文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fds</span></code>：文件描述符集合的指针。</p></li>
+</ul>
+</section>
+<section id="id6">
+<h4>返回值<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-fd-clear">
+<h3>tkl_net_fd_clear<a class="headerlink" href="#tkl-net-fd-clear" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_fd_clear</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_FD_SET_T</span><span class="o">*</span><span class="w"> </span><span class="n">fds</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id7">
+<h4>功能<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<p>从集合中清除文件描述符。</p>
+</section>
+<section id="id8">
+<h4>参数<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：待清除的文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fds</span></code>：文件描述符集合的指针。</p></li>
+</ul>
+</section>
+<section id="id9">
+<h4>返回值<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-fd-isset">
+<h3>tkl_net_fd_isset<a class="headerlink" href="#tkl-net-fd-isset" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_fd_isset</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_FD_SET_T</span><span class="o">*</span><span class="w"> </span><span class="n">fds</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id10">
+<h4>功能<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<p>检查文件描述符是否在集合中。</p>
+</section>
+<section id="id11">
+<h4>参数<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：待检查的文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fds</span></code>：文件描述符集合的指针。</p></li>
+</ul>
+</section>
+<section id="id12">
+<h4>返回值<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<p>如果文件描述符在集合中，返回 <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>，否则返回 <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>。</p>
+</section>
+</section>
+<section id="tkl-net-fd-zero">
+<h3>tkl_net_fd_zero<a class="headerlink" href="#tkl-net-fd-zero" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_fd_zero</span><span class="p">(</span><span class="n">TUYA_FD_SET_T</span><span class="o">*</span><span class="w"> </span><span class="n">fds</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id13">
+<h4>功能<a class="headerlink" href="#id13" title="Link to this heading"></a></h4>
+<p>清除文件描述符集合中的所有文件描述符。</p>
+</section>
+<section id="id14">
+<h4>参数<a class="headerlink" href="#id14" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fds</span></code>：文件描述符集合的指针。</p></li>
+</ul>
+</section>
+<section id="id15">
+<h4>返回值<a class="headerlink" href="#id15" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-select">
+<h3>tkl_net_select<a class="headerlink" href="#tkl-net-select" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">tkl_net_select</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxfd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_FD_SET_T</span><span class="w"> </span><span class="o">*</span><span class="n">readfds</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_FD_SET_T</span><span class="w"> </span><span class="o">*</span><span class="n">writefds</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_FD_SET_T</span><span class="w"> </span><span class="o">*</span><span class="n">errorfds</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ms_timeout</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id16">
+<h4>功能<a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
+<p>获取可用的文件描述符集合。</p>
+</section>
+<section id="id17">
+<h4>参数<a class="headerlink" href="#id17" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">maxfd</span></code>：要检查的文件描述符集合中的最大文件描述符数加一。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">readfds</span></code>：可读取文件描述符集合的指针。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">writefds</span></code>：可写文件描述符集合的指针。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">errorfds</span></code>：出错的文件描述符集合的指针。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ms_timeout</span></code>：超时时间，单位为毫秒。</p></li>
+</ul>
+</section>
+<section id="id18">
+<h4>返回值<a class="headerlink" href="#id18" title="Link to this heading"></a></h4>
+<p>返回可用文件描述符的数量；错误时返回小于或等于 0 的值。</p>
+</section>
+</section>
+<section id="tkl-net-get-nonblock">
+<h3>tkl_net_get_nonblock<a class="headerlink" href="#tkl-net-get-nonblock" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">tkl_net_get_nonblock</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id19">
+<h4>功能<a class="headerlink" href="#id19" title="Link to this heading"></a></h4>
+<p>获取非阻塞文件描述符。</p>
+</section>
+<section id="id20">
+<h4>参数<a class="headerlink" href="#id20" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+</ul>
+</section>
+<section id="id21">
+<h4>返回值<a class="headerlink" href="#id21" title="Link to this heading"></a></h4>
+<p>成功时返回非阻塞文件描述符的数量；错误时返回小于或等于 0 的值。</p>
+</section>
+</section>
+<section id="tkl-net-set-block">
+<h3>tkl_net_set_block<a class="headerlink" href="#tkl-net-set-block" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_block</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BOOL_T</span><span class="w"> </span><span class="n">block</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id22">
+<h4>功能<a class="headerlink" href="#id22" title="Link to this heading"></a></h4>
+<p>设置文件描述符阻塞标志。</p>
+</section>
+<section id="id23">
+<h4>参数<a class="headerlink" href="#id23" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">block</span></code>：若为 <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> 则设置为阻塞模式；<code class="docutils literal notranslate"><span class="pre">FALSE</span></code> 则设置为非阻塞模式。</p></li>
+</ul>
+</section>
+<section id="id24">
+<h4>返回值<a class="headerlink" href="#id24" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-close">
+<h3>tkl_net_close<a class="headerlink" href="#tkl-net-close" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_close</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id25">
+<h4>功能<a class="headerlink" href="#id25" title="Link to this heading"></a></h4>
+<p>关闭文件描述符。</p>
+</section>
+<section id="id26">
+<h4>参数<a class="headerlink" href="#id26" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+</ul>
+</section>
+<section id="id27">
+<h4>返回值<a class="headerlink" href="#id27" title="Link to this heading"></a></h4>
+<p>成功时返回 0，否则返回特定于目标系统的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-shutdown">
+<h3>tkl_net_shutdown<a class="headerlink" href="#tkl-net-shutdown" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_shutdown</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">how</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id28">
+<h4>功能<a class="headerlink" href="#id28" title="Link to this heading"></a></h4>
+<p>关闭文件描述符的读写操作。</p>
+</section>
+<section id="id29">
+<h4>参数<a class="headerlink" href="#id29" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">how</span></code>：关闭类型。</p></li>
+</ul>
+</section>
+<section id="id30">
+<h4>返回值<a class="headerlink" href="#id30" title="Link to this heading"></a></h4>
+<p>成功时返回 0，否则返回特定于目标系统的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-socket-create">
+<h3>tkl_net_socket_create<a class="headerlink" href="#tkl-net-socket-create" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">tkl_net_socket_create</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_PROTOCOL_TYPE_E</span><span class="w"> </span><span class="n">type</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id31">
+<h4>功能<a class="headerlink" href="#id31" title="Link to this heading"></a></h4>
+<p>创建 TCP 或 UDP 套接字。</p>
+</section>
+<section id="id32">
+<h4>参数<a class="headerlink" href="#id32" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>：协议类型，TCP 或 UDP。</p></li>
+</ul>
+</section>
+<section id="id33">
+<h4>返回值<a class="headerlink" href="#id33" title="Link to this heading"></a></h4>
+<p>返回文件描述符。</p>
+</section>
+</section>
+<section id="tkl-net-connect">
+<h3>tkl_net_connect<a class="headerlink" href="#tkl-net-connect" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_connect</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id34">
+<h4>功能<a class="headerlink" href="#id34" title="Link to this heading"></a></h4>
+<p>连接到网络。</p>
+</section>
+<section id="id35">
+<h4>参数<a class="headerlink" href="#id35" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>：服务器的地址信息。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>：服务器的端口信息。</p></li>
+</ul>
+</section>
+<section id="id36">
+<h4>返回值<a class="headerlink" href="#id36" title="Link to this heading"></a></h4>
+<p>成功时返回 0，否则返回特定于目标系统的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-connect-raw">
+<h3>tkl_net_connect_raw<a class="headerlink" href="#tkl-net-connect-raw" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_connect_raw</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_socket_addr</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id37">
+<h4>功能<a class="headerlink" href="#id37" title="Link to this heading"></a></h4>
+<p>使用原始数据连接到网络。</p>
+</section>
+<section id="id38">
+<h4>参数<a class="headerlink" href="#id38" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p_socket</span></code>：原始套接字数据。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len</span></code>：数据长度。</p></li>
+</ul>
+</section>
+<section id="id39">
+<h4>返回值<a class="headerlink" href="#id39" title="Link to this heading"></a></h4>
+<p>成功时返回 0，否则返回特定于目标系统的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-bind">
+<h3>tkl_net_bind<a class="headerlink" href="#tkl-net-bind" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_bind</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id40">
+<h4>功能<a class="headerlink" href="#id40" title="Link to this heading"></a></h4>
+<p>将套接字绑定到网络。</p>
+</section>
+<section id="id41">
+<h4>参数<a class="headerlink" href="#id41" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>：服务器的地址信息。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>：服务器的端口信息。</p></li>
+</ul>
+</section>
+<section id="id42">
+<h4>返回值<a class="headerlink" href="#id42" title="Link to this heading"></a></h4>
+<p>成功时返回 0，否则返回特定于目标系统的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-listen">
+<h3>tkl_net_listen<a class="headerlink" href="#tkl-net-listen" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_listen</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">backlog</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id43">
+<h4>功能<a class="headerlink" href="#id43" title="Link to this heading"></a></h4>
+<p>监听网络连接请求。</p>
+</section>
+<section id="id44">
+<h4>参数<a class="headerlink" href="#id44" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backlog</span></code>：等待队列中最大可能的连接数。</p></li>
+</ul>
+</section>
+<section id="id45">
+<h4>返回值<a class="headerlink" href="#id45" title="Link to this heading"></a></h4>
+<p>成功时返回 0，否则返回特定于目标系统的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-accept">
+<h3>tkl_net_accept<a class="headerlink" href="#tkl-net-accept" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_accept</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id46">
+<h4>功能<a class="headerlink" href="#id46" title="Link to this heading"></a></h4>
+<p>接受一个网络连接请求。</p>
+</section>
+<section id="id47">
+<h4>参数<a class="headerlink" href="#id47" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>：接收端的IP地址。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>：接收端的端口号。</p></li>
+</ul>
+</section>
+<section id="id48">
+<h4>返回值<a class="headerlink" href="#id48" title="Link to this heading"></a></h4>
+<p>成功时返回 0，否则返回特定于目标系统的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-send">
+<h3>tkl_net_send<a class="headerlink" href="#tkl-net-send" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_send</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nbytes</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id49">
+<h4>功能<a class="headerlink" href="#id49" title="Link to this heading"></a></h4>
+<p>将数据发送到网络。</p>
+</section>
+<section id="id50">
+<h4>参数<a class="headerlink" href="#id50" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>：发送的数据缓冲区。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nbytes</span></code>：缓冲区长度。</p></li>
+</ul>
+</section>
+<section id="id51">
+<h4>返回值<a class="headerlink" href="#id51" title="Link to this heading"></a></h4>
+<p>发送的数据的字节数量；错误时返回小于 0 的值。</p>
+</section>
+</section>
+<section id="tkl-net-send-to">
+<h3>tkl_net_send_to<a class="headerlink" href="#tkl-net-send-to" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_send_to</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nbytes</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id52">
+<h4>功能<a class="headerlink" href="#id52" title="Link to this heading"></a></h4>
+<p>将数据发送给指定的服务器。</p>
+</section>
+<section id="id53">
+<h4>参数<a class="headerlink" href="#id53" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>：发送的数据缓冲区。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nbytes</span></code>：缓冲区长度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>：服务器的地址信息。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>：服务器的端口信息。</p></li>
+</ul>
+</section>
+<section id="id54">
+<h4>返回值<a class="headerlink" href="#id54" title="Link to this heading"></a></h4>
+<p>发送的数据的字节数量；错误时返回小于 0 的值。</p>
+</section>
+</section>
+<section id="tkl-net-recv">
+<h3>tkl_net_recv<a class="headerlink" href="#tkl-net-recv" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_recv</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nbytes</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id55">
+<h4>功能<a class="headerlink" href="#id55" title="Link to this heading"></a></h4>
+<p>从网络接收数据。</p>
+</section>
+<section id="id56">
+<h4>参数<a class="headerlink" href="#id56" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>：接收数据的缓冲区。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nbytes</span></code>：缓冲区长度。</p></li>
+</ul>
+</section>
+<section id="id57">
+<h4>返回值<a class="headerlink" href="#id57" title="Link to this heading"></a></h4>
+<p>接收的数据的字节数量；错误时返回小于 0 的值。</p>
+</section>
+</section>
+<section id="tkl-net-recv-nd-size">
+<h3>tkl_net_recv_nd_size<a class="headerlink" href="#tkl-net-recv-nd-size" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">tkl_net_recv_nd_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">buf_size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nd_size</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id58">
+<h4>功能<a class="headerlink" href="#id58" title="Link to this heading"></a></h4>
+<p>从网络接收指定大小的数据。</p>
+</section>
+<section id="id59">
+<h4>参数<a class="headerlink" href="#id59" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>：接收数据的缓冲区。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf_size</span></code>：缓冲区的大小。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nd_size</span></code>：期望接收的数据大小。</p></li>
+</ul>
+</section>
+<section id="id60">
+<h4>返回值<a class="headerlink" href="#id60" title="Link to this heading"></a></h4>
+<p>成功时返回实际接收的数据量，错误时返回小于 0 的值。</p>
+</section>
+</section>
+<section id="tkl-net-recvfrom">
+<h3>tkl_net_recvfrom<a class="headerlink" href="#tkl-net-recvfrom" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_recvfrom</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nbytes</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id61">
+<h4>功能<a class="headerlink" href="#id61" title="Link to this heading"></a></h4>
+<p>从指定的服务器接收数据。</p>
+</section>
+<section id="id62">
+<h4>参数<a class="headerlink" href="#id62" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>：接收数据的缓冲区。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nbytes</span></code>：缓冲区长度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>[OUT]：服务器的地址信息。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>[OUT]：服务器的端口信息。</p></li>
+</ul>
+</section>
+<section id="id63">
+<h4>返回值<a class="headerlink" href="#id63" title="Link to this heading"></a></h4>
+<p>接收的数据的字节数量；错误时返回小于 0 的值。</p>
+</section>
+</section>
+<section id="tkl-net-gethostbyname">
+<h3>tkl_net_gethostbyname<a class="headerlink" href="#tkl-net-gethostbyname" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_gethostbyname</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">domain</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id64">
+<h4>功能<a class="headerlink" href="#id64" title="Link to this heading"></a></h4>
+<p>通过域名获取地址信息。</p>
+</section>
+<section id="id65">
+<h4>参数<a class="headerlink" href="#id65" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">domain</span></code>：域名信息。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>：地址信息存储的指针。</p></li>
+</ul>
+</section>
+<section id="id66">
+<h4>返回值<a class="headerlink" href="#id66" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-socket-bind">
+<h3>tkl_net_socket_bind<a class="headerlink" href="#tkl-net-socket-bind" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_socket_bind</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ip</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id67">
+<h4>功能<a class="headerlink" href="#id67" title="Link to this heading"></a></h4>
+<p>将套接字绑定到具有指定 IP 的网络。</p>
+</section>
+<section id="id68">
+<h4>参数<a class="headerlink" href="#id68" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ip</span></code>：IP地址。</p></li>
+</ul>
+</section>
+<section id="id69">
+<h4>返回值<a class="headerlink" href="#id69" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-set-cloexec">
+<h3>tkl_net_set_cloexec<a class="headerlink" href="#tkl-net-set-cloexec" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_cloexec</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id70">
+<h4>功能<a class="headerlink" href="#id70" title="Link to this heading"></a></h4>
+<p>设置套接字在 <code class="docutils literal notranslate"><span class="pre">fork</span></code> 调用的子进程中不关闭。</p>
+</section>
+<section id="id71">
+<h4>参数<a class="headerlink" href="#id71" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+</ul>
+</section>
+<section id="id72">
+<h4>返回值<a class="headerlink" href="#id72" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-get-socket-ip">
+<h3>tkl_net_get_socket_ip<a class="headerlink" href="#tkl-net-get-socket-ip" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_get_socket_ip</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id73">
+<h4>功能<a class="headerlink" href="#id73" title="Link to this heading"></a></h4>
+<p>通过套接字描述符获取 IP 地址。</p>
+</section>
+<section id="id74">
+<h4>参数<a class="headerlink" href="#id74" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>：IP地址存储的指针。</p></li>
+</ul>
+</section>
+<section id="id75">
+<h4>返回值<a class="headerlink" href="#id75" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-str2addr">
+<h3>tkl_net_str2addr<a class="headerlink" href="#tkl-net-str2addr" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="nf">tkl_net_str2addr</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ip_str</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id76">
+<h4>功能<a class="headerlink" href="#id76" title="Link to this heading"></a></h4>
+<p>将IP字符串转换为地址。</p>
+</section>
+<section id="id77">
+<h4>参数<a class="headerlink" href="#id77" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ip_str</span></code>：IP 字符串。</p></li>
+</ul>
+</section>
+<section id="id78">
+<h4>返回值<a class="headerlink" href="#id78" title="Link to this heading"></a></h4>
+<p>返回转换后的IP地址。</p>
+</section>
+</section>
+<section id="tkl-net-addr2str">
+<h3>tkl_net_addr2str<a class="headerlink" href="#tkl-net-addr2str" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">tkl_net_addr2str</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="n">ipaddr</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id79">
+<h4>功能<a class="headerlink" href="#id79" title="Link to this heading"></a></h4>
+<p>将 IP 地址转换为字符串。</p>
+</section>
+<section id="id80">
+<h4>参数<a class="headerlink" href="#id80" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ipaddr</span></code>：IP  地址。</p></li>
+</ul>
+</section>
+<section id="id81">
+<h4>返回值<a class="headerlink" href="#id81" title="Link to this heading"></a></h4>
+<p>返回转换后的IP字符串。</p>
+</section>
+</section>
+<section id="tkl-net-setsockopt">
+<h3>tkl_net_setsockopt<a class="headerlink" href="#tkl-net-setsockopt" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_setsockopt</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_OPT_LEVEL</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_OPT_NAME</span><span class="w"> </span><span class="n">optname</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">optval</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">optlen</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id82">
+<h4>功能<a class="headerlink" href="#id82" title="Link to this heading"></a></h4>
+<p>设置套接字选项。</p>
+</section>
+<section id="id83">
+<h4>参数<a class="headerlink" href="#id83" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">level</span></code>：设置级别。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optname</span></code>：选项名。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optval</span></code>：选项值的指针。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optlen</span></code>：选项值的长度。</p></li>
+</ul>
+</section>
+<section id="id84">
+<h4>返回值<a class="headerlink" href="#id84" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-getsockopt">
+<h3>tkl_net_getsockopt<a class="headerlink" href="#tkl-net-getsockopt" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_getsockopt</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_OPT_LEVEL</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_OPT_NAME</span><span class="w"> </span><span class="n">optname</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">optval</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">optlen</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id85">
+<h4>功能<a class="headerlink" href="#id85" title="Link to this heading"></a></h4>
+<p>获取套接字选项值。</p>
+</section>
+<section id="id86">
+<h4>参数<a class="headerlink" href="#id86" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">level</span></code>：获取级别。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optname</span></code>：选项名。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optval</span></code>：用于接收选项值的指针。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optlen</span></code>：用于接收选项值长度的指针。</p></li>
+</ul>
+</section>
+<section id="id87">
+<h4>返回值<a class="headerlink" href="#id87" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-set-timeout">
+<h3>tkl_net_set_timeout<a class="headerlink" href="#tkl-net-set-timeout" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_timeout</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ms_timeout</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_TRANS_TYPE_E</span><span class="w"> </span><span class="n">type</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id88">
+<h4>功能<a class="headerlink" href="#id88" title="Link to this heading"></a></h4>
+<p>设置套接字超时选项。</p>
+</section>
+<section id="id89">
+<h4>参数<a class="headerlink" href="#id89" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ms_timeout</span></code>：超时时间，以毫秒为单位。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>：传输类型，接收或发送。</p></li>
+</ul>
+</section>
+<section id="id90">
+<h4>返回值<a class="headerlink" href="#id90" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-set-bufsize">
+<h3>tkl_net_set_bufsize<a class="headerlink" href="#tkl-net-set-bufsize" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_bufsize</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">buf_size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_TRANS_TYPE_E</span><span class="w"> </span><span class="n">type</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id91">
+<h4>功能<a class="headerlink" href="#id91" title="Link to this heading"></a></h4>
+<p>设置套接字缓冲区大小选项。</p>
+</section>
+<section id="id92">
+<h4>参数<a class="headerlink" href="#id92" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf_size</span></code>：缓冲区大小，以字节为单位。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>：传输类型，接收或发送。</p></li>
+</ul>
+</section>
+<section id="id93">
+<h4>返回值<a class="headerlink" href="#id93" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-set-reuse">
+<h3>tkl_net_set_reuse<a class="headerlink" href="#tkl-net-set-reuse" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_reuse</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id94">
+<h4>功能<a class="headerlink" href="#id94" title="Link to this heading"></a></h4>
+<p>启用套接字的重用选项。</p>
+</section>
+<section id="id95">
+<h4>参数<a class="headerlink" href="#id95" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+</ul>
+</section>
+<section id="id96">
+<h4>返回值<a class="headerlink" href="#id96" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-disable-nagle">
+<h3>tkl_net_disable_nagle<a class="headerlink" href="#tkl-net-disable-nagle" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_disable_nagle</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id97">
+<h4>功能<a class="headerlink" href="#id97" title="Link to this heading"></a></h4>
+<p>禁用套接字的Nagle算法。</p>
+</section>
+<section id="id98">
+<h4>参数<a class="headerlink" href="#id98" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+</ul>
+</section>
+<section id="id99">
+<h4>返回值<a class="headerlink" href="#id99" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-set-broadcast">
+<h3>tkl_net_set_broadcast<a class="headerlink" href="#tkl-net-set-broadcast" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_broadcast</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id100">
+<h4>功能<a class="headerlink" href="#id100" title="Link to this heading"></a></h4>
+<p>启用套接字的广播选项。</p>
+</section>
+<section id="id101">
+<h4>参数<a class="headerlink" href="#id101" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+</ul>
+</section>
+<section id="id102">
+<h4>返回值<a class="headerlink" href="#id102" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-set-keepalive">
+<h3>tkl_net_set_keepalive<a class="headerlink" href="#tkl-net-set-keepalive" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_keepalive</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BOOL_T</span><span class="w"> </span><span class="n">alive</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">idle</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">intr</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">cnt</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id103">
+<h4>功能<a class="headerlink" href="#id103" title="Link to this heading"></a></h4>
+<p>设置套接字的 <code class="docutils literal notranslate"><span class="pre">keepalive</span></code> 选项以监视连接。</p>
+</section>
+<section id="id104">
+<h4>参数<a class="headerlink" href="#id104" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alive</span></code>：<code class="docutils literal notranslate"><span class="pre">keepalive</span></code> 选项，启用或禁用。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">idle</span></code>：<code class="docutils literal notranslate"><span class="pre">keep</span> <span class="pre">idle</span></code> 选项，闲置时间（秒）；如果连接在该时间内没有数据交换，则开始探测。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intr</span></code>：<code class="docutils literal notranslate"><span class="pre">keep</span> <span class="pre">interval</span></code> 选项，探测时间间隔。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cnt</span></code>：<code class="docutils literal notranslate"><span class="pre">keep</span> <span class="pre">count</span></code> 选项，探测次数。</p></li>
+</ul>
+</section>
+<section id="id105">
+<h4>返回值<a class="headerlink" href="#id105" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-getsockname">
+<h3>tkl_net_getsockname<a class="headerlink" href="#tkl-net-getsockname" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_getsockname</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id106">
+<h4>功能<a class="headerlink" href="#id106" title="Link to this heading"></a></h4>
+<p>获取特定的 socket 的信息。</p>
+</section>
+<section id="id107">
+<h4>参数<a class="headerlink" href="#id107" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>：源 IP 地址。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>：源端口。</p></li>
+</ul>
+</section>
+<section id="id108">
+<h4>返回值<a class="headerlink" href="#id108" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-getpeername">
+<h3>tkl_net_getpeername<a class="headerlink" href="#tkl-net-getpeername" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_getpeername</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id109">
+<h4>功能<a class="headerlink" href="#id109" title="Link to this heading"></a></h4>
+<p>获取特定的 socket 的目的信息。</p>
+</section>
+<section id="id110">
+<h4>参数<a class="headerlink" href="#id110" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>：文件描述符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>：目的 IP 地址。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>：目的端口。</p></li>
+</ul>
+</section>
+<section id="id111">
+<h4>返回值<a class="headerlink" href="#id111" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+<section id="tkl-net-sethostname">
+<h3>tkl_net_sethostname<a class="headerlink" href="#tkl-net-sethostname" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_sethostname</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">hostname</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id112">
+<h4>功能<a class="headerlink" href="#id112" title="Link to this heading"></a></h4>
+<p>设置系统 hostname，该 hostname 会在路由器上展示。</p>
+</section>
+<section id="id113">
+<h4>参数<a class="headerlink" href="#id113" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hostname</span></code>：主机名。</p></li>
+</ul>
+</section>
+<section id="id114">
+<h4>返回值<a class="headerlink" href="#id114" title="Link to this heading"></a></h4>
+<p>成功时返回 <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>，否则请参考 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中的错误码。</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021-2025, 杭州涂鸦信息技术有限公司。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="tkl_network.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,690 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PWM 驱动 &mdash; TuyaOpen 开发指南 1.3.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/tkl-api/tkl_pwm.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4ebe3ea6"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">快速上手</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id2">安装依赖</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id3">克隆仓库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id4">设置与编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1">step1. 设置环境变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2">step2. 选择待编译项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3">step3. 编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig">step4. menuconfig 配置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id5">烧录与授权</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#id6">命令行烧录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui">GUI 工具烧录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">命令行烧录指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI 烧录工具指南</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos 使用指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id1">命令列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id2">使用示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id3">查看版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id4">环境检测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id5">创建项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id6">项目编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id7">配置管理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">示例工程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id2">选择待编译项目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id3">编译示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">应用开发</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#pid">创建产品并获取产品的 PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#tuyaopen">TuyaOpen 授权码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id3">编译烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id4">配网激活</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id5">TuyaOpen 典型应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT 应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id1">目录结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id2">支持硬件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id3">编译</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI 应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">外设开发与应用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">platform 新增与适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id2">移植适配 platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id3">生成新 platform 目录</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id4">完成编译适配</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig">Kconfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-yaml">修改platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id5">编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#default-config">修改 default.config 默认值</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id6">完成接口适配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id7">示例程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id8">测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id10">提交</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">board 新增和适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id1">定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id2">board 命名</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id3">必选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id4">可选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id5">命名规则</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id6">新增 board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id7">新建文件夹</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#kconfig">添加 Kconfig 文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id8">将 Board 添加到选择列表中</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id9">适配应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id10">贡献代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">贡献指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id2">修改内容</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id3">准备工作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id4">提交 Push Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">编码风格指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id2">目录与文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id3">头文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id4">文件头描述信息</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id5">函数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id6">函数名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id7">入参</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id8">返回值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id9">函数声明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id10">注释</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id11">缩进</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id12">空格与括号</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id13">循环</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">do-while 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id14">条件判断</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else">if-else if-else 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">switch-case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id15">宏与枚举</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id16">格式化代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">环境搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#git-pull-tuyaopen-master-apps">1. 已经通过 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> 拉取 TuyaOpen 仓库 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支最新源代码，但在编译具体 apps 下项目时候编译依然出错</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen 开发指南</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PWM 驱动</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/zh/tkl-api/tkl_pwm.md" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pwm">
+<h1>PWM 驱动<a class="headerlink" href="#pwm" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2>简要说明<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>PWM（Pulse Width Modulation）,即脉冲宽度调制，其是利用微处理器的数字输出来对模拟电路进行控制的一种有效的技术。</p>
+<p><img alt="img" src="https://images.tuyacn.com/fe-static/docs/img/ba656efd-316e-412a-9370-7b8f10fb94d9.png" /></p>
+<p>如上图所示，一个脉冲周期为 10ms 的 PWM 波形图,第一个周期高电平为 7ms(占空比70%);第二个周期高电平为 4ms(占空比40%)。通过调节高电平占空比的值，即可以改变模拟输出值的大小。</p>
+</section>
+<section id="api">
+<h2>API 描述<a class="headerlink" href="#api" title="Link to this heading"></a></h2>
+<section id="tkl-pwm-init">
+<h3>tkl_pwm_init<a class="headerlink" href="#tkl-pwm-init" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_pwm_init</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_E</span><span class="w"> </span><span class="n">ch_id</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_PWM_BASE_CFG_T</span><span class="w"> </span><span class="o">*</span><span class="n">cfg</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<ul class="simple">
+<li><p>通过端口号和基础配置初始化对应的 PWM 实例，返回初始化结果。</p></li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch_id</span></code>: 通道号。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cfg</span></code>: PWM 基础配置，包含输出极性，占空比，频率。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TUYA_PWM_POLARITY_E</span><span class="w"> </span><span class="n">polarity</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TUYA_PWM_COUNT_E</span><span class="w">    </span><span class="n">count_mode</span><span class="p">;</span>
+<span class="w">   </span><span class="c1">//pulse duty cycle = duty / cycle; exp duty = 5000,cycle = 10000; pulse duty cycle = 50%</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w">              </span><span class="n">duty</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w">              </span><span class="n">cycle</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w">              </span><span class="n">frequency</span><span class="p">;</span><span class="w">  </span><span class="c1">// (bet: Hz)</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TUYA_PWM_BASE_CFG_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<p class="rubric" id="polarity">polarity:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>名字</p></th>
+<th class="head text-left"><p>定义</p></th>
+<th class="head text-left"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>TUYA_PWM_NEGATIVE</p></td>
+<td class="text-left"><p>PWM低有效输出</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>TUYA_PWM_POSITIVE</p></td>
+<td class="text-left"><p>PWM高有效输出</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric" id="count-mode">count_mode：</p>
+<p>计数模式，有 <code class="docutils literal notranslate"><span class="pre">TUYA_PWM_CNT_UP</span></code> 和 <code class="docutils literal notranslate"><span class="pre">TUYA_PWM_CNT_UP_AND_DOWN</span></code> 两种。</p>
+<p class="rubric" id="duty">duty：</p>
+<p>占空比，和cycle搭配使用，输出 = duty / cycle 。</p>
+<p class="rubric" id="cycle">cycle：</p>
+<p>周期，或颗粒度，输出 = duty / cycle。</p>
+<p class="rubric" id="frequency">frequency：</p>
+<p>输出频率，单位Hz。</p>
+</li>
+</ul>
+</li>
+<li><p>返回值:</p>
+<ul class="simple">
+<li><p>OPRT_OK 成功，其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-pwm-deinit">
+<h3>tkl_pwm_deinit<a class="headerlink" href="#tkl-pwm-deinit" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_pwm_deinit</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_E</span><span class="w"> </span><span class="n">ch_id</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述:</p>
+<ul>
+<li><p>PWM 实例反初始化。</p></li>
+<li><p>该接口会停止 PWM 实例正在进行的传输（如果有），并且释放相关的软硬件资源。</p></li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch_id</span></code>: 通道号。</p></li>
+</ul>
+</li>
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK 成功，其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-pwm-start">
+<h3>tkl_pwm_start<a class="headerlink" href="#tkl-pwm-start" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_pwm_start</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_E</span><span class="w"> </span><span class="n">ch_id</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述:</p>
+<ul>
+<li><p>启动pwm。</p></li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch_id</span></code>: 通道号。</p></li>
+</ul>
+</li>
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK 成功，其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-pwm-stop">
+<h3>tkl_pwm_stop<a class="headerlink" href="#tkl-pwm-stop" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_pwm_stop</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_E</span><span class="w"> </span><span class="n">ch_id</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述:</p>
+<ul>
+<li><p>停止 PWM。</p></li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: 端口号。</p></li>
+</ul>
+</li>
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK 成功，其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-pwm-multichannel-start">
+<h3>tkl_pwm_multichannel_start<a class="headerlink" href="#tkl-pwm-multichannel-start" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_pwm_multichannel_start</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_E</span><span class="w"> </span><span class="o">*</span><span class="n">ch_id</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述:</p>
+<ul>
+<li><p>同时启动多通道 PWM，用于多路组合输出，用于对时序要求比较严格的场景。</p></li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch_id</span></code>: 通道号列表，数组。</p></li>
+<li><p>num：启动的通道号数目</p></li>
+</ul>
+</li>
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK 成功，其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-pwm-multichannel-stop">
+<h3>tkl_pwm_multichannel_stop<a class="headerlink" href="#tkl-pwm-multichannel-stop" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_pwm_multichannel_stop</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_E</span><span class="w"> </span><span class="o">*</span><span class="n">ch_id</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述:</p>
+<ul>
+<li><p>同时停止多通道 PWM，用于多路组合输出，对时序要求比较严格的场景。</p></li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch_id</span></code>: 通道号列表，数组。</p></li>
+<li><p>num：需要关闭的通道号数目</p></li>
+</ul>
+</li>
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK 成功，其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-pwm-info-set">
+<h3>tkl_pwm_info_set<a class="headerlink" href="#tkl-pwm-info-set" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_pwm_info_set</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_E</span><span class="w"> </span><span class="n">ch_id</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_PWM_BASE_CFG_T</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述:</p>
+<ul>
+<li><p>重设 PWM 配置参数，pwm start之后可动态修改配置，补充重新s tart。</p></li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch_id</span></code>: 通道号。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info</span></code>: PWM 基础配置，包含输出极性，占空比，频率 。其结构体参数见上文描述</p></li>
+</ul>
+</li>
+<li><p>返回值:</p>
+<ul>
+<li><p>错误码，OPRT_OK 成功，其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-pwm-info-get">
+<h3>tkl_pwm_info_get<a class="headerlink" href="#tkl-pwm-info-get" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_pwm_info_get</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_E</span><span class="w"> </span><span class="n">ch_id</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_PWM_BASE_CFG_T</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述:</p></li>
+<li><p>参数:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch_id</span></code>: 通道号。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info</span></code>: PWM 基础配置，包含输出极性，占空比，频率 。其结构体参数见上文描述</p></li>
+</ul>
+</li>
+<li><p>返回值:</p>
+<ul>
+<li><p>错误码，OPRT_OK 成功，其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-pwm-cap-start">
+<h3>tkl_pwm_cap_start<a class="headerlink" href="#tkl-pwm-cap-start" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_pwm_cap_start</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_E</span><span class="w"> </span><span class="n">ch_id</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_PWM_CAP_IRQ_T</span><span class="w"> </span><span class="o">*</span><span class="n">cfg</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<ul class="simple">
+<li><p>开启 PWM 输入捕获模式。</p></li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch_id</span></code>: 通道号。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cfg</span></code>: PWM 输入捕获配置，如下详述。</p>
+<p class="rubric" id="cap-mode">cap_mode：</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>| 名字                         | 定义         | 备注 |
+| :--------------------------- | :----------- | :--- |
+| TUYA_PWM_CAPTURE_MODE_ONCE   | 单次触发模式 |      |
+| TUYA_PWM_CAPTURE_MODE_PERIOD | 多次触发模式 |      |
+</code></pre>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#### trigger_level:
+</pre></div>
+</div>
+<pre><code>| 名字              | 定义             | 备注 |
+| :---------------- | :--------------- | :--- |
+| TUYA_PWM_NEGATIVE | 触发信号为下降沿 |      |
+| TUYA_PWM_POSITIVE | 触发信号为上升沿 |      |
+</code></pre>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#### clk：
+
+抓取信号的采样时钟。
+
+#### cb：
+
+抓取信号的回调函数,如下：
+
+```c
+typedef void(*TUYA_PWM_IRQ_CB)(TUYA_PWM_NUM_E port, TUYA_PWM_CAPTURE_DATA_T data, void *arg);
+```
+
+```c
+typedef struct {
+    uint32_t      cap_value;            /* Captured data */
+    TUYA_PWM_POLARITY_E cap_edge;     /* Capture edge, TUYA_PWM_NEGATIVE:falling edge, TUYA_PWM_POSITIVE:rising edge */
+} TUYA_PWM_CAPTURE_DATA_T;
+```
+
+#### arg：
+
+回调函数参数。  
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>返回值:</p>
+<ul>
+<li><p>错误码，OPRT_OK 成功，其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-pwm-cap-stop">
+<h3>tkl_pwm_cap_stop<a class="headerlink" href="#tkl-pwm-cap-stop" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_pwm_cap_stop</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_E</span><span class="w"> </span><span class="n">ch_id</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述:</p>
+<ul>
+<li><p>关闭 PWM 输入捕获模式。</p></li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch_id</span></code>: 通道号。</p></li>
+</ul>
+</li>
+<li><p>返回值:</p>
+<ul>
+<li><p>错误码，OPRT_OK 成功，其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id2">
+<h1>PWM 示例<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">tuya_pwm_test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span><span class="w">    </span>
+<span class="w"> 	  </span><span class="n">TUYA_PWM_BASE_CFG_T</span><span class="w"> </span><span class="n">cfg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">polarity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_PWM_POSITIVE</span><span class="p">,</span>\
+<span class="w">                         </span><span class="p">.</span><span class="n">duty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">                         </span><span class="p">.</span><span class="n">cycle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
+<span class="w">                         </span><span class="p">.</span><span class="n">frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">};</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_pwm_init</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cfg</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//fail</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_pwm_start</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//fail</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">tkl_system_delay</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_pwm_info_get</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cfg</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//fail</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">cfg</span><span class="p">.</span><span class="n">duty</span><span class="w"> </span><span class="o">!=</span><span class="mi">5000</span><span class="p">){</span>
+<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">duty</span><span class="w"> </span><span class="o">=</span><span class="mi">5000</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_pwm_info_set</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cfg</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//delay</span>
+<span class="w">    </span><span class="n">tkl_system_delay</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_pwm_stop</span><span class="p">(</span><span class="n">TUYA_PWM_NUM_0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//fail</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_pwm_deinit</span><span class="p">(</span><span class="n">TKL_PWM1_CH</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//fail</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021-2025, 杭州涂鸦信息技术有限公司。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="tkl_pwm.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

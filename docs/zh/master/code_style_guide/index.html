@@ -1,0 +1,607 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>编码风格指南 &mdash; TuyaOpen 开发指南 1.3.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/code_style_guide/index.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4ebe3ea6"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="常见问题" href="../faq/index.html" />
+    <link rel="prev" title="贡献指南" href="../contribute_guide/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">快速上手</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id2">安装依赖</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id3">克隆仓库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id4">设置与编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1">step1. 设置环境变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2">step2. 选择待编译项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3">step3. 编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig">step4. menuconfig 配置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id5">烧录与授权</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#id6">命令行烧录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui">GUI 工具烧录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">命令行烧录指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI 烧录工具指南</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos 使用指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id1">命令列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id2">使用示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id3">查看版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id4">环境检测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id5">创建项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id6">项目编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id7">配置管理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">示例工程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id2">选择待编译项目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id3">编译示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">应用开发</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#pid">创建产品并获取产品的 PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#tuyaopen">TuyaOpen 授权码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id3">编译烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id4">配网激活</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id5">TuyaOpen 典型应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT 应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id1">目录结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id2">支持硬件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id3">编译</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI 应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">外设开发与应用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">platform 新增与适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id2">移植适配 platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id3">生成新 platform 目录</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id4">完成编译适配</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig">Kconfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-yaml">修改platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id5">编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#default-config">修改 default.config 默认值</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id6">完成接口适配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id7">示例程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id8">测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id10">提交</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">board 新增和适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id1">定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id2">board 命名</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id3">必选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id4">可选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id5">命名规则</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id6">新增 board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id7">新建文件夹</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#kconfig">添加 Kconfig 文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id8">将 Board 添加到选择列表中</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id9">适配应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id10">贡献代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">贡献指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id2">修改内容</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id3">准备工作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id4">提交 Push Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">编码风格指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">目录与文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">头文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">文件头描述信息</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">函数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">函数名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">入参</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">返回值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">函数声明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">注释</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">缩进</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">空格与括号</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">循环</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#do-while">do-while 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">条件判断</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#if-else-if-else">if-else if-else 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch-case">switch-case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">宏与枚举</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">格式化代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">环境搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#git-pull-tuyaopen-master-apps">1. 已经通过 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> 拉取 TuyaOpen 仓库 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支最新源代码，但在编译具体 apps 下项目时候编译依然出错</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen 开发指南</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">编码风格指南</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/zh/code_style_guide/index.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="顺序式页面导航">
+        <a href="../contribute_guide/index.html" class="btn btn-neutral float-left" title="贡献指南" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../faq/index.html" class="btn btn-neutral float-right" title="常见问题" accesskey="n">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="code-style-guide">
+<span id="id1"></span><h1>编码风格指南<a class="headerlink" href="#code-style-guide" title="Link to this heading"></a></h1>
+<p>本风格指南目的是鼓励 TuyaOpen 开发人员使用统一的编码风格，提高代码的可读性和可维护性。</p>
+<p>TuyaOpen 编码以 <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html">Linux kernel coding style</a> 为基础，对部分规范进行了调整或者删除。</p>
+<section id="id2">
+<h2>目录与文件<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>目录与文件命名均采用小写字母，命名应能够正确反映对应内容的含义；有多个不同含义组合的命令以下划线 &quot;_&quot; 连接，建议目录与文件名不超过 3 个以上组合。</p>
+<section id="id3">
+<h3>头文件<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>C 语言头文件为了避免多次重复包含，需要定义一个符号。这个符号的定义形式请采用如下的风格：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef __TCP_TRANSPORTER_H__</span>
+<span class="cp">#define __TCP_TRANSPORTER_H__</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#endif</span>
+
+<span class="p">...</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// extern &quot;C&quot;</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#endif </span><span class="cm">/* __TCP_TRANSPORTER_H__ */</span>
+</pre></div>
+</div>
+<p>宏的命名方式和文件名保持一致，采用大写字母，以双下划线开头、结尾，所有非字母符号转换成下划线。</p>
+<p>同时为了保证在 c 函数在 c++ 环境下正常使用，应在头文件使用 extern &quot;c&quot; 宏来保证函数声明的确定性。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifdef __cplusplus</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p>所有的头文件内容都必须放在宏保护区域内。</p>
+</section>
+<section id="id4">
+<h3>文件头描述信息<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>文件头部需要增加描述性注释信息，用于描述该文件的描述、版本、版权等内容。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @file tcp_transporter.h</span>
+<span class="cm"> * @brief Header file for TCP transporter functions.</span>
+<span class="cm"> *</span>
+<span class="cm"> * This file declares the interface for creating and destroying TCP transporters</span>
+<span class="cm"> * within the Tuya AI+IoT SDK. A TCP transporter is responsible for establishing</span>
+<span class="cm"> * and managing TCP connections, enabling the transmission of data between Tuya</span>
+<span class="cm"> * devices and the Tuya cloud platform or other networked services. The</span>
+<span class="cm"> * functions provided here allow for the creation of a TCP transporter instance</span>
+<span class="cm"> * and its subsequent destruction, facilitating clean resource management and</span>
+<span class="cm"> * termination of TCP connections.</span>
+<span class="cm"> *</span>
+<span class="cm"> * The creation function initializes a new TCP transporter and returns a handle</span>
+<span class="cm"> * for further operations, while the destruction function releases any resources</span>
+<span class="cm"> * allocated to the TCP transporter and properly closes the TCP connection.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @copyright Copyright (c) 2021-2024 Tuya Inc. All Rights Reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2>函数<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id6">
+<h3>函数名<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>函数命名由小写字母和下划线组成，单词之间使用 &quot;_&quot; 连接。命令采用动宾结构的方式，如 <code class="docutils literal notranslate"><span class="pre">set_xxx</span></code>，<code class="docutils literal notranslate"><span class="pre">get_xxx</span></code>。</p>
+<p>模块内部函数接口应以双下划线 &quot;__&quot; 开头，并建议以声明为 static：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">__function</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>入参<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>如果函数入口参数是空，必须使用 void 作为入口参数。</p>
+</section>
+<section id="id8">
+<h3>返回值<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>函数必须指定返回值</p></li>
+<li><p>函数内对于有明确返回值的调用函数的返回值，需要进行判断，并进行异常处理</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tal_malloc</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">NULL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PR_ERR</span><span class="p">(</span><span class="s">&quot;tal_malloc Fails %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">OPRT_MALLOC_FAILED</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">...</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>函数返回值、名称应保持在同一行，如需要换行，则需要保持合理的对其方式</p></li>
+</ul>
+</section>
+<section id="id9">
+<h3>函数声明<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>提供给外部使用的 API 接口，必须在相应的头文件中声明</p></li>
+<li><p>通过头文件引用方式获得函数的声明，而不是使用 extern 方式；尽量避免使用 extern 作用与函数</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>注释<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>好的代码应该有自描述性，但是并不是每个coder都可以做到，建议代码应该包含丰富的注释，帮助我们记录、理解、跟踪代码</p></li>
+<li><p>对外的接口应该在头文件声明，并提供详细注释，详细描述函数功能、参数、返回值</p></li>
+<li><p>函数头的注释应当具有帮助理解函数用途、参数使用方式，返回值如何处理等，能够帮助使用者了解如何使用该函数，并了解该函数在某些特殊的场景下具有的问题和风险</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Controls the TLS transporter.</span>
+<span class="cm"> *</span>
+<span class="cm"> * This function is used to control the TLS transporter by sending different</span>
+<span class="cm"> * commands.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param t The TLS transporter to control.</span>
+<span class="cm"> * @param cmd The command to send.</span>
+<span class="cm"> * @param args The arguments for the command.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return The result of the operation.</span>
+<span class="cm"> */</span>
+</pre></div>
+</div>
+<p>其中</p>
+<ol class="arabic simple">
+<li><p>&#64;brief + 简述函数作用。在描述中，着重说明该函数的作用，每句话首字母大写，句尾加英文句号</p></li>
+<li><p>函数说明。在上述简述中未能体现到的函数功能或作用的一些点，可以做解释说明，每句话首字母大写，句尾加英文句号</p></li>
+<li><p>&#64;param + 以参数为主语 + be 动词 + 描述，说明参数的意义或来源</p></li>
+<li><p>&#64;return + 枚举返回值 + 返回值的意思，若返回值为数据，则直接介绍数据的功能</p></li>
+<li><p>&#64;warning + 函数使用注意要点。在函数使用时，描述需要注意的事项，如使用环境、使用方式等。每句话首字母大写，句尾加英文句号</p></li>
+</ol>
+</section>
+</section>
+<section id="id11">
+<h2>缩进<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<p>我们采用 K&amp;R 缩进风格。</p>
+<section id="id12">
+<h3>空格与括号<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>程序块采用缩进风格编写，每级缩进为 4 个空格，并保持一致</p></li>
+<li><p>关键字后加空格，左小括号后、右小括号前不加空格：</p></li>
+<li><p>左大括号和条件、循环条件一行</p></li>
+<li><p>右大括号独占一行 (do-while 和 if-else if除外)</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">action</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h3>循环<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<p>for 循环遵循函数的缩进标准</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAX</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">do_something</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="do-while">
+<h3>do-while 语句<a class="headerlink" href="#do-while" title="Link to this heading"></a></h3>
+<p>左边大括号紧跟 do 关键字，并且空一格；右边大括号和while关键字一行，并且空一格。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">body</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="k">do</span><span class="o">-</span><span class="n">loop</span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h3>条件判断<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>在一个条件、循环中超过一个语句的情况也同样需要使用括号：</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">test</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">do_something</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="if-else-if-else">
+<h3>if-else if-else 语句<a class="headerlink" href="#if-else-if-else" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">..</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">....</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="switch-case">
+<h3>switch-case<a class="headerlink" href="#switch-case" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>case 单独占一行，并且让 case 与 switch 对齐</p></li>
+<li><p>每个 case 的执行体建议使用大括号保护，避免变量的作用域超出范围</p></li>
+<li><p>不要遗漏 default</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">suffix</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">case</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">:</span>
+<span class="k">case</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="k">case</span><span class="w"> </span><span class="sc">&#39;B&#39;</span><span class="p">:</span>
+<span class="k">case</span><span class="w"> </span><span class="sc">&#39;b&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="cm">/* fall through */</span>
+<span class="k">default</span><span class="o">:</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id15">
+<h2>宏与枚举<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
+<p>定义常量的宏名称和枚举中的标签均使用大写字母，单词之间使用 &quot;_&quot; 连接。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define CONSTANT 0x12345</span>
+</pre></div>
+</div>
+<p>定义多个相关常量时，推荐使用枚举定义。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">STATE_IDLE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_START</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_DATA_LOAD</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_ENDPOINT_GET</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_ENDPOINT_UPDATE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_TOKEN_PENDING</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_ACTIVATING</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_NETWORK_CHECK</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_NETWORK_RECONNECT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_STARTUP_UPDATE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_MQTT_CONNECT_START</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_MQTT_CONNECTING</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_MQTT_RECONNECT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_MQTT_YIELD</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_RESTART</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_RESET</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_STOP</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_EXIT</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">tuya_run_state_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h2>格式化代码<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<p>TuyaOpen 支持 clang-format 格式化代码，请安装 clang-format 14 及以上版本，可手动格式化或自动格式化当前修改的代码。</p>
+<p>手工格式化:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>clang-format<span class="w"> </span>-style<span class="o">=</span>file<span class="w"> </span>-i<span class="w"> </span>&lt;file&gt;
+</pre></div>
+</div>
+<p>其中 &lt;file&gt; 为待格式化文件。</p>
+<p>自动格式化：</p>
+<p>TuyaOpen 目录 tools/hooks/pre-commit 文件会在编译时自动复制至 .git/hooks 目录。</p>
+<p>通过 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> 命令提交代码时，pre-commit 命令会自动调用 clang-format 格式化当前已经通过 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> 命令添加的文件。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../contribute_guide/index.html" class="btn btn-neutral float-left" title="贡献指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../faq/index.html" class="btn btn-neutral float-right" title="常见问题" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021-2025, 杭州涂鸦信息技术有限公司。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="index.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

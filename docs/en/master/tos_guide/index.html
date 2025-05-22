@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tos User Guide &mdash; TuyaOpen Development Guide 1.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/tos_guide/index.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=1f29e9d3"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example Projects" href="../examples/index.html" />
+    <link rel="prev" title="GUI Flashing Tool Guide" href="../quick_start/gui-flash.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#install-dependencies">Install Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#clone-repository">Clone Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#setup-and-compilation">Setup and Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1-set-environment-variables">step1. Set Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2-select-project-to-compile">step2. Select Project to Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3-compile">step3. Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig-configuration">step4. menuconfig Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#flashing-and-authorization">Flashing and Authorization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#command-line-flashing">Command Line Flashing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui-tool-flashing">GUI Tool Flashing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">Command Line Flashing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI Flashing Tool Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">tos User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#command-list">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#check-version">Check Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-check">Environment Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-project">Create Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#project-compilation">Project Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-management">Configuration Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Example Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#select-the-project-to-be-compiled">Select the project to be compiled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#compile-the-example">Compile the example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">Application Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#create-a-product-and-obtain-the-product-pid">Create a product and obtain the product PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#confirm-the-tuyaopen-authorization-code">Confirm the TuyaOpen authorization code:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#build-and-flash">Build and Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#network-configuration-and-device-activation">Network Configuration and Device Activation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#typical-applications-of-tuyaopen">Typical Applications of TuyaOpen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#directory">Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#supported-hardware">Supported Hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">Peripheral Development And Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">Adding and Adapting Platforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#platform-adaptation">Platform Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#generate-new-platform-directory">Generate New Platform Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#completing-adaptation">Completing Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig-configuration">Kconfig Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#updating-platform-config-yaml">Updating platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#interface-implementation">Interface Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#example-projects">Example Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#submission">Submission</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">Adding and Adapting Boards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#board-naming">Board Naming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#mandatory-fields">Mandatory Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#optional-fields">Optional Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#naming-rules">Naming Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#adding-new-board">Adding New Board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#create-directory">Create Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-kconfig-file">Add Kconfig File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-board-to-selection-list">Add Board to Selection List</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#application-adaptation">Application Adaptation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#contribution">Contribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#making-changes">Making Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#preparation">Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#submitting-pull-requests">Submitting Pull Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">Coding Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#directories-and-files">Directories and Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#header-files">Header Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#file-header-description">File Header Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-naming">Function Naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#input-parameters">Input Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#return-values">Return Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-declaration">Function Declaration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#comments">Comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#indentation">Indentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#spaces-and-parentheses">Spaces and Parentheses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#loops">Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">Do-While</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#conditionals-statements">Conditionals Statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else-statements">if-else if-else statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">Switch-Case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#macros-and-enums">Macros and Enums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#code-formatting">Code Formatting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">Environment setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">Build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#already-pulled-latest-source-code-via-git-pull-but-still-encounter-compilation-errors-when-building-apps">1. Already pulled latest source code via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> but still encounter compilation errors when building apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen Development Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">tos User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/en/tos_guide/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../quick_start/gui-flash.html" class="btn btn-neutral float-left" title="GUI Flashing Tool Guide" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../examples/index.html" class="btn btn-neutral float-right" title="Example Projects" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tos-user-guide">
+<span id="tos-guide"></span><h1>tos User Guide<a class="headerlink" href="#tos-user-guide" title="Link to this heading"></a></h1>
+<p>The tos command is TuyaOpen’s build tool, supporting various functions like project creation, compilation, and configuration.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The tos command is located in the root directory of <a class="reference external" href="https://github.com/tuya/TuyaOpen.git">TuyaOpen</a>, implemented as a shell script. Add the TuyaOpen path to the system environment variables before use.</p>
+</div>
+<section id="command-list">
+<h2>Command List<a class="headerlink" href="#command-list" title="Link to this heading"></a></h2>
+<p>View complete command list via <cite>tos help</cite>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tos<span class="w"> </span><span class="nb">help</span>
+
+Usage:<span class="w"> </span>tos<span class="w"> </span>COMMAND<span class="w"> </span><span class="o">[</span>ARGS<span class="o">]</span>...
+
+Commands:
+<span class="w">    </span>version<span class="w">    </span>-<span class="w"> </span>Show<span class="w"> </span>TOS<span class="w"> </span>verson
+<span class="w">    </span>check<span class="w">      </span>-<span class="w"> </span>Check<span class="w"> </span><span class="nb">command</span><span class="w"> </span>and<span class="w"> </span>version
+<span class="w">    </span>new<span class="w">        </span>-<span class="w"> </span>New<span class="w"> </span>project<span class="w"> </span><span class="o">[</span>base<span class="o">(</span>default<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>auduino<span class="o">]</span>
+<span class="w">    </span>build<span class="w">      </span>-<span class="w"> </span>Build<span class="w"> </span>project
+<span class="w">    </span>clean<span class="w">      </span>-<span class="w"> </span>Clean<span class="w"> </span>project
+<span class="w">    </span>fullclean<span class="w">  </span>-<span class="w"> </span>Clean<span class="w"> </span>project<span class="w"> </span>and<span class="w"> </span>delete<span class="w"> </span>build<span class="w"> </span>path
+<span class="w">    </span>menuconfig<span class="w"> </span>-<span class="w"> </span>Configuration<span class="w"> </span>project<span class="w"> </span>features
+<span class="w">    </span>savedef<span class="w">    </span>-<span class="w"> </span>Saves<span class="w"> </span>minimal<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>app_default.config<span class="o">)</span>
+<span class="w">    </span>set_example<span class="w">  </span>-<span class="w"> </span>Set<span class="w"> </span>examples<span class="w"> </span>from<span class="w"> </span>platform
+<span class="w">    </span>new_platform<span class="w"> </span>-<span class="w"> </span>New<span class="w"> </span>platform<span class="w"> </span><span class="o">[</span>platform_name<span class="o">]</span>
+<span class="w">    </span>update<span class="w">     </span>-<span class="w"> </span>Update<span class="w"> </span>the<span class="w"> </span>platforms<span class="w"> </span>according<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>platform_config.yaml
+<span class="w">    </span><span class="nb">help</span><span class="w">       </span>-<span class="w"> </span>Help<span class="w"> </span>information
+</pre></div>
+</div>
+</section>
+<section id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Link to this heading"></a></h2>
+<section id="check-version">
+<h3>Check Version<a class="headerlink" href="#check-version" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tos<span class="w"> </span>version
+<span class="m">2</span>.0.0
+</pre></div>
+</div>
+</section>
+<section id="environment-check">
+<h3>Environment Check<a class="headerlink" href="#environment-check" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tos<span class="w"> </span>check
+Check<span class="w"> </span><span class="nb">command</span><span class="w"> </span>and<span class="w"> </span>version<span class="w"> </span>...
+Check<span class="w"> </span><span class="o">[</span>bash<span class="o">](</span><span class="m">5</span>.2.21<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">4</span>.0.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span><span class="o">[</span>grep<span class="o">](</span><span class="m">3</span>.11
+<span class="m">10</span>.42<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">3</span>.0.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span><span class="o">[</span>sed<span class="o">](</span><span class="m">4</span>.9<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">4</span>.0.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span><span class="o">[</span>python3<span class="o">](</span><span class="m">3</span>.12.3<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">3</span>.6.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span><span class="o">[</span>git<span class="o">](</span><span class="m">2</span>.43.0<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">2</span>.0.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span><span class="o">[</span>ninja<span class="o">](</span><span class="m">1</span>.11.1<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">1</span>.6.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span><span class="o">[</span>cmake<span class="o">](</span><span class="m">3</span>.28.3<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">3</span>.16.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span>submodules.
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When checks fail, the minimum required version will be prompted. For example:
+<code class="docutils literal notranslate"><span class="pre">Please</span> <span class="pre">install</span> <span class="pre">[lcov],</span> <span class="pre">and</span> <span class="pre">version</span> <span class="pre">&gt;</span> <span class="pre">[1.14]</span></code>
+Please install corresponding dependencies as prompted.</p>
+</div>
+</section>
+<section id="create-project">
+<h3>Create Project<a class="headerlink" href="#create-project" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Basic command:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tos<span class="w"> </span>new
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Workflow:</p>
+<ol class="arabic simple">
+<li><p>Enter project name (e.g. <code class="docutils literal notranslate"><span class="pre">hello_world</span></code>)</p></li>
+<li><p>Select development board:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tos<span class="w"> </span>menuconfig
+</pre></div>
+</div>
+</li>
+<li><p>Generated directory structure:</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>├── CMakeLists.txt
+├── app_default.config
+└── src
+    └── hello_world.c
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CMakeLists.txt</p></td>
+<td><p>Project compilation configuration file</p></td>
+</tr>
+<tr class="row-odd"><td><p>app_default.config</p></td>
+<td><p>Project configuration (save differences via
+<code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">savedef</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p>src/</p></td>
+<td><p>Project source code directory</p></td>
+</tr>
+<tr class="row-odd"><td><p>src/hello_world.c</p></td>
+<td><p>Project source code file for storing project
+source.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="project-compilation">
+<h3>Project Compilation<a class="headerlink" href="#project-compilation" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>hello_world
+$<span class="w"> </span>tos<span class="w"> </span>build
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The toolchain will be automatically downloaded during first compilation. Ensure stable network connection.</p>
+</div>
+</section>
+<section id="configuration-management">
+<h3>Configuration Management<a class="headerlink" href="#configuration-management" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Function Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">menuconfig</span></code></p></td>
+<td><p>Interactive project configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">clean</span></code></p></td>
+<td><p>Clean build artifacts</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">fullclean</span></code></p></td>
+<td><p>Deep clean (including build directory)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">savedef</span></code></p></td>
+<td><p>Save configuration differences to
+app_default.config</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">config_choice</span></code></p></td>
+<td><p>Selects config files from config
+directory to replace app_default.config</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">set_example</span></code></p></td>
+<td><p>Sets example demonstrations for different
+chip platforms (modifies <cite>examples</cite> directory)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">update</span></code></p></td>
+<td><p>Update tos tool</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">savedef</span></code> command saves the differences between menuconfig results and default values in the <cite>app_default.config</cite> file.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../quick_start/gui-flash.html" class="btn btn-neutral float-left" title="GUI Flashing Tool Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../examples/index.html" class="btn btn-neutral float-right" title="Example Projects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2025, Tuya Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="index.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

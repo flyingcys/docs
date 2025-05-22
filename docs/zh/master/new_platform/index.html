@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>platform 新增与适配 &mdash; TuyaOpen 开发指南 1.3.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/new_platform/index.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4ebe3ea6"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="board 新增和适配" href="../new_board/index.html" />
+    <link rel="prev" title="Encoder" href="../peripherals/encoder.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">快速上手</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id2">安装依赖</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id3">克隆仓库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id4">设置与编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1">step1. 设置环境变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2">step2. 选择待编译项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3">step3. 编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig">step4. menuconfig 配置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id5">烧录与授权</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#id6">命令行烧录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui">GUI 工具烧录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">命令行烧录指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI 烧录工具指南</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos 使用指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id1">命令列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id2">使用示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id3">查看版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id4">环境检测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id5">创建项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id6">项目编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id7">配置管理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">示例工程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id2">选择待编译项目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id3">编译示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">应用开发</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#pid">创建产品并获取产品的 PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#tuyaopen">TuyaOpen 授权码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id3">编译烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id4">配网激活</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id5">TuyaOpen 典型应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT 应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id1">目录结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id2">支持硬件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id3">编译</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI 应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">外设开发与应用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">platform 新增与适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">移植适配 platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">生成新 platform 目录</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">完成编译适配</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kconfig">Kconfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#platform-config-yaml">修改platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-config">修改 default.config 默认值</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">完成接口适配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">示例程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">提交</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">board 新增和适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id1">定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id2">board 命名</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id3">必选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id4">可选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id5">命名规则</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id6">新增 board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id7">新建文件夹</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#kconfig">添加 Kconfig 文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id8">将 Board 添加到选择列表中</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id9">适配应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id10">贡献代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">贡献指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id2">修改内容</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id3">准备工作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id4">提交 Push Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">编码风格指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id2">目录与文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id3">头文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id4">文件头描述信息</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id5">函数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id6">函数名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id7">入参</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id8">返回值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id9">函数声明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id10">注释</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id11">缩进</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id12">空格与括号</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id13">循环</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">do-while 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id14">条件判断</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else">if-else if-else 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">switch-case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id15">宏与枚举</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id16">格式化代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">环境搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#git-pull-tuyaopen-master-apps">1. 已经通过 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> 拉取 TuyaOpen 仓库 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支最新源代码，但在编译具体 apps 下项目时候编译依然出错</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen 开发指南</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">platform 新增与适配</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/zh/new_platform/index.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="顺序式页面导航">
+        <a href="../peripherals/encoder.html" class="btn btn-neutral float-left" title="Encoder" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../new_board/index.html" class="btn btn-neutral float-right" title="board 新增和适配" accesskey="n">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="platform">
+<h1>platform 新增与适配<a class="headerlink" href="#platform" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/tuya/TuyaOpen">TuyaOpen</a> 采用 <code class="docutils literal notranslate"><span class="pre">platform_config.yaml</span></code> 文件管理 platform。<code class="docutils literal notranslate"><span class="pre">platform/platform_config.yaml</span></code> 文件包含了已经实现了通用接口的 platform 仓库信息。可在项目目录下的 <code class="docutils literal notranslate"><span class="pre">project_build.ini</span></code> 文件中配置 <code class="docutils literal notranslate"><span class="pre">platform</span></code> 及 <code class="docutils literal notranslate"><span class="pre">chip``(如当前</span> <span class="pre">platform</span> <span class="pre">支持多个芯片，则需配置芯片信息)，运行</span> <span class="pre">tos</span> <span class="pre">编译后，目标</span> <span class="pre">platform</span> <span class="pre">会自动下载对应的</span> <span class="pre">platform</span> <span class="pre">仓库，关联到</span> <span class="pre">``TuyaOpen</span></code> 项目中。</p>
+<p>如果你希望将``TuyaOpen``移植到自己的芯片上，则需要进行移植适配。</p>
+</section>
+<section id="id2">
+<h2>移植适配 platform<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3>生成新 platform 目录<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>下载并进入``TuyaOpen`` 目录，并设置环境变量：</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>TuyaOpen
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$PWD</span>
+</pre></div>
+</div>
+<p>或将 TuyaOpen 路径添加到系统环境变量中。</p>
+<p>TuyaOpen 通过 tos 命令进行编译、调试等操作，tos 命令会根据环境变量中设置的路径查找 TuyaOpen 仓库，并执行对应操作。</p>
+<p>tos 命令的详细使用方法，请参考 <a class="reference internal" href="../tos_guide/index.html"><span class="doc">tos 命令</span></a>。</p>
+<ol class="arabic simple" start="2">
+<li><p>通过以下命令，生成一个新的 <code class="docutils literal notranslate"><span class="pre">platform</span></code> 子目录：</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tos<span class="w"> </span>new_platform<span class="w"> </span>&lt;new-platform-name&gt;
+</pre></div>
+</div>
+<p>命令在创建新 <code class="docutils literal notranslate"><span class="pre">platform</span></code> 时，会自动弹出一个 <code class="docutils literal notranslate"><span class="pre">menuconfig</span></code> 对话框</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tos<span class="w"> </span>new_platform<span class="w"> </span>&lt;new-platform-name&gt;
+<span class="o">(</span><span class="m">1</span>.0.0<span class="o">)</span><span class="w"> </span>PROJECT_VERSION<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">    </span>configure<span class="w"> </span>TuyaOpen<span class="w">  </span>---&gt;
+<span class="w">        </span>configure<span class="w"> </span>tuya<span class="w"> </span>cloud<span class="w"> </span>service<span class="w">  </span>---&gt;
+<span class="w">        </span>configure<span class="w"> </span>enable/disable<span class="w"> </span>liblwip<span class="w">  </span>---&gt;
+<span class="w">        </span>configure<span class="w"> </span>enable/disable<span class="w"> </span>libtflm<span class="w">  </span>---&gt;
+<span class="w">        </span>configure<span class="w"> </span>mbedtls<span class="w">  </span>---&gt;
+<span class="w">        </span>configure<span class="w"> </span>system<span class="w"> </span>parameter<span class="w">  </span>---&gt;
+<span class="w">    </span>configure<span class="w"> </span>board<span class="w"> </span>&lt;your-board-name&gt;<span class="w">  </span>---&gt;
+<span class="w">        </span>OPERATING_SYSTEM<span class="w"> </span><span class="o">(</span>RTOS<span class="o">)</span><span class="w">  </span>---&gt;
+<span class="w">        </span>ENDIAN<span class="w"> </span><span class="o">(</span>LITTLE_ENDIAN<span class="o">)</span><span class="w">  </span>---&gt;
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_FILE_SYSTEM<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>filesystem<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_WIFI<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>wifi<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span>*<span class="o">]</span><span class="w"> </span>ENABLE_WIRED<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>wired<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_BLUETOOTH<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>BLE<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span><span class="w">  </span>----
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_RTC<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>rtc<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_WATCHDOG<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>watchdog<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span>*<span class="o">]</span><span class="w"> </span>ENABLE_UART<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>uart<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span>*<span class="o">]</span><span class="w"> </span>ENABLE_FLASH<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>flash<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span><span class="w">  </span>---&gt;
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_ADC<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>adc<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_PWM<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>pwm<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span>*<span class="o">]</span><span class="w"> </span>ENABLE_GPIO<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>gpio<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_I2C<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>i2c<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_SPI<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>spi<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_TIMER<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>hw<span class="w"> </span>timer<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_DISPLAY<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>GUI<span class="w"> </span>display<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_MEDIA<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>media<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_PM<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>power<span class="w"> </span>manager<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_STORAGE<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>storage<span class="w"> </span>such<span class="w"> </span>as<span class="w"> </span>SDCard<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_DAC<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>dac<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_I2S<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>i2s<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_WAKEUP<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>lowpower<span class="w"> </span>wakeup<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_REGISTER<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>register<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_PINMUX<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>pinmux<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_PLATFORM_AES<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>hw<span class="w"> </span>AES<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_PLATFORM_SHA256<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>hw<span class="w"> </span>sha256<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_PLATFORM_MD5<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>hw<span class="w"> </span>md5<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_PLATFORM_SHA1<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>hw<span class="w"> </span>sha1<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_PLATFORM_RSA<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>hw<span class="w"> </span>rsa<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+<span class="w">        </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>ENABLE_PLATFORM_ECC<span class="w"> </span>---<span class="w"> </span>support<span class="w"> </span>hw<span class="w"> </span>ecc<span class="w"> </span><span class="o">(</span>NEW<span class="o">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">TuyaOpen</span></code> 中根据新添加 platform 支持软件功能配置进行 TuyaOpen 默认软件功能配置</p></li>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">configure</span> <span class="pre">board</span> <span class="pre">&lt;your-board-name&gt;</span></code> 中根据新添加 platform 支持的硬件功能进行默认硬件功能配置</p></li>
+</ul>
+<p>在完成配置之后，保存配置【快捷键``S``】、退出【快捷键``Q``】，将自动生成默认的功能配置 <code class="docutils literal notranslate"><span class="pre">default.config</span></code></p>
+<ol class="arabic simple" start="3">
+<li><p>生成新 platform 目录</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">new_platform</span></code> 命令会根据配置生成新 platform 目录，并根据 <code class="docutils literal notranslate"><span class="pre">menuconfig</span></code> 中配置自动生成 <code class="docutils literal notranslate"><span class="pre">tkl</span></code> 接口层相关代码。</p>
+<p>过程中有如下日志输出:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>..............
+    make ability: system
+        new file: tkl_sleep.c
+        new file: tkl_memory.c
+        new file: tkl_output.c
+        new file: tkl_semaphore.c
+        new file: tkl_queue.c
+        new file: tkl_system.c
+        new file: tkl_fs.c
+        new file: tkl_ota.c
+        new file: tkl_thread.c
+        new file: tkl_mutex.c
+    make ability: uart
+        new file: tkl_uart.c
+    make ability: security
+generate code finished!
+</pre></div>
+</div>
+<p>看到 <code class="docutils literal notranslate"><span class="pre">generate</span> <span class="pre">code</span> <span class="pre">finished!</span></code> 就说明模版已生成成功。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>配置功能不同，日志会稍有差异，供参考</p>
+</div>
+<p>完成生成之后，会在 platform 下得到一个如下的新目录：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-<span class="w"> </span>platform
+<span class="w">    </span>+<span class="w"> </span>t2
+<span class="w">    </span>+<span class="w"> </span>ubuntu
+<span class="w">    </span>-<span class="w"> </span>&lt;new-platform-name&gt;
+<span class="w">        </span>+<span class="w"> </span>&lt;new-platform-sdk&gt;<span class="w">       </span><span class="c1"># 需要自行创建，存放芯片相关 SDK</span>
+<span class="w">        </span>+<span class="w"> </span>toolchain<span class="w">                </span><span class="c1"># 需要自行创建，存放工具链</span>
+<span class="w">        </span>+<span class="w"> </span>tuyaos<span class="w">                   </span><span class="c1"># 存放 tuyaos 适配层</span>
+<span class="w">            </span>-<span class="w"> </span>tuyaos_adapter<span class="w">       </span><span class="c1"># 存放 tuyaos 适配层接口源代码</span>
+<span class="w">                </span>-<span class="w"> </span>include
+<span class="w">                </span>-<span class="w"> </span>src
+<span class="w">        </span>-<span class="w"> </span>Kconfig<span class="w">                   </span><span class="c1"># 期望支持的可配置项，可以修改</span>
+<span class="w">        </span>-<span class="w"> </span>default.config<span class="w">            </span><span class="c1"># platform 默认支持的功能，可以修改</span>
+<span class="w">        </span>-<span class="w"> </span>platform_config.cmake<span class="w">     </span><span class="c1"># 适配层源码路径</span>
+<span class="w">        </span>-<span class="w"> </span>toolchain_file.cmake<span class="w">      </span><span class="c1"># TuyaOpen 编译工具路径和编译选项</span>
+<span class="w">        </span>-<span class="w"> </span>build_example.sh<span class="w">          </span><span class="c1"># 编译脚本</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id4">
+<h2>完成编译适配<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>完成模版生成之后，可以按照需要对模版进行一些修改，并完成一些脚本的实现，确保编译流程能够正常进行。</p>
+<section id="kconfig">
+<h3>Kconfig<a class="headerlink" href="#kconfig" title="Link to this heading"></a></h3>
+<p>Kconfig 文件中定义了新 platform 支持的功能，请根据当前新增 platform 名称，修改首次生成的 Kconfig 文件中 <code class="docutils literal notranslate"><span class="pre">menu</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">&lt;your-board-name&gt;</span></code> 名称。同事也可以根据实际硬件情况新增/删除相关配置。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>menu<span class="w"> </span><span class="s2">&quot;configure board &lt;your-board-name&gt;&quot;</span>
+<span class="w">    </span>...
+
+<span class="w">    </span>endmenu
+</pre></div>
+</div>
+</section>
+<section id="platform-config-cmake">
+<h3>platform_config.cmake<a class="headerlink" href="#platform-config-cmake" title="Link to this heading"></a></h3>
+<p>该文件为 TuyaOpen 编译依赖 platform 相关适配文件及头文件路径，一般不需要修改。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>list_subdirectories<span class="o">(</span>PLATFORM_PUBINC<span class="w"> </span><span class="si">${</span><span class="nv">PLATFORM_PATH</span><span class="si">}</span>/tuyaos/tuyaos_adapter<span class="o">)</span>
+</pre></div>
+</div>
+<p>TuyaOpen 采用 cmake 编译，<code class="docutils literal notranslate"><span class="pre">list_subdirectories</span></code> 函数会将指定目录下所有子目录添加到 PLATFORM_PUBINC 变量中，供 TuyaOpen 编译时使用。</p>
+<p>如需要添加其他路径，可参考如下方式：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>list_subdirectories<span class="o">(</span>PLATFORM_PUBINC_1<span class="w"> </span><span class="si">${</span><span class="nv">PLATFORM_PATH</span><span class="si">}</span>/tuyaos/tuyaos_adapter<span class="o">)</span>
+set<span class="o">(</span>PLATFORM_PUBINC_2
+<span class="w">    </span><span class="si">${</span><span class="nv">PLATFORM_PATH</span><span class="si">}</span>/TuyaOpen/build/config
+<span class="o">)</span>
+
+set<span class="o">(</span>PLATFORM_PUBINC
+<span class="w">    </span><span class="si">${</span><span class="nv">PLATFORM_PUBINC_1</span><span class="si">}</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">PLATFORM_PUBINC_2</span><span class="si">}</span><span class="o">)</span>
+</pre></div>
+</div>
+</section>
+<section id="toolchain-file-cmake">
+<h3>toolchain_file.cmake<a class="headerlink" href="#toolchain-file-cmake" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>设置编译工具路径及 toolchain 前缀，可以参考现有的 <code class="docutils literal notranslate"><span class="pre">t2</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> 目录下的文件。</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>set<span class="o">(</span>TOOLCHAIN_DIR<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PLATFORM_PATH</span><span class="si">}</span><span class="s2">/toolchain/&lt;your-toolchain-name&gt;&quot;</span><span class="o">)</span>
+set<span class="o">(</span>TOOLCHAIN_PRE<span class="w"> </span><span class="s2">&quot;&lt;your-toolchain-prefix&gt;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>根据新增 platform 编译参数，正确设置 TuyaOpen 编译选项。</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>set<span class="o">(</span>CMAKE_C_FLAGS<span class="w"> </span><span class="s2">&quot;&lt;your-compiler-c-flags&gt;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>3. build_example.sh
+需要在这里完成原厂 SDK 的编译以及链接生成各种用途的固件，可以参考现有的 <code class="docutils literal notranslate"><span class="pre">t2</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> 目录下的文件。（注意，注释掉的那行，在``linux``系统下可以直接打开，配合默认的``Makefile``可以直接编译可执行文件。）</p>
+</section>
+<section id="platform-config-yaml">
+<h3>修改platform_config.yaml<a class="headerlink" href="#platform-config-yaml" title="Link to this heading"></a></h3>
+<p>在 <code class="docutils literal notranslate"><span class="pre">platform/platform_config.yaml</span></code> 文件中新增一个 <code class="docutils literal notranslate"><span class="pre">&lt;new-platform-name&gt;</span></code>。如当前项目是本地项目，可无需填写``repo``和``commit``，如该项目通过 <code class="docutils literal notranslate"><span class="pre">git</span></code> 管理，则可以按实际情况填写</p>
+<p>格式如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-<span class="w"> </span>name:<span class="w"> </span>t3
+<span class="w">  </span>repo:<span class="w"> </span>https://github.com/tuya/TuyaOpen-platform-t3
+<span class="w">  </span>commit:<span class="w"> </span>master
+</pre></div>
+</div>
+<p>如新增 platform 支持多 chip ，则可按如下格式填写：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-<span class="w"> </span>name:<span class="w"> </span>new_platform
+<span class="w">  </span>repo:<span class="w"> </span>https://github.com/xxxx/new_platform
+<span class="w">  </span>commit:<span class="w"> </span>master
+<span class="w">  </span>chip:
+<span class="w">    </span>-<span class="w"> </span>chip1
+<span class="w">    </span>-<span class="w"> </span>chip2
+<span class="w">    </span>-<span class="w"> </span>chip3
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>编译<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>按照 <span class="xref std std-doc">README_zh</span> 文档的指引，在待编译测试的项目中 project_build.ini 修改/新增当前 platform 的名称，并进行一次编译。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>project:sample_project_&lt;new-platform-name&gt;<span class="o">]</span>
+<span class="nv">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>&lt;new-platform-name&gt;
+</pre></div>
+</div>
+<p>推荐 project 名为 <code class="docutils literal notranslate"><span class="pre">当前项目名_platform名</span></code> 或 <code class="docutils literal notranslate"><span class="pre">当前项目名_chip名</span></code>。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>examples/get-started/sample_project
+$<span class="w"> </span>tos<span class="w"> </span>build
+</pre></div>
+</div>
+<p>正常情况下，完成编译适配后，可直接编译通过。未编译成功请根据错误提示进行适配修改。</p>
+</section>
+<section id="default-config">
+<h3>修改 default.config 默认值<a class="headerlink" href="#default-config" title="Link to this heading"></a></h3>
+<p>default.config 是生成移植模版的时候，根据选择生成的默认配置，用于项目首次编译默认配置。</p>
+<p>default.config 和 Kconfig 一起配合组成 TuyaOpen 菜单化配置功能，并自动生成 <code class="docutils literal notranslate"><span class="pre">using.config</span></code> 、<code class="docutils literal notranslate"><span class="pre">using.cmake</span></code>、 <code class="docutils literal notranslate"><span class="pre">tuya_kconfig.h</span></code> 文件，在 TuyaOpen 编译和源代码中被使用。</p>
+<p>如需修改默认配置，请在对应项目目录下执行 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">menuconfig</span></code> 修改功能配置，并将相关修改手工合并至 default.config。</p>
+</section>
+</section>
+<section id="id6">
+<h2>完成接口适配<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>生成移植模版的时候，在 <code class="docutils literal notranslate"><span class="pre">tuyaos/tuyaos_adapter/src/</span></code> 目录下生成了一些空函数，需要对这些空函数进行实现，才能保证功能正常运行。</p>
+<p>因为``TuyaOpen`` 使用的和 <code class="docutils literal notranslate"><span class="pre">TuyaOS</span></code> 完全一致的底层接口，可以按照 <a class="reference external" href="https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_linux?id=Kcrwrf72ciez5#title-1-适配-RTC">TuyaOS移植指南</a> 和 <a class="reference external" href="https://developer.tuya.com/cn/docs/iot-device-dev/TuyaOS-translation_rtos?id=Kcrwraf21847l#title-1-适配程序入口">RTOS移植指南</a> 进行适配。</p>
+<p>具体接口的介绍请参考 <code class="docutils literal notranslate"><span class="pre">TuyaOpen</span></code> 目录 <code class="docutils literal notranslate"><span class="pre">./tools/porting/docs/</span></code> 目录下的文档。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>外设的接口不是必须要适配的，开发者完全可以使用原厂的接口；为方便开发者使用更多 TuyaOpen 相关的功能，建议适配。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>网络相关的接口，如果是外接网卡结构的，需要自行实现网卡驱动，实现 socket 相关操作以及相关 <code class="docutils literal notranslate"><span class="pre">wifi</span></code>、<code class="docutils literal notranslate"><span class="pre">wired</span></code> 操作</p>
+</div>
+</section>
+<section id="id7">
+<h2>示例程序<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>完成适配之后，可以结合示例程序进行编译、调试。<code class="docutils literal notranslate"><span class="pre">TuyaOpen</span></code> 提供了丰富的示例程序：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>TuyaOpen
+├── ai
+│   └── llm_demo
+│   └── tflm
+│       └── hello_world
+│       └── micro_speech
+│       └── person_detection
+├── ble
+│   ├── ble_central
+│   └── ble_peripher
+├── get-started
+│   └── sample_project
+├── peripherals
+│   ├── adc
+│   ├── gpio
+│   ├── i2c
+│   ├── pwm
+│   ├── spi
+│   ├── timer
+│   └── watchdog
+├── protocols
+│   ├── http_client
+│   ├── mqtt
+│   ├── tcp_client
+│   └── tcp_server
+├── system
+│   ├── os_event
+│   ├── os_kv
+│   ├── os_mutex
+│   ├── os_queue
+│   ├── os_semaphore
+│   ├── os_sw_timer
+│   └── os_thread
+└── wifi
+    ├── ap
+    ├── low_power
+    ├── scan
+    └── sta
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h2>测试功能<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<p>请按照以下测试用例测试，同时根据自己产品的功能进行全覆盖的功能、性能测试：</p>
+<p><a class="reference external" href="https://drive.weixin.qq.com/s?k=AGQAugfWAAkb5lIvFsAEgAwQZJALE">测试用例文档</a></p>
+</section>
+<section id="id10">
+<h2>提交<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<p>完成适配并通过测试后，欢迎提交 Push Requests 提交代码，将新适配的 platform 对应的 <code class="docutils literal notranslate"><span class="pre">platform_config.yaml</span></code> 提交至 <a class="reference external" href="https://github.com/tuya/TuyaOpen">TuyaOpen仓库</a>：</p>
+<ul class="simple">
+<li><p>Push Requests 流程可参考 <a class="reference internal" href="../contribute_guide/index.html"><span class="doc">贡献指南</span></a></p></li>
+<li><p>编程规范可参考 <a class="reference internal" href="../code_style_guide/index.html"><span class="doc">编码风格指南</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../peripherals/encoder.html" class="btn btn-neutral float-left" title="Encoder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../new_board/index.html" class="btn btn-neutral float-right" title="board 新增和适配" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021-2025, 杭州涂鸦信息技术有限公司。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="index.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

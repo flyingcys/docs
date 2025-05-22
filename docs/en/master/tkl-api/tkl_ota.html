@@ -1,0 +1,449 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTA &mdash; TuyaOpen Development Guide 1.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/tkl-api/tkl_ota.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=1f29e9d3"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#install-dependencies">Install Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#clone-repository">Clone Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#setup-and-compilation">Setup and Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1-set-environment-variables">step1. Set Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2-select-project-to-compile">step2. Select Project to Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3-compile">step3. Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig-configuration">step4. menuconfig Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#flashing-and-authorization">Flashing and Authorization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#command-line-flashing">Command Line Flashing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui-tool-flashing">GUI Tool Flashing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">Command Line Flashing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI Flashing Tool Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#command-list">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#check-version">Check Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#environment-check">Environment Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#create-project">Create Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#project-compilation">Project Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#configuration-management">Configuration Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Example Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#select-the-project-to-be-compiled">Select the project to be compiled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#compile-the-example">Compile the example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">Application Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#create-a-product-and-obtain-the-product-pid">Create a product and obtain the product PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#confirm-the-tuyaopen-authorization-code">Confirm the TuyaOpen authorization code:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#build-and-flash">Build and Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#network-configuration-and-device-activation">Network Configuration and Device Activation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#typical-applications-of-tuyaopen">Typical Applications of TuyaOpen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#directory">Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#supported-hardware">Supported Hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">Peripheral Development And Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">Adding and Adapting Platforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#platform-adaptation">Platform Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#generate-new-platform-directory">Generate New Platform Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#completing-adaptation">Completing Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig-configuration">Kconfig Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#updating-platform-config-yaml">Updating platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#interface-implementation">Interface Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#example-projects">Example Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#submission">Submission</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">Adding and Adapting Boards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#board-naming">Board Naming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#mandatory-fields">Mandatory Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#optional-fields">Optional Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#naming-rules">Naming Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#adding-new-board">Adding New Board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#create-directory">Create Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-kconfig-file">Add Kconfig File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-board-to-selection-list">Add Board to Selection List</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#application-adaptation">Application Adaptation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#contribution">Contribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#making-changes">Making Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#preparation">Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#submitting-pull-requests">Submitting Pull Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">Coding Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#directories-and-files">Directories and Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#header-files">Header Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#file-header-description">File Header Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-naming">Function Naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#input-parameters">Input Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#return-values">Return Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-declaration">Function Declaration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#comments">Comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#indentation">Indentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#spaces-and-parentheses">Spaces and Parentheses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#loops">Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">Do-While</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#conditionals-statements">Conditionals Statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else-statements">if-else if-else statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">Switch-Case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#macros-and-enums">Macros and Enums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#code-formatting">Code Formatting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">Environment setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">Build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#already-pulled-latest-source-code-via-git-pull-but-still-encounter-compilation-errors-when-building-apps">1. Already pulled latest source code via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> but still encounter compilation errors when building apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen Development Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">OTA</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/en/tkl-api/tkl_ota.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ota">
+<h1>OTA<a class="headerlink" href="#ota" title="Link to this heading"></a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">tkl_ota.c</span></code> firmware OTA (Over-The-Air) includes handling various stages of the firmware upgrade process: obtaining firmware upgrade capabilities, OTA start notification, OTA data processing, and OTA end notification. This file is automatically generated by the TuyaOS and allows developers to add their own implementations in the provided user-defined areas.</p>
+<section id="api-description">
+<h2>API Description<a class="headerlink" href="#api-description" title="Link to this heading"></a></h2>
+<section id="tkl-ota-get-ability">
+<h3>tkl_ota_get_ability<a class="headerlink" href="#tkl-ota-get-ability" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ota_get_ability</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">image_size</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_OTA_TYPE_E</span><span class="w"> </span><span class="o">*</span><span class="n">type</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="functionality">
+<h4>Functionality<a class="headerlink" href="#functionality" title="Link to this heading"></a></h4>
+<p>Obtains the OTA capability information of the current device, including the maximum firmware image size and the OTA type.</p>
+</section>
+<section id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h4>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">image_size</span></code>: Output parameter, used to store the maximum size of the firmware image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: Output parameter, OTA type, can be a full package or a differential package, use <code class="docutils literal notranslate"><span class="pre">TUYA_OTA_FULL</span></code> to indicate a full package, and <code class="docutils literal notranslate"><span class="pre">TUYA_OTA_DIFF</span></code> to indicate a differential package.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">TUYA_OTA_FULL</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">            </span><span class="c1">///&lt; AB area switch, full package upgrade</span>
+<span class="w">        </span><span class="n">TUYA_OTA_DIFF</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">            </span><span class="c1">///&lt; fixed area, difference package upgrade</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">TUYA_OTA_TYPE_E</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="return-value">
+<h4>Return Value<a class="headerlink" href="#return-value" title="Link to this heading"></a></h4>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other values indicate an error, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-ota-start-notify">
+<h3>tkl_ota_start_notify<a class="headerlink" href="#tkl-ota-start-notify" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ota_start_notify</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">image_size</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_OTA_TYPE_E</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_OTA_PATH_E</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id1">
+<h4>Functionality<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<p>Notifies the start of the OTA upgrade, this function initializes the necessary variables and states for the OTA process.</p>
+</section>
+<section id="id2">
+<h4>Parameters<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">image_size</span></code>: Input parameter, the size of the firmware image to be upgraded.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: Input parameter, OTA type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: Input parameter, OTA path, the channel through which the data is transmitted.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TUYA_OTA_PATH_AIR</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">            </span><span class="c1">///&lt; OTA from Wired/Wi-Fi/Cellular/NBIoT</span>
+<span class="w">    </span><span class="n">TUYA_OTA_PATH_UART</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">            </span><span class="c1">///&lt; OTA from uart for MF</span>
+<span class="w">    </span><span class="n">TUYA_OTA_PATH_BLE</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">            </span><span class="c1">///&lt; OTA from BLE protocol for subdev</span>
+<span class="w">    </span><span class="n">TUYA_OTA_PATH_ZIGBEE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">            </span><span class="c1">///&lt; OTA from Zigbee protocol for subdev</span>
+<span class="w">    </span><span class="n">TUYA_OTA_PATH_SEC_A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">             </span><span class="c1">///&lt; OTA from multi-section A</span>
+<span class="w">    </span><span class="n">TUYA_OTA_PATH_SEC_B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">             </span><span class="c1">///&lt; OTA from multi-section B</span>
+<span class="w">    </span><span class="n">TUYA_OTA_PATH_INVALID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">255</span><span class="w">          </span><span class="c1">///&lt; OTA from multi-section invalid</span>
+<span class="w">    </span><span class="p">}</span><span class="n">TUYA_OTA_PATH_E</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h4>Return Value<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates the operation was successful, other return values indicate an error, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</section>
+</section>
+<section id="tkl-ota-data-process">
+<h3>tkl_ota_data_process<a class="headerlink" href="#tkl-ota-data-process" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ota_data_process</span><span class="p">(</span><span class="n">TUYA_OTA_DATA_T</span><span class="w"> </span><span class="o">*</span><span class="n">pack</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">remain_len</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id4">
+<h4>Functionality<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<p>Processes the received OTA data packet, this function will perform different upgrade operations according to the state.</p>
+</section>
+<section id="id5">
+<h4>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pack</span></code>: Input parameter, a pointer to the OTA data packet.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remain_len</span></code>: Output parameter, indicates the length of the remaining unprocessed data in the OTA data packet.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h4>Return Value<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<p>If the data packet is processed successfully, the return value is <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>, otherwise, an error code is returned. For specific error information, please see <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-ota-end-notify">
+<h3>tkl_ota_end_notify<a class="headerlink" href="#tkl-ota-end-notify" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ota_end_notify</span><span class="p">(</span><span class="n">BOOL_T</span><span class="w"> </span><span class="n">reset</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id7">
+<h4>Functionality<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<p>Notifies the end of the OTA upgrade, performs verification and follow-up processing, and will reset the device if necessary.</p>
+</section>
+<section id="id8">
+<h4>Parameters<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">reset</span></code>: Input parameter, indicates whether the device needs to be reset after the OTA ends.</p></li>
+</ul>
+</section>
+<section id="id9">
+<h4>Return Value<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates the operation was successful, if the verification fails or other reasons cause failure, an error code is returned. For error details, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-ota-get-old-firmware-info">
+<h3>tkl_ota_get_old_firmware_info<a class="headerlink" href="#tkl-ota-get-old-firmware-info" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ota_get_old_firmware_info</span><span class="p">(</span><span class="n">TUYA_OTA_FIRMWARE_INFO_T</span><span class="w"> </span><span class="o">**</span><span class="n">info</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id10">
+<h4>Functionality<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<p>Obtains information about the old firmware, this function is typically used in breakpoint resume scenarios.</p>
+</section>
+<section id="id11">
+<h4>Parameters<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">info</span></code>: Output parameter, a pointer to a pointer to the old firmware information structure.</p></li>
+</ul>
+</section>
+<section id="id12">
+<h4>Return Value<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<p>If the old firmware information is successfully obtained, the return value is <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code>, otherwise, an error code is returned. For specific error information, please see <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2025, Tuya Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="tkl_ota.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>涂鸦云开关示例（switch_demo） &mdash; TuyaOpen 开发指南 1.3.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/applications/switch_demo.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4ebe3ea6"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">快速上手</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id2">安装依赖</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id3">克隆仓库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id4">设置与编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1">step1. 设置环境变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2">step2. 选择待编译项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3">step3. 编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig">step4. menuconfig 配置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id5">烧录与授权</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#id6">命令行烧录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui">GUI 工具烧录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">命令行烧录指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI 烧录工具指南</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos 使用指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id1">命令列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id2">使用示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id3">查看版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id4">环境检测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id5">创建项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id6">项目编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id7">配置管理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">示例工程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id2">选择待编译项目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id3">编译示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">应用开发</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#pid">创建产品并获取产品的 PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#tuyaopen">TuyaOpen 授权码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id3">编译烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id4">配网激活</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id5">TuyaOpen 典型应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="IoT.html">IoT 应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="IoT.html#id1">目录结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IoT.html#id2">支持硬件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IoT.html#id3">编译</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ai.html">AI 应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">外设开发与应用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">platform 新增与适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id2">移植适配 platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id3">生成新 platform 目录</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id4">完成编译适配</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig">Kconfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-yaml">修改platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id5">编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#default-config">修改 default.config 默认值</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id6">完成接口适配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id7">示例程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id8">测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id10">提交</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">board 新增和适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id1">定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id2">board 命名</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id3">必选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id4">可选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id5">命名规则</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id6">新增 board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id7">新建文件夹</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#kconfig">添加 Kconfig 文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id8">将 Board 添加到选择列表中</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id9">适配应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id10">贡献代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">贡献指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id2">修改内容</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id3">准备工作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id4">提交 Push Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">编码风格指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id2">目录与文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id3">头文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id4">文件头描述信息</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id5">函数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id6">函数名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id7">入参</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id8">返回值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id9">函数声明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id10">注释</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id11">缩进</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id12">空格与括号</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id13">循环</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">do-while 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id14">条件判断</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else">if-else if-else 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">switch-case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id15">宏与枚举</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id16">格式化代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">环境搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#git-pull-tuyaopen-master-apps">1. 已经通过 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> 拉取 TuyaOpen 仓库 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支最新源代码，但在编译具体 apps 下项目时候编译依然出错</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen 开发指南</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">涂鸦云开关示例（switch_demo）</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/zh/applications/switch_demo.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="switch-demo">
+<span id="id1"></span><h1>涂鸦云开关示例（switch_demo）<a class="headerlink" href="#switch-demo" title="Link to this heading"></a></h1>
+<section id="id2">
+<h2>概述<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">switch_demo</span></code> 是一个简单的、跨平台、跨系统、支持多种连接方式的开关示例应用。通过涂鸦APP、涂鸦云服务，用户可以对这个开关进行远程控制（外出）、局域网控制（同一局域网）和蓝牙控制（没有可用网络）。</p>
+<a class="reference internal image-reference" href="../../images/zh/switch_demo_overview.png"><img alt="开关示例概览" src="../../images/zh/switch_demo_overview.png" style="width: 600px;" />
+</a>
+</section>
+<section id="id3">
+<h2>目录结构<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">switch_demo</span></code> 的目录结构如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>+-<span class="w"> </span>switch_demo
+<span class="w">    </span>+-<span class="w"> </span>libqrencode<span class="w">        </span><span class="c1"># 二维码工具库</span>
+<span class="w">    </span>+-<span class="w"> </span>src
+<span class="w">        </span>--<span class="w"> </span>cli_cmd.c<span class="w">      </span><span class="c1"># 命令行操作接口</span>
+<span class="w">        </span>--<span class="w"> </span>qrencode_print.c<span class="w">  </span><span class="c1"># 二维码显示工具</span>
+<span class="w">        </span>--<span class="w"> </span>tuya_main.c<span class="w">    </span><span class="c1"># 主要功能实现</span>
+<span class="w">        </span>--<span class="w"> </span>tuya_config.h<span class="w">  </span><span class="c1"># 涂鸦PID和授权信息配置</span>
+<span class="w">    </span>--<span class="w"> </span>CMakeLists.txt<span class="w">     </span><span class="c1"># 编译配置文件</span>
+<span class="w">    </span>--<span class="w"> </span>README_CN.md<span class="w">       </span><span class="c1"># 中文说明文档</span>
+<span class="w">    </span>--<span class="w"> </span>README.md<span class="w">          </span><span class="c1"># 英文说明文档</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>工作原理<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">switch_demo</span></code> 基于涂鸦IoT平台，实现了一个智能开关的基本功能。其核心工作原理如下：</p>
+<section id="id5">
+<h3>1. 设备初始化<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>设备启动后，首先进行硬件初始化，包括GPIO、网络接口等基础设施的初始化。然后读取授权信息，准备连接涂鸦云平台。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// 初始化涂鸦IoT SDK</span>
+<span class="n">tuya_iot_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">);</span>
+
+<span class="c1">// 注册事件回调函数</span>
+<span class="n">tuya_iot_register_event_cb</span><span class="p">(</span><span class="o">&amp;</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">event_handler</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>2. 网络连接<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>设备支持多种网络连接方式：</p>
+<ul class="simple">
+<li><p><strong>Wi-Fi连接</strong>：通过Wi-Fi连接到互联网，实现远程控制</p></li>
+<li><p><strong>蓝牙连接</strong>：在无网络环境下，通过蓝牙直接控制设备</p></li>
+<li><p><strong>有线网络连接</strong>：通过以太网连接到互联网</p></li>
+</ul>
+<p>设备会根据当前可用的网络环境，自动选择合适的连接方式。</p>
+</section>
+<section id="id7">
+<h3>3. 设备配网与绑定<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>设备首次使用时，需要进行配网和绑定操作：</p>
+<ul class="simple">
+<li><p><strong>Wi-Fi配网</strong>：通过涂鸦APP引导用户输入Wi-Fi信息</p></li>
+<li><p><strong>蓝牙配网</strong>：通过蓝牙直接传输网络信息</p></li>
+<li><p><strong>二维码配网</strong>：对于有线网络，生成二维码供APP扫描绑定</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// 生成并显示二维码</span>
+<span class="n">qrencode_print_to_terminal</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3>4. 状态管理与控制<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>设备通过DP点（Data Point）管理状态，主要包括：</p>
+<ul class="simple">
+<li><p><strong>开关状态</strong>：控制设备的开/关</p></li>
+<li><p><strong>工作模式</strong>：设置设备的工作模式</p></li>
+<li><p><strong>运行状态</strong>：反馈设备当前的运行状态</p></li>
+</ul>
+<p>当用户通过APP发送控制指令时，设备会接收到对应的DP点变更，并执行相应的操作。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// DP点处理函数</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">tuya_iot_dp_process</span><span class="p">(</span><span class="n">tuya_iot_client_t</span><span class="w"> </span><span class="o">*</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tuya_iot_dp_t</span><span class="w"> </span><span class="o">*</span><span class="n">dp_array</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">dp_cnt</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 处理开关状态变更</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dp_array</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SWITCH_DP_ID</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dp_array</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">value</span><span class="p">.</span><span class="n">value_bool</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// 执行开关操作</span>
+<span class="w">        </span><span class="n">set_switch_state</span><span class="p">(</span><span class="n">state</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// 上报执行结果</span>
+<span class="w">        </span><span class="n">report_switch_state</span><span class="p">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h3>5. 状态上报<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>设备会定期或在状态变更时，主动向云端上报当前状态：</p>
+<ul class="simple">
+<li><p><strong>定时上报</strong>：定期向云端同步设备状态</p></li>
+<li><p><strong>变更上报</strong>：当设备状态发生变化时，立即上报</p></li>
+<li><p><strong>查询上报</strong>：响应云端的状态查询请求</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// 上报开关状态</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">report_switch_state</span><span class="p">(</span><span class="n">tuya_iot_client_t</span><span class="w"> </span><span class="o">*</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">state</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">tuya_iot_dp_t</span><span class="w"> </span><span class="n">dp</span><span class="p">;</span>
+<span class="w">    </span><span class="n">dp</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SWITCH_DP_ID</span><span class="p">;</span>
+<span class="w">    </span><span class="n">dp</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_IOT_DP_TYPE_BOOL</span><span class="p">;</span>
+<span class="w">    </span><span class="n">dp</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">value_bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+<span class="w">    </span><span class="n">tuya_iot_dp_report_json</span><span class="p">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dp</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id10">
+<h2>工作流程<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">switch_demo</span></code> 的完整工作流程如下：</p>
+<section id="id11">
+<h3>1. 设备上电与初始化<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>硬件初始化</p></li>
+<li><p>SDK初始化</p></li>
+<li><p>读取授权信息</p></li>
+<li><p>注册事件回调</p></li>
+</ul>
+</section>
+<section id="id12">
+<h3>2. 网络连接阶段<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>检测可用网络</p></li>
+<li><p>根据网络环境选择连接方式</p></li>
+<li><p>建立与涂鸦云的连接</p></li>
+</ul>
+</section>
+<section id="id13">
+<h3>3. 配网与绑定阶段<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>首次使用时进入配网模式</p></li>
+<li><p>通过APP引导用户完成配网</p></li>
+<li><p>设备与用户账号绑定</p></li>
+</ul>
+</section>
+<section id="id14">
+<h3>4. 正常工作阶段<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>接收云端/APP控制指令</p></li>
+<li><p>执行相应操作</p></li>
+<li><p>上报设备状态</p></li>
+<li><p>响应用户本地操作</p></li>
+</ul>
+</section>
+<section id="id15">
+<h3>5. 异常处理<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>网络异常重连</p></li>
+<li><p>云端连接恢复</p></li>
+<li><p>本地模式降级</p></li>
+</ul>
+</section>
+</section>
+<section id="id16">
+<h2>使用说明<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<section id="id17">
+<h3>1. 环境准备<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<p>在使用 <code class="docutils literal notranslate"><span class="pre">switch_demo</span></code> 前，请确保已完成以下准备工作：</p>
+<ul class="simple">
+<li><p>安装涂鸦智能APP</p></li>
+<li><p>注册涂鸦开发者账号</p></li>
+<li><p>在涂鸦IoT平台创建产品并获取PID</p></li>
+<li><p>获取TuyaOpen授权码</p></li>
+</ul>
+</section>
+<section id="id18">
+<h3>2. 配置修改<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<p>修改 <code class="docutils literal notranslate"><span class="pre">tuya_config.h</span></code> 文件，填入您的产品信息：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// 产品PID</span>
+<span class="cp">#define TUYA_PRODUCT_KEY &quot;xxxxxxxxxxxxxxxx&quot;</span>
+
+<span class="c1">// TuyaOpen授权码</span>
+<span class="cp">#define TUYA_DEVICE_UUID &quot;uuidxxxxxxxxxxxxxxxx&quot;</span>
+<span class="cp">#define TUYA_DEVICE_AUTHKEY &quot;keyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id19">
+<h3>3. 编译与烧录<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 选择目标开发板</span>
+tos<span class="w"> </span>config_choice
+
+<span class="c1"># 配置项目</span>
+tos<span class="w"> </span>menuconfig
+
+<span class="c1"># 编译项目</span>
+tos<span class="w"> </span>build
+
+<span class="c1"># 烧录到设备</span>
+tos<span class="w"> </span>flash
+</pre></div>
+</div>
+</section>
+<section id="id20">
+<h3>4. 设备配网<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Wi-Fi配网</strong>：打开涂鸦APP，选择&quot;添加设备&quot;，按照提示完成配网</p></li>
+<li><p><strong>蓝牙配网</strong>：确保手机蓝牙已开启，通过APP发现并配置设备</p></li>
+<li><p><strong>有线网络</strong>：设备会在串口或显示屏上显示二维码，使用APP扫描完成绑定</p></li>
+</ul>
+</section>
+<section id="id21">
+<h3>5. 设备控制<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>远程控制</strong>：通过涂鸦APP在任何有网络的地方控制设备</p></li>
+<li><p><strong>局域网控制</strong>：在同一局域网下，APP可直接控制设备，无需经过云端</p></li>
+<li><p><strong>蓝牙控制</strong>：在设备附近，可通过蓝牙直接控制设备</p></li>
+</ul>
+</section>
+<section id="id22">
+<h3>6. 命令行操作<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<p>设备支持以下命令行操作：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 查看设备信息</span>
+switch<span class="w"> </span>info
+
+<span class="c1"># 切换开关状态</span>
+switch<span class="w"> </span>toggle
+
+<span class="c1"># 查看当前状态</span>
+switch<span class="w"> </span>status
+
+<span class="c1"># 重置设备</span>
+switch<span class="w"> </span>reset
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id23">
+<h2>接口说明<a class="headerlink" href="#id23" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">switch_demo</span></code> 主要使用以下涂鸦IoT SDK接口：</p>
+<section id="id24">
+<h3>1. 初始化接口<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief 初始化涂鸦IoT客户端</span>
+<span class="cm"> * @param client 客户端实例</span>
+<span class="cm"> * @param config 配置参数</span>
+<span class="cm"> * @return 成功返回OPRT_OK</span>
+<span class="cm"> */</span>
+<span class="n">tuya_iot_init</span><span class="p">(</span><span class="n">tuya_iot_client_t</span><span class="w"> </span><span class="o">*</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tuya_iot_config_t</span><span class="w"> </span><span class="o">*</span><span class="n">config</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id25">
+<h3>2. 事件处理接口<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief 注册事件回调函数</span>
+<span class="cm"> * @param client 客户端实例</span>
+<span class="cm"> * @param cb 回调函数</span>
+<span class="cm"> * @return 成功返回OPRT_OK</span>
+<span class="cm"> */</span>
+<span class="n">tuya_iot_register_event_cb</span><span class="p">(</span><span class="n">tuya_iot_client_t</span><span class="w"> </span><span class="o">*</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">tuya_iot_event_cb_t</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id26">
+<h3>3. 连接管理接口<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief 连接涂鸦云</span>
+<span class="cm"> * @param client 客户端实例</span>
+<span class="cm"> * @return 成功返回OPRT_OK</span>
+<span class="cm"> */</span>
+<span class="n">tuya_iot_connect</span><span class="p">(</span><span class="n">tuya_iot_client_t</span><span class="w"> </span><span class="o">*</span><span class="n">client</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief 断开与涂鸦云的连接</span>
+<span class="cm"> * @param client 客户端实例</span>
+<span class="cm"> * @return 成功返回OPRT_OK</span>
+<span class="cm"> */</span>
+<span class="n">tuya_iot_disconnect</span><span class="p">(</span><span class="n">tuya_iot_client_t</span><span class="w"> </span><span class="o">*</span><span class="n">client</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id27">
+<h3>4. 数据点操作接口<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief 上报数据点</span>
+<span class="cm"> * @param client 客户端实例</span>
+<span class="cm"> * @param dp_array 数据点数组</span>
+<span class="cm"> * @param dp_cnt 数据点数量</span>
+<span class="cm"> * @return 成功返回OPRT_OK</span>
+<span class="cm"> */</span>
+<span class="n">tuya_iot_dp_report_json</span><span class="p">(</span><span class="n">tuya_iot_client_t</span><span class="w"> </span><span class="o">*</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tuya_iot_dp_t</span><span class="w"> </span><span class="o">*</span><span class="n">dp_array</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">dp_cnt</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id28">
+<h2>常见问题<a class="headerlink" href="#id28" title="Link to this heading"></a></h2>
+<section id="id29">
+<h3>1. 设备无法配网<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>检查Wi-Fi信号强度</p></li>
+<li><p>确认APP权限设置</p></li>
+<li><p>验证产品PID配置是否正确</p></li>
+</ul>
+</section>
+<section id="id30">
+<h3>2. 设备无法连接云端<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>检查网络连接</p></li>
+<li><p>验证授权码是否正确</p></li>
+<li><p>确认设备时间是否同步</p></li>
+</ul>
+</section>
+<section id="id31">
+<h3>3. 控制指令无响应<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>检查设备在线状态</p></li>
+<li><p>验证DP点ID配置</p></li>
+<li><p>查看设备日志输出</p></li>
+</ul>
+</section>
+<section id="id32">
+<h3>4. 状态上报异常<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>检查上报接口调用</p></li>
+<li><p>验证数据格式是否正确</p></li>
+<li><p>确认网络连接稳定性</p></li>
+</ul>
+</section>
+</section>
+<section id="id33">
+<h2>总结<a class="headerlink" href="#id33" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">switch_demo</span></code> 提供了一个完整的智能开关解决方案，通过涂鸦IoT平台，实现了设备的远程控制、状态管理和多种连接方式支持。开发者可以基于此示例，快速开发自己的智能设备产品。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>本文档基于TuyaOpen最新版本编写，如有变更请以最新代码为准。</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021-2025, 杭州涂鸦信息技术有限公司。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="switch_demo.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

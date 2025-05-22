@@ -1,0 +1,849 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPI Driver &mdash; TuyaOpen Development Guide 1.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/tkl-api/tkl_spi.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=1f29e9d3"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#install-dependencies">Install Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#clone-repository">Clone Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#setup-and-compilation">Setup and Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1-set-environment-variables">step1. Set Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2-select-project-to-compile">step2. Select Project to Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3-compile">step3. Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig-configuration">step4. menuconfig Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#flashing-and-authorization">Flashing and Authorization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#command-line-flashing">Command Line Flashing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui-tool-flashing">GUI Tool Flashing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">Command Line Flashing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI Flashing Tool Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#command-list">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#check-version">Check Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#environment-check">Environment Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#create-project">Create Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#project-compilation">Project Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#configuration-management">Configuration Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Example Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#select-the-project-to-be-compiled">Select the project to be compiled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#compile-the-example">Compile the example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">Application Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#create-a-product-and-obtain-the-product-pid">Create a product and obtain the product PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#confirm-the-tuyaopen-authorization-code">Confirm the TuyaOpen authorization code:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#build-and-flash">Build and Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#network-configuration-and-device-activation">Network Configuration and Device Activation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#typical-applications-of-tuyaopen">Typical Applications of TuyaOpen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#directory">Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#supported-hardware">Supported Hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">Peripheral Development And Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">Adding and Adapting Platforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#platform-adaptation">Platform Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#generate-new-platform-directory">Generate New Platform Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#completing-adaptation">Completing Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig-configuration">Kconfig Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#updating-platform-config-yaml">Updating platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#interface-implementation">Interface Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#example-projects">Example Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#submission">Submission</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">Adding and Adapting Boards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#board-naming">Board Naming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#mandatory-fields">Mandatory Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#optional-fields">Optional Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#naming-rules">Naming Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#adding-new-board">Adding New Board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#create-directory">Create Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-kconfig-file">Add Kconfig File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-board-to-selection-list">Add Board to Selection List</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#application-adaptation">Application Adaptation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#contribution">Contribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#making-changes">Making Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#preparation">Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#submitting-pull-requests">Submitting Pull Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">Coding Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#directories-and-files">Directories and Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#header-files">Header Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#file-header-description">File Header Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-naming">Function Naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#input-parameters">Input Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#return-values">Return Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-declaration">Function Declaration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#comments">Comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#indentation">Indentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#spaces-and-parentheses">Spaces and Parentheses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#loops">Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">Do-While</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#conditionals-statements">Conditionals Statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else-statements">if-else if-else statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">Switch-Case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#macros-and-enums">Macros and Enums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#code-formatting">Code Formatting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">Environment setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">Build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#already-pulled-latest-source-code-via-git-pull-but-still-encounter-compilation-errors-when-building-apps">1. Already pulled latest source code via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> but still encounter compilation errors when building apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen Development Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SPI Driver</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/en/tkl-api/tkl_spi.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spi-driver">
+<h1>SPI Driver<a class="headerlink" href="#spi-driver" title="Link to this heading"></a></h1>
+<section id="brief-description">
+<h2>Brief Description<a class="headerlink" href="#brief-description" title="Link to this heading"></a></h2>
+<p>SPI (Serial Peripheral Interface) is a high-speed, full-duplex, synchronous communication bus. SPI operates in a master-slave mode, typically with one master device and one or more slave devices.</p>
+<p>The signal lines of the SPI controller are described as follows:</p>
+<ul class="simple">
+<li><p>MISO: Master device data input, slave device data output;</p></li>
+<li><p>MOSI: Master device data output, slave device data input;</p></li>
+<li><p>SCK: Clock signal, generated by the master device;</p></li>
+<li><p>CS: Slave device enable signal, controlled by the master device. This signal can be part of the SPI peripheral or implemented with a GPIO pin.</p></li>
+</ul>
+<p>The typical wiring method for the SPI bus is as follows:</p>
+<p><img alt="image-20220411140500420" src="https://images.tuyacn.com/fe-static/docs/img/fd2d8ee2-cef2-44a0-ae58-7039833d1e0c.png" /></p>
+<p>The SPI bus supports four working modes, depending on the combination of the serial synchronous clock polarity (CPOL) and the serial synchronous clock phase (CPHA).</p>
+<p>CPOL is used to determine the idle level of the SCLK clock signal. When CPOL=0, the idle level is low, and when CPOL=1, the idle level is high.
+CPHA is used to determine the sampling time. When CPHA=0, data is sampled on the first clock edge of each cycle and output on the second clock edge. When CPHA=1, data is sampled on the second clock edge of each cycle and output on the first clock edge. The clock phase and polarity of the SPI master module and the communicating peripheral should be consistent.</p>
+<p>The timing diagrams for the four working modes are described as follows:</p>
+<ul class="simple">
+<li><p>Mode 0: CPOL=0, CPHA=0. The SCK serial clock line is idle at a low level, and data is sampled on the rising edge of the SCK clock and switched on the falling edge.</p></li>
+<li><p>Mode 1: CPOL=0, CPHA=1. The SCK serial clock line is idle at a low level, and data is sampled on the falling edge of the SCK clock and switched on the rising edge.</p></li>
+<li><p>Mode 2: CPOL=1, CPHA=0. The SCK serial clock line is idle at a high level, and data is sampled on the falling edge of the SCK clock and switched on the rising edge.</p></li>
+<li><p>Mode 3: CPOL=1, CPHA=1. The SCK serial clock line is idle at a high level, and data is sampled on the rising edge of the SCK clock and switched on the falling edge.</p></li>
+</ul>
+</section>
+<section id="api-description">
+<h2>API Description<a class="headerlink" href="#api-description" title="Link to this heading"></a></h2>
+<section id="tkl-spi-init">
+<h3>tkl_spi_init<a class="headerlink" href="#tkl-spi-init" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_spi_init</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_E</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_SPI_BASE_CFG_T</span><span class="w"> </span><span class="o">*</span><span class="n">cfg</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<ul class="simple">
+<li><p>Initializes the corresponding SPI instance via the port number and basic configuration, returning the initialization result.</p></li>
+</ul>
+</li>
+<li><p>Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Port number.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cfg</span></code>: SPI basic configuration.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TUYA_SPI_ROLE_E</span><span class="w">      </span><span class="n">role</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TUYA_SPI_MODE_E</span><span class="w">      </span><span class="n">mode</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TUYA_SPI_TYPE_E</span><span class="w">      </span><span class="n">type</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TUYA_SPI_DATABITS_E</span><span class="w">  </span><span class="n">databits</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TUYA_SPI_BIT_ORDER_E</span><span class="w"> </span><span class="n">bitorder</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w">               </span><span class="n">freq_hz</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w">               </span><span class="n">spi_dma_flags</span><span class="p">;</span><span class="w"> </span><span class="cm">/*!&lt; SPI dma format , 1 use dma */</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TUYA_SPI_BASE_CFG_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<p class="rubric" id="tuya-spi-role-e">TUYA_SPI_ROLE_E:</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>| Name                         | Definition            | Remarks |
+| :--------------------------- | :-------------- | :--- |
+| TUYA_SPI_ROLE_INACTIVE       | SPI inactive        |      |
+| TUYA_SPI_ROLE_MASTER         | SPI full-duplex master mode |      |
+| TUYA_SPI_ROLE_SLAVE          | SPI full-duplex slave mode |      |
+| TUYA_SPI_ROLE_MASTER_SIMPLEX | SPI half-duplex master mode |      |
+| TUYA_SPI_ROLE_SLAVE_SIMPLEX  | SPI half-duplex slave mode |      |
+</code></pre>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#### TUYA_SPI_MODE_E:
+</pre></div>
+</div>
+<pre><code>| Name           | Definition               | Remarks |
+| :------------- | :----------------- | :--- |
+| TUYA_SPI_MODE0 | CPOL = 0, CPHA = 0 |      |
+| TUYA_SPI_MODE1 | CPOL = 0, CPHA = 1 |      |
+| TUYA_SPI_MODE2 | CPOL = 1, CPHA = 0 |      |
+| TUYA_SPI_MODE3 | CPOL = 1, CPHA = 1 |      |
+</code></pre>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#### TUYA_SPI_TYPE_E:
+</pre></div>
+</div>
+<pre><code>| Name                        | Definition                     | Remarks                             |
+| --------------------------- | :----------------------- | :------------------------------- |
+| TUYA_SPI_AUTO_TYPE          | SS pin mode, hardware auto-config | SS: slave select, corresponds to CS pin |
+| TUYA_SPI_SOFT_TYPE          | SS pin mode, software manual-config |                                  |
+| TUYA_SPI_SOFT_ONE_WIRE_TYPE | Three-wire mode, SS pin invalid |                                  |
+</code></pre>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#### TUYA_SPI_DATABITS_E:
+</pre></div>
+</div>
+<pre><code>| Name                | Definition           | Remarks |
+| ------------------- | :------------- | :--- |
+| TUYA_SPI_DATA_BIT8  | 8-bit data mode  |      |
+| TUYA_SPI_DATA_BIT16 | 16-bit data mode |      |
+</code></pre>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#### TUYA_SPI_BIT_ORDER_E:
+</pre></div>
+</div>
+<pre><code>| Name                   | Definition                             | Remarks |
+| ---------------------- | :------------------------------- | :--- |
+| TUYA_SPI_ORDER_MSB2LSB | High bit (MSB) first, low bit (LSB) last |      |
+| TUYA_SPI_ORDER_LSB2MSB | Low bit (LSB) first, high bit (MSB) last |      |
+</code></pre>
+<ul class="simple">
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK Success, others please refer to the file <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>, OS_ADAPTER_SPI definition section.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-spi-deinit">
+<h3>tkl_spi_deinit<a class="headerlink" href="#tkl-spi-deinit" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_spi_deinit</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_E</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Function Description:</p>
+<ul>
+<li><p>Deinitializes the SPI instance. This interface will stop the SPI instance and release related software and hardware resources.</p></li>
+</ul>
+</li>
+<li><p>Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Port number.</p></li>
+</ul>
+</li>
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK Success, others please refer to the file <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>, OS_ADAPTER_SPI definition section.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-spi-send">
+<h3>tkl_spi_send<a class="headerlink" href="#tkl-spi-send" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_spi_send</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_E</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Function Description:</p>
+<ul>
+<li><p>SPI starts data transmission.</p></li>
+</ul>
+</li>
+<li><p>Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Port number.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: Buffer address of data to be sent.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: Length of data to be sent.</p></li>
+</ul>
+</li>
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK Success, others please refer to the file <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>, OS_ADAPTER_SPI definition section.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-spi-recv">
+<h3>tkl_spi_recv<a class="headerlink" href="#tkl-spi-recv" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_spi_recv</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_E</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Function Description:</p>
+<ul>
+<li><p>SPI starts data reception.</p></li>
+</ul>
+</li>
+<li><p>Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Port number.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: Buffer address of data to be received.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: Length of data to be received.</p></li>
+</ul>
+</li>
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK Success, others please refer to the file <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>, OS_ADAPTER_SPI definition section.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-spi-transfer">
+<h3>tkl_spi_transfer<a class="headerlink" href="#tkl-spi-transfer" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_spi_transfer</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_E</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">send_buf</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">receive_buf</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Function Description:</p>
+<ul>
+<li><p>SPI starts data transfer.</p></li>
+</ul>
+</li>
+<li><p>Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Port number.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">send_buf</span></code>: Buffer address of data to be sent.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">receive_buf</span></code>: Buffer address of data to be received.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">length</span></code>: Length.</p></li>
+</ul>
+</li>
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK Success, others please refer to the file <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>, OS_ADAPTER_SPI definition section.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-spi-abort-transfer">
+<h3>tkl_spi_abort_transfer<a class="headerlink" href="#tkl-spi-abort-transfer" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_spi_abort_transfer</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_E</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Function Description:</p>
+<ul>
+<li><p>SPI aborts data transfer or aborts data sending (receiving).</p></li>
+</ul>
+</li>
+<li><p>Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Port number.</p></li>
+</ul>
+</li>
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK Success, others please refer to the file <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>, OS_ADAPTER_SPI definition section.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-spi-get-status">
+<h3>tkl_spi_get_status<a class="headerlink" href="#tkl-spi-get-status" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_spi_get_status</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_E</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_SPI_STATUS_T</span><span class="w"> </span><span class="o">*</span><span class="n">status</span><span class="p">);</span><span class="w"> </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Function Description:</p>
+<ul>
+<li><p>Gets the SPI status at the current time.</p></li>
+</ul>
+</li>
+<li><p>Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Port number.</p></li>
+</ul>
+</li>
+<li><p>Return Value:</p>
+<ul>
+<li><p>The structure of the SPI status, the definition of the SPI status can be found in the definition of <code class="docutils literal notranslate"><span class="pre">TUYA_SPI_STATUS_T</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<section id="tuya-spi-status-t">
+<h4>TUYA_SPI_STATUS_T:<a class="headerlink" href="#tuya-spi-status-t" title="Link to this heading"></a></h4>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Definition</th>
+<th style="text-align: left;">Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">busy : 1</td>
+<td style="text-align: left;">Transmission/reception busy status</td>
+<td style="text-align: left;">1 is valid</td>
+</tr>
+<tr>
+<td style="text-align: left;">data_lost : 1</td>
+<td style="text-align: left;">Data lost</td>
+<td style="text-align: left;">1 is valid</td>
+</tr>
+<tr>
+<td style="text-align: left;">mode_fault : 1</td>
+<td style="text-align: left;">Mode error</td>
+<td style="text-align: left;">1 is valid</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="tkl-spi-irq-init">
+<h3>tkl_spi_irq_init<a class="headerlink" href="#tkl-spi-irq-init" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_spi_irq_init</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_E</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_SPI_IRQ_CB</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Function Description:</p>
+<ul>
+<li><p>SPI interrupt initialization.</p></li>
+</ul>
+</li>
+<li><p>Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Port number.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cb</span></code>: Interrupt callback function.</p></li>
+</ul>
+</li>
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK Success, others please refer to the file <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>, OS_ADAPTER_SPI definition section.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-spi-irq-enable">
+<h3>tkl_spi_irq_enable<a class="headerlink" href="#tkl-spi-irq-enable" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_spi_irq_enable</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_E</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Function Description:</p>
+<ul>
+<li><p>Enables SPI interrupt.</p></li>
+</ul>
+</li>
+<li><p>Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Port number.</p></li>
+</ul>
+</li>
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK Success, others please refer to the file <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>, OS_ADAPTER_SPI definition section.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-spi-irq-disable">
+<h3>tkl_spi_irq_disable<a class="headerlink" href="#tkl-spi-irq-disable" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_spi_irq_disable</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_E</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Function Description:</p>
+<ul>
+<li><p>Disables SPI interrupt.</p></li>
+</ul>
+</li>
+<li><p>Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Port number.</p></li>
+</ul>
+</li>
+<li><p>Return Value:</p>
+<ul>
+<li><p>OPRT_OK Success, others please refer to the file <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>, OS_ADAPTER_SPI definition section.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-spi-get-data-count">
+<h3>tkl_spi_get_data_count<a class="headerlink" href="#tkl-spi-get-data-count" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span><span class="w"> </span><span class="nf">tkl_spi_get_data_count</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_E</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Function Description:</p>
+<ul>
+<li><p>Gets the SPI transmission byte length.</p></li>
+</ul>
+</li>
+<li><p>Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Port number.</p></li>
+</ul>
+</li>
+<li><p>Return Value:</p>
+<ul>
+<li><p>&lt;0, error. &gt;= 0, the byte length of the last transmission. It can be any of the operations <code class="docutils literal notranslate"><span class="pre">tkl_spi_send</span></code>, <code class="docutils literal notranslate"><span class="pre">tkl_spi_recv</span></code>, and <code class="docutils literal notranslate"><span class="pre">tkl_spi_transfer</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
+<section id="spi-example-1">
+<h2>1. SPI Example 1<a class="headerlink" href="#spi-example-1" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">tuya_spi_test1</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TUYA_SPI_BASE_CFG_T</span><span class="w"> </span><span class="n">cfg</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TUYA_SPI_STATUS_T</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//receive buffer</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">rcv_buf</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+<span class="w">    </span><span class="c1">//data to send</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">send_buf</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">};</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">tkl_io_pinmux_config</span><span class="p">(</span><span class="n">TUYA_IO_PIN_0</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_SPI0_MISO</span><span class="p">);</span>
+<span class="w">    </span><span class="n">tkl_io_pinmux_config</span><span class="p">(</span><span class="n">TUYA_IO_PIN_1</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_SPI0_MOSI</span><span class="p">);</span>
+<span class="w">    </span><span class="n">tkl_io_pinmux_config</span><span class="p">(</span><span class="n">TUYA_IO_PIN_2</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_SPI0_CS</span><span class="p">);</span>
+<span class="w">    </span><span class="n">tkl_io_pinmux_config</span><span class="p">(</span><span class="n">TUYA_IO_PIN_3</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_SPI0_CLK</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">cfg</span><span class="p">.</span><span class="n">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_SPI_ROLE_MASTER</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cfg</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_SPI_MODE0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cfg</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_SPI_AUTO_TYPE</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cfg</span><span class="p">.</span><span class="n">databits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_SPI_DATA_BIT8</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cfg</span><span class="p">.</span><span class="n">bitorder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_SPI_ORDER_MSB2LSB</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cfg</span><span class="p">.</span><span class="n">freq_hz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000000</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_spi_init</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cfg</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//fail</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_spi_send</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="n">send_buf</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//failed</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">tkl_spi_get_status</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">status</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="p">.</span><span class="n">busy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tkl_spi_get_status</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">status</span><span class="p">);</span>
+<span class="w">        </span><span class="n">tkl_system_sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_spi_recv</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="n">rcv_buf</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//failed</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">tkl_spi_get_status</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">status</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="p">.</span><span class="n">busy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tkl_spi_get_status</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">status</span><span class="p">);</span>
+<span class="w">        </span><span class="n">tkl_system_sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_spi_transfer</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="n">send_buf</span><span class="p">,</span><span class="w"> </span><span class="n">rcv_buf</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//failed</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">tkl_spi_get_status</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">status</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="p">.</span><span class="n">busy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tkl_spi_get_status</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">status</span><span class="p">);</span>
+<span class="w">        </span><span class="n">tkl_system_sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">//uninitialize iic </span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_spi_deinit</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="c1">//failed</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="spi-using-interrupt-example-2">
+<h2>2. SPI Using Interrupt Example 2<a class="headerlink" href="#spi-using-interrupt-example-2" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">event_flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">spi_event_cb</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_E</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_SPI_IRQ_EVT_E</span><span class="w"> </span><span class="n">event</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">//printf(&quot;\nspi_event_cb_fun:%d\n&quot;,event);</span>
+<span class="w">    </span><span class="n">event_flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">tuya_spi_test2</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TUYA_SPI_BASE_CFG_T</span><span class="w"> </span><span class="n">cfg</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TUYA_SPI_STATUS_T</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//receive buffer</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">rcv_buf</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+<span class="w">    </span><span class="c1">//data to send</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">send_buf</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x90</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">};</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">tkl_io_pinmux_config</span><span class="p">(</span><span class="n">TUYA_IO_PIN_0</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_SPI0_MISO</span><span class="p">);</span>
+<span class="w">    </span><span class="n">tkl_io_pinmux_config</span><span class="p">(</span><span class="n">TUYA_IO_PIN_1</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_SPI0_MOSI</span><span class="p">);</span>
+<span class="w">    </span><span class="n">tkl_io_pinmux_config</span><span class="p">(</span><span class="n">TUYA_IO_PIN_2</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_SPI0_CS</span><span class="p">);</span>
+<span class="w">    </span><span class="n">tkl_io_pinmux_config</span><span class="p">(</span><span class="n">TUYA_IO_PIN_3</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_SPI0_CLK</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">cfg</span><span class="p">.</span><span class="n">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_SPI_ROLE_MASTER</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cfg</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_SPI_MODE0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cfg</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_SPI_AUTO_TYPE</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cfg</span><span class="p">.</span><span class="n">databits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_SPI_DATA_BIT8</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cfg</span><span class="p">.</span><span class="n">bitorder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_SPI_ORDER_MSB2LSB</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cfg</span><span class="p">.</span><span class="n">freq_hz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000000</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_spi_init</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cfg</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//fail</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">tkl_spi_irq_init</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">spi_event_cb</span><span class="p">);</span>
+<span class="w">    </span><span class="n">tkl_spi_irq_enable</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">event_flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_spi_transfer</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="n">send_buf</span><span class="p">,</span><span class="w"> </span><span class="n">rcv_buf</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//failed</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">TUYA_SPI_EVENT_TRANSFER_COMPLETE</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">event_flag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tkl_system_sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">//up Transfer Complete</span>
+<span class="w">    </span><span class="n">event_flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_spi_send</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="n">send_buf</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//failed</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">TUYA_SPI_EVENT_TX_COMPLETE</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">event_flag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tkl_system_sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// up send Complete,</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">event_flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_spi_recv</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="n">rcv_buf</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//failed</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">TUYA_SPI_EVENT_RX_COMPLETE</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">event_flag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tkl_system_sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// up recv Complete,</span>
+<span class="w">    </span><span class="n">tkl_spi_irq_disable</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//uninitialize iic </span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_spi_deinit</span><span class="p">(</span><span class="n">TUYA_SPI_NUM_0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="c1">//failed</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2025, Tuya Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="tkl_spi.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

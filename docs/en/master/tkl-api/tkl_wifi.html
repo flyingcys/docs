@@ -1,0 +1,1487 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wi-Fi &mdash; TuyaOpen Development Guide 1.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/tkl-api/tkl_wifi.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=1f29e9d3"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#install-dependencies">Install Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#clone-repository">Clone Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#setup-and-compilation">Setup and Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1-set-environment-variables">step1. Set Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2-select-project-to-compile">step2. Select Project to Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3-compile">step3. Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig-configuration">step4. menuconfig Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#flashing-and-authorization">Flashing and Authorization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#command-line-flashing">Command Line Flashing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui-tool-flashing">GUI Tool Flashing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">Command Line Flashing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI Flashing Tool Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#command-list">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#check-version">Check Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#environment-check">Environment Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#create-project">Create Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#project-compilation">Project Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#configuration-management">Configuration Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Example Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#select-the-project-to-be-compiled">Select the project to be compiled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#compile-the-example">Compile the example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">Application Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#create-a-product-and-obtain-the-product-pid">Create a product and obtain the product PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#confirm-the-tuyaopen-authorization-code">Confirm the TuyaOpen authorization code:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#build-and-flash">Build and Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#network-configuration-and-device-activation">Network Configuration and Device Activation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#typical-applications-of-tuyaopen">Typical Applications of TuyaOpen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#directory">Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#supported-hardware">Supported Hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">Peripheral Development And Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">Adding and Adapting Platforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#platform-adaptation">Platform Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#generate-new-platform-directory">Generate New Platform Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#completing-adaptation">Completing Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig-configuration">Kconfig Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#updating-platform-config-yaml">Updating platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#interface-implementation">Interface Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#example-projects">Example Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#submission">Submission</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">Adding and Adapting Boards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#board-naming">Board Naming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#mandatory-fields">Mandatory Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#optional-fields">Optional Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#naming-rules">Naming Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#adding-new-board">Adding New Board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#create-directory">Create Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-kconfig-file">Add Kconfig File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-board-to-selection-list">Add Board to Selection List</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#application-adaptation">Application Adaptation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#contribution">Contribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#making-changes">Making Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#preparation">Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#submitting-pull-requests">Submitting Pull Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">Coding Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#directories-and-files">Directories and Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#header-files">Header Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#file-header-description">File Header Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-naming">Function Naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#input-parameters">Input Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#return-values">Return Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-declaration">Function Declaration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#comments">Comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#indentation">Indentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#spaces-and-parentheses">Spaces and Parentheses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#loops">Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">Do-While</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#conditionals-statements">Conditionals Statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else-statements">if-else if-else statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">Switch-Case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#macros-and-enums">Macros and Enums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#code-formatting">Code Formatting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">Environment setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">Build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#already-pulled-latest-source-code-via-git-pull-but-still-encounter-compilation-errors-when-building-apps">1. Already pulled latest source code via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> but still encounter compilation errors when building apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen Development Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Wi-Fi</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/en/tkl-api/tkl_wifi.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="wi-fi">
+<h1>Wi-Fi<a class="headerlink" href="#wi-fi" title="Link to this heading"></a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">tkl_wifi.c</span></code> file provides a series of Wi-Fi related APIs to adapt to different network interfaces. These APIs include setting/reading mode, channel, MAC address, connection, and other related operations. The file is also automatically generated by the Tuya Operating System (TuyaOS) and reserves areas for developers to implement code.</p>
+<section id="index">
+<h2>Index<a class="headerlink" href="#index" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#tkl_wifi_init"><span class="xref myst">tkl_wifi_init</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_scan_ap"><span class="xref myst">tkl_wifi_scan_ap</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_release_ap"><span class="xref myst">tkl_wifi_release_ap</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_start_ap"><span class="xref myst">tkl_wifi_start_ap</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_stop_ap"><span class="xref myst">tkl_wifi_stop_ap</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_set_cur_channel"><span class="xref myst">tkl_wifi_set_cur_channel</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_get_cur_channel"><span class="xref myst">tkl_wifi_get_cur_channel</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_set_sniffer"><span class="xref myst">tkl_wifi_set_sniffer</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_get_ip"><span class="xref myst">tkl_wifi_get_ip</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_set_ip"><span class="xref myst">tkl_wifi_set_ip</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_set_mac"><span class="xref myst">tkl_wifi_set_mac</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_get_mac"><span class="xref myst">tkl_wifi_get_mac</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_set_work_mode"><span class="xref myst">tkl_wifi_set_work_mode</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_get_work_mode"><span class="xref myst">tkl_wifi_get_work_mode</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_get_connected_ap_info"><span class="xref myst">tkl_wifi_get_connected_ap_info</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_get_bssid"><span class="xref myst">tkl_wifi_get_bssid</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_set_country_code"><span class="xref myst">tkl_wifi_set_country_code</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_set_rf_calibrated"><span class="xref myst">tkl_wifi_set_rf_calibrated</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_set_lp_mode"><span class="xref myst">tkl_wifi_set_lp_mode</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_station_fast_connect"><span class="xref myst">tkl_wifi_station_fast_connect</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_station_connect"><span class="xref myst">tkl_wifi_station_connect</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_station_disconnect"><span class="xref myst">tkl_wifi_station_disconnect</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_station_get_conn_ap_rssi"><span class="xref myst">tkl_wifi_station_get_conn_ap_rssi</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_station_get_status"><span class="xref myst">tkl_wifi_station_get_status</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_send_mgnt"><span class="xref myst">tkl_wifi_send_mgnt</span></a></p></li>
+<li><p><a class="reference internal" href="#tkl_wifi_register_recv_mgnt_callback"><span class="xref myst">tkl_wifi_register_recv_mgnt_callback</span></a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="api-description">
+<h2>API Description<a class="headerlink" href="#api-description" title="Link to this heading"></a></h2>
+<section id="tkl-wifi-init">
+<h3>tkl_wifi_init<a class="headerlink" href="#tkl-wifi-init" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_init</span><span class="p">(</span><span class="n">WIFI_EVENT_CB</span><span class="w"> </span><span class="n">cb</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Set the Wi-Fi working status.</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>cb</td>
+<td>Wi-Fi working status callback</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-scan-ap">
+<h3>tkl_wifi_scan_ap<a class="headerlink" href="#tkl-wifi-scan-ap" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_scan_ap</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int8_t</span><span class="w"> </span><span class="o">*</span><span class="n">ssid</span><span class="p">,</span><span class="w"> </span><span class="n">AP_IF_S</span><span class="w"> </span><span class="o">**</span><span class="n">ap_ary</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Scan the current environment to obtain AP information in the current environment.</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>ssid</td>
+<td>If ssid = NULL, scan all APs; otherwise, scan the specified AP.</td>
+</tr>
+<tr>
+<td>[out]</td>
+<td>ap_ary</td>
+<td>Scanning result information.</td>
+</tr>
+<tr>
+<td>[out]</td>
+<td>num</td>
+<td>Number of scanned APs.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<ol class="arabic simple">
+<li><p>Blocking function.</p></li>
+<li><p>Can only scan APs in the current country code channel list.</p></li>
+<li><p>When there is an AP with the specified SSID in the environment, the success rate of scanning the SSID should exceed 98%.</p></li>
+<li><p>Memory needs to be allocated within this API (for scanning multiple APs, continuous memory space needs to be allocated).</p></li>
+<li><p>The memory is released by the Tuya SDK by actively calling <code class="docutils literal notranslate"><span class="pre">tkl_wifi_release_ap</span></code>.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-release-ap">
+<h3>tkl_wifi_release_ap<a class="headerlink" href="#tkl-wifi-release-ap" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_release_ap</span><span class="p">(</span><span class="n">AP_IF_S</span><span class="w"> </span><span class="o">*</span><span class="n">ap</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Release the AP information resources.</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>ap</td>
+<td>The AP information to be released.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-start-ap">
+<h3>tkl_wifi_start_ap<a class="headerlink" href="#tkl-wifi-start-ap" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_start_ap</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WF_AP_CFG_IF_S</span><span class="w"> </span><span class="o">*</span><span class="n">cfg</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Start AP mode.</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>cfg</td>
+<td>AP configuration parameters.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<ol class="arabic simple">
+<li><p>It is necessary to set the maximum number of STAs that can successfully connect to the AP mode according to <code class="docutils literal notranslate"><span class="pre">max_conn</span></code>.</p></li>
+<li><p>The IP information for the AP mode needs to be set according to the IP information.</p></li>
+<li><p>In stationap mode, if the AP port is connected, when the station port connects to the router, the AP port cannot be disconnected during the connection process, and it can receive and send broadcast packets even if the connection fails.</p></li>
+<li><p>Coexistence of EZ networking and AP:
+4.1. In softap or stationap mode, the sniffer function can be enabled and the channel can be switched.
+4.2. After enabling the sniffer function, the data given to the callback must include the device connection request packets of the AP port.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-stop-ap">
+<h3>tkl_wifi_stop_ap<a class="headerlink" href="#tkl-wifi-stop-ap" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_stop_ap</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Stop AP mode.</p>
+</li>
+<li><p>Parameters:</p>
+<p>None</p>
+</li>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<ol class="arabic simple">
+<li><p>Different shutdown logic is required depending on whether the device is in softap or stationap mode.</p></li>
+<li><p>In stationap mode, if there is a connection on the station port, there should be no disconnection during the closure of the AP port.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-set-cur-channel">
+<h3>tkl_wifi_set_cur_channel<a class="headerlink" href="#tkl-wifi-set-cur-channel" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_set_cur_channel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">chan</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Set the channel.</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>chan</td>
+<td>Channel.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<ol class="arabic simple">
+<li><p>Setting a channel outside the current country code channel range will fail.</p></li>
+<li><p>Setting the channel in the sniffer callback is supported.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-get-cur-channel">
+<h3>tkl_wifi_get_cur_channel<a class="headerlink" href="#tkl-wifi-get-cur-channel" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_wifi_get_cur_channel</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">chan</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Get the current channel.</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[out]</td>
+<td>chan</td>
+<td>Channel.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-set-sniffer">
+<h3>tkl_wifi_set_sniffer<a class="headerlink" href="#tkl-wifi-set-sniffer" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_set_sniffer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">BOOL_T</span><span class="w"> </span><span class="n">en</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">SNIFFER_CALLBACK</span><span class="w"> </span><span class="n">cb</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Set the sniffer function switch.</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>en</td>
+<td>Enable or disable the sniffer function.</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>cb</td>
+<td>Packet capture data callback.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<p>The data returned to the application must include management packet data.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-get-ip">
+<h3>tkl_wifi_get_ip<a class="headerlink" href="#tkl-wifi-get-ip" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_get_ip</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WF_IF_E</span><span class="w"> </span><span class="n">wf</span><span class="p">,</span><span class="w"> </span><span class="n">NW_IP_S</span><span class="w"> </span><span class="o">*</span><span class="n">ip</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Get Wi-Fi IP information (IP address, gateway address, subnet mask).</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>wf</td>
+<td>Wi-Fi mode.</td>
+</tr>
+<tr>
+<td>[out]</td>
+<td>ip</td>
+<td>IP information.</td>
+</tr>
+<tr>
+<td>--------</td>
+<td>--------</td>
+<td></td>
+</tr>
+<tr>
+<td>WF_STATION</td>
+<td>station type</td>
+<td></td>
+</tr>
+<tr>
+<td>WF_AP</td>
+<td>ap type</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return Value:</li>
+</ul>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+<ul>
+<li><p>Remarks:</p>
+<p>It is necessary to distinguish between IP information under different modes (based on the passed parameter <code class="docutils literal notranslate"><span class="pre">wf</span></code>).</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-set-ip">
+<h3>tkl_wifi_set_ip<a class="headerlink" href="#tkl-wifi-set-ip" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_set_ip</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WF_IF_E</span><span class="w"> </span><span class="n">wf</span><span class="p">,</span><span class="w"> </span><span class="n">NW_IP_S</span><span class="w"> </span><span class="o">*</span><span class="n">ip</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Set Wi-Fi static IP information (IP address, gateway address, subnet mask).</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>wf</td>
+<td>Wi-Fi mode.</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>ip</td>
+<td>IP information.</td>
+</tr>
+<tr>
+<td>--------</td>
+<td>--------</td>
+<td></td>
+</tr>
+<tr>
+<td>WF_STATION</td>
+<td>station type</td>
+<td></td>
+</tr>
+<tr>
+<td>WF_AP</td>
+<td>ap type</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error, please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<p>It is necessary to distinguish between IP information under different modes (based on the passed parameter <code class="docutils literal notranslate"><span class="pre">wf</span></code>).</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-set-mac">
+<h3>tkl_wifi_set_mac<a class="headerlink" href="#tkl-wifi-set-mac" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_set_mac</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WF_IF_E</span><span class="w"> </span><span class="n">wf</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">NW_MAC_S</span><span class="w"> </span><span class="o">*</span><span class="n">mac</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Set MAC address</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>wf</td>
+<td>WiFi mode</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>mac</td>
+<td>MAC address</td>
+</tr>
+<tr>
+<td>--------</td>
+<td>--------</td>
+<td></td>
+</tr>
+<tr>
+<td>WF_STATION</td>
+<td>station type</td>
+<td></td>
+</tr>
+<tr>
+<td>WF_AP</td>
+<td>AP type</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<p>Permanent effect, not lost after power off</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-get-mac">
+<h3>tkl_wifi_get_mac<a class="headerlink" href="#tkl-wifi-get-mac" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_wifi_get_mac</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WF_IF_E</span><span class="w"> </span><span class="n">wf</span><span class="p">,</span><span class="w"> </span><span class="n">NW_MAC_S</span><span class="w"> </span><span class="o">*</span><span class="n">mac</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Get MAC address</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>wf</td>
+<td>WiFi mode</td>
+</tr>
+<tr>
+<td>[out]</td>
+<td>mac</td>
+<td>MAC address</td>
+</tr>
+<tr>
+<td>--------</td>
+<td>--------</td>
+<td></td>
+</tr>
+<tr>
+<td>WF_STATION</td>
+<td>station type</td>
+<td></td>
+</tr>
+<tr>
+<td>WF_AP</td>
+<td>AP type</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<p>The MAC address under station and AP modes needs to be distinguished based on the working mode (according to the passed parameter wf)</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-set-work-mode">
+<h3>tkl_wifi_set_work_mode<a class="headerlink" href="#tkl-wifi-set-work-mode" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_set_work_mode</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WF_WK_MD_E</span><span class="w"> </span><span class="n">mode</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Set WiFi working mode</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>mode</td>
+<td>WiFi working mode</td>
+</tr>
+<tr>
+<td>--------</td>
+<td>--------</td>
+<td></td>
+</tr>
+<tr>
+<td>WWM_LOWPOWER</td>
+<td>Low power (refers to turning off the WiFi module)</td>
+<td></td>
+</tr>
+<tr>
+<td>WWM_SNIFFER</td>
+<td>monitor</td>
+<td></td>
+</tr>
+<tr>
+<td>WWM_STATION</td>
+<td>station</td>
+<td></td>
+</tr>
+<tr>
+<td>WWM_SOFTAP</td>
+<td>softap</td>
+<td></td>
+</tr>
+<tr>
+<td>WWM_STATIONAP</td>
+<td>stationap</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<ol class="arabic simple">
+<li><p>From device power-on to calling tuya entrance, it is required to be within 200ms.</p></li>
+<li><p>If the device initialization time exceeds 200ms, the underlying layer can do some necessary initialization and then call tuya entrance, placing the time-consuming WiFi initialization in another thread.</p></li>
+<li><p>tkl_wifi_set_work_mode is the first API used by tuya business to call WiFi, in this API it is necessary to determine whether the WiFi initialization is complete, if not, wait here until it is complete before proceeding (only needs to be checked once).</p></li>
+<li><p>If the device power-on to tuya entrance is less than 200ms, there is no need to consider this point.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-get-work-mode">
+<h3>tkl_wifi_get_work_mode<a class="headerlink" href="#tkl-wifi-get-work-mode" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_get_work_mode</span><span class="p">(</span><span class="n">WF_WK_MD_E</span><span class="w"> </span><span class="o">*</span><span class="n">mode</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Get WiFi working mode</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[out]</td>
+<td>mode</td>
+<td>WiFi working mode</td>
+</tr>
+<tr>
+<td>--------</td>
+<td>--------</td>
+<td></td>
+</tr>
+<tr>
+<td>WWM_LOWPOWER</td>
+<td>Low power (refers to turning off the WiFi module)</td>
+<td></td>
+</tr>
+<tr>
+<td>WWM_SNIFFER</td>
+<td>monitor</td>
+<td></td>
+</tr>
+<tr>
+<td>WWM_STATION</td>
+<td>station</td>
+<td></td>
+</tr>
+<tr>
+<td>WWM_SOFTAP</td>
+<td>softap</td>
+<td></td>
+</tr>
+<tr>
+<td>WWM_STATIONAP</td>
+<td>stationap</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-get-connected-ap-info">
+<h3>tkl_wifi_get_connected_ap_info<a class="headerlink" href="#tkl-wifi-get-connected-ap-info" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_get_connected_ap_info</span><span class="p">(</span><span class="n">FAST_WF_CONNECTED_AP_INFO_T</span><span class="w"> </span><span class="o">**</span><span class="n">fast_ap_info</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Get the connected AP information, used for fast connection feature</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[out]</td>
+<td>fast_ap_info</td>
+<td>Connected AP information</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<ol class="arabic simple">
+<li><p>fast_ap_info needs to dynamically allocate memory within this API</p></li>
+<li><p>Every time the router is successfully reconnected, the router information is obtained once, and if there is an update, it will be synchronized to flash</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-get-bssid">
+<h3>tkl_wifi_get_bssid<a class="headerlink" href="#tkl-wifi-get-bssid" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_get_bssid</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">mac</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Get the MAC address of the connected AP</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[out]</td>
+<td>mac</td>
+<td>MAC address</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-set-country-code">
+<h3>tkl_wifi_set_country_code<a class="headerlink" href="#tkl-wifi-set-country-code" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_set_country_code</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">COUNTRY_CODE_E</span><span class="w"> </span><span class="n">ccode</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Set country code</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>ccode</td>
+<td>Country code</td>
+</tr>
+<tr>
+<td>--------</td>
+<td>--------</td>
+<td></td>
+</tr>
+<tr>
+<td>COUNTRY_CODE_CN</td>
+<td>China region 1-13</td>
+<td></td>
+</tr>
+<tr>
+<td>COUNTRY_CODE_US</td>
+<td>US region 1-11</td>
+<td></td>
+</tr>
+<tr>
+<td>COUNTRY_CODE_JP</td>
+<td>Japan region 1-14</td>
+<td></td>
+</tr>
+<tr>
+<td>COUNTRY_CODE_EU</td>
+<td>Europe region 1-13, need to consider European adaptive</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<ol class="arabic simple">
+<li><p>Country code currently only needs to support China region (CN 1-13), US region (US 1-11), Japan region (JP 1-14), Europe region (EU 1-13)</p></li>
+<li><p>Requirements for different country codes are as follows:
+2.1 When scanning routers, only APs corresponding to the channel list of the country code can be scanned.
+2.2 The European region needs to implement European adaptive function
+2.3 When setting the channel, if the set channel is not within the channel list range of the current country code, the channel setting returns an error</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-set-rf-calibrated">
+<h3>tkl_wifi_set_rf_calibrated<a class="headerlink" href="#tkl-wifi-set-rf-calibrated" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">BOOL_T</span><span class="w"> </span><span class="nf">tkl_wifi_set_rf_calibrated</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Check if RF has been calibrated</p>
+</li>
+<li><p>Parameters:</p>
+<p>None</p>
+</li>
+<li><p>Return Value:</p>
+<ul class="simple">
+<li><p>TRUE: Calibrated</p></li>
+<li><p>FALSE: Not calibrated</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-set-lp-mode">
+<h3>tkl_wifi_set_lp_mode<a class="headerlink" href="#tkl-wifi-set-lp-mode" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_set_lp_mode</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">BOOL_T</span><span class="w"> </span><span class="n">enable</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">dtim</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>WiFi low power mode setting</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>enable</td>
+<td>Whether to enable WiFi low power mode</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>dtim</td>
+<td>dtim parameter</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-station-fast-connect">
+<h3>tkl_wifi_station_fast_connect<a class="headerlink" href="#tkl-wifi-station-fast-connect" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_station_fast_connect</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FAST_WF_CONNECTED_AP_INFO_T</span><span class="w"> </span><span class="o">*</span><span class="n">fast_ap_info</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Fast connect to router</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>fast_ap_info</td>
+<td>AP information required for fast connection</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<p>This function is only called for the first connection after the network is configured and the device is restarted.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-station-connect">
+<h3>tkl_wifi_station_connect<a class="headerlink" href="#tkl-wifi-station-connect" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_station_connect</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int8_t</span><span class="w"> </span><span class="o">*</span><span class="n">ssid</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int8_t</span><span class="w"> </span><span class="o">*</span><span class="n">passwd</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Connect to router</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>ssid</td>
+<td>ssid</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>passwd</td>
+<td>passwd</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Return Value:
+A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p></li>
+<li><p>Remarks:</p>
+<ol class="arabic simple">
+<li><p>Non-blocking, after successfully starting the connection process, the upper layer will call tkl_wifi_station_get_status every 1 second to query the Wi-Fi connection status.</p></li>
+<li><p>The auto-reconnect feature needs to be enabled, with a reconnect time within 1 minute. The upper layer will initiate a reconnect every 1 minute in the case of disconnection.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-station-disconnect">
+<h3>tkl_wifi_station_disconnect<a class="headerlink" href="#tkl-wifi-station-disconnect" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_station_disconnect</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Function Description:
+Disconnect from router</p></li>
+<li><p>Parameters:
+None</p></li>
+<li><p>Return Value:
+A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p></li>
+</ul>
+</section>
+<section id="tkl-wifi-station-get-conn-ap-rssi">
+<h3>tkl_wifi_station_get_conn_ap_rssi<a class="headerlink" href="#tkl-wifi-station-get-conn-ap-rssi" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_station_get_conn_ap_rssi</span><span class="p">(</span><span class="kt">int8_t</span><span class="w"> </span><span class="o">*</span><span class="n">rssi</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Get the signal strength of the connected AP</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[out]</td>
+<td>rssi</td>
+<td>Signal strength</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+<li><p>Remarks:</p>
+<ol class="arabic simple">
+<li><p>Without moving the device and the router, the rssi obtained multiple times can only fluctuate slightly.</p></li>
+<li><p>Moving the device and the router will result in corresponding changes in the obtained rssi.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-station-get-status">
+<h3>tkl_wifi_station_get_status<a class="headerlink" href="#tkl-wifi-station-get-status" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_station_get_status</span><span class="p">(</span><span class="n">WF_STATION_STAT_E</span><span class="w"> </span><span class="o">*</span><span class="n">stat</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Get the current connection status of Wi-Fi</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[out]</td>
+<td>stat</td>
+<td>Connection status</td>
+</tr>
+<tr>
+<td>--------</td>
+<td>--------</td>
+<td></td>
+</tr>
+<tr>
+<td>WSS_IDLE</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>WSS_CONNECTING</td>
+<td>Connecting</td>
+<td></td>
+</tr>
+<tr>
+<td>WSS_PASSWD_WRONG</td>
+<td>Wrong password</td>
+<td></td>
+</tr>
+<tr>
+<td>WSS_CONN_FAIL</td>
+<td>Connection failed</td>
+<td></td>
+</tr>
+<tr>
+<td>WSS_CONN_SUCCESS</td>
+<td>Connection successful</td>
+<td></td>
+</tr>
+<tr>
+<td>WSS_GOT_IP</td>
+<td>DHCP successful</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-send-mgnt">
+<h3>tkl_wifi_send_mgnt<a class="headerlink" href="#tkl-wifi-send-mgnt" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_send_mgnt</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">len</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Send management packet data</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>buf</td>
+<td>Management packet data buffer</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>len</td>
+<td>Length of management packet data</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+</ul>
+</section>
+<section id="tkl-wifi-register-recv-mgnt-callback">
+<h3>tkl_wifi_register_recv_mgnt_callback<a class="headerlink" href="#tkl-wifi-register-recv-mgnt-callback" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_wifi_register_recv_mgnt_callback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">BOOL_T</span><span class="w"> </span><span class="n">enable</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">WIFI_REV_MGNT_CB</span><span class="w"> </span><span class="n">recv_cb</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Function Description:</p>
+<p>Set whether the application layer should receive management packet data</p>
+</li>
+<li><p>Parameters:</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Input/Output</th>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>enable</td>
+<td>Whether to enable receiving management packet data</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>recv_cb</td>
+<td>Callback for receiving management packet data</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Return Value:</p>
+<p>A return value of <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> indicates success, other return values indicate an error. Please refer to <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> for error information.</p>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2025, Tuya Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="tkl_wifi.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

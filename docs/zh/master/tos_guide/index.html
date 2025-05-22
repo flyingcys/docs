@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tos 使用指南 &mdash; TuyaOpen 开发指南 1.3.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/tos_guide/index.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4ebe3ea6"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="示例工程" href="../examples/index.html" />
+    <link rel="prev" title="GUI 烧录工具指南" href="../quick_start/gui-flash.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">快速上手</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id2">安装依赖</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id3">克隆仓库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id4">设置与编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1">step1. 设置环境变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2">step2. 选择待编译项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3">step3. 编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig">step4. menuconfig 配置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id5">烧录与授权</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#id6">命令行烧录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui">GUI 工具烧录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">命令行烧录指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI 烧录工具指南</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">tos 使用指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">命令列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">使用示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">查看版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">环境检测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">创建项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">项目编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">配置管理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">示例工程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id2">选择待编译项目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id3">编译示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">应用开发</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#pid">创建产品并获取产品的 PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#tuyaopen">TuyaOpen 授权码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id3">编译烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id4">配网激活</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id5">TuyaOpen 典型应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT 应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id1">目录结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id2">支持硬件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id3">编译</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI 应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">外设开发与应用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">platform 新增与适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id2">移植适配 platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id3">生成新 platform 目录</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id4">完成编译适配</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig">Kconfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-yaml">修改platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id5">编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#default-config">修改 default.config 默认值</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id6">完成接口适配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id7">示例程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id8">测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id10">提交</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">board 新增和适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id1">定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id2">board 命名</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id3">必选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id4">可选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id5">命名规则</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id6">新增 board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id7">新建文件夹</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#kconfig">添加 Kconfig 文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id8">将 Board 添加到选择列表中</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id9">适配应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id10">贡献代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">贡献指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id2">修改内容</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id3">准备工作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id4">提交 Push Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">编码风格指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id2">目录与文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id3">头文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id4">文件头描述信息</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id5">函数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id6">函数名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id7">入参</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id8">返回值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id9">函数声明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id10">注释</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id11">缩进</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id12">空格与括号</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id13">循环</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">do-while 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id14">条件判断</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else">if-else if-else 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">switch-case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id15">宏与枚举</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id16">格式化代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">环境搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#git-pull-tuyaopen-master-apps">1. 已经通过 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> 拉取 TuyaOpen 仓库 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支最新源代码，但在编译具体 apps 下项目时候编译依然出错</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen 开发指南</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">tos 使用指南</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/zh/tos_guide/index.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="顺序式页面导航">
+        <a href="../quick_start/gui-flash.html" class="btn btn-neutral float-left" title="GUI 烧录工具指南" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../examples/index.html" class="btn btn-neutral float-right" title="示例工程" accesskey="n">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tos">
+<span id="tos-guide"></span><h1>tos 使用指南<a class="headerlink" href="#tos" title="Link to this heading"></a></h1>
+<p>tos 命令是 TuyaOpen 构建工具，支持创建、编译、配置等多种功能。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>tos 命令位于 <a class="reference external" href="https://github.com/tuya/TuyaOpen.git">TuyaOpen</a> 根目录下，使用 shell 脚本实现，使用前先将 TuyaOpen 路径添加到系统环境变量中。</p>
+</div>
+<section id="id1">
+<h2>命令列表<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>可通过 <cite>tos help</cite> 查看完整命令列表。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tos<span class="w"> </span><span class="nb">help</span>
+
+Usage:<span class="w"> </span>tos<span class="w"> </span>COMMAND<span class="w"> </span><span class="o">[</span>ARGS<span class="o">]</span>...
+
+Commands:
+<span class="w">    </span>version<span class="w">    </span>-<span class="w"> </span>Show<span class="w"> </span>TOS<span class="w"> </span>verson
+<span class="w">    </span>check<span class="w">      </span>-<span class="w"> </span>Check<span class="w"> </span><span class="nb">command</span><span class="w"> </span>and<span class="w"> </span>version
+<span class="w">    </span>new<span class="w">        </span>-<span class="w"> </span>New<span class="w"> </span>project<span class="w"> </span><span class="o">[</span>base<span class="o">(</span>default<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>auduino<span class="o">]</span>
+<span class="w">    </span>build<span class="w">      </span>-<span class="w"> </span>Build<span class="w"> </span>project
+<span class="w">    </span>clean<span class="w">      </span>-<span class="w"> </span>Clean<span class="w"> </span>project
+<span class="w">    </span>fullclean<span class="w">  </span>-<span class="w"> </span>Clean<span class="w"> </span>project<span class="w"> </span>and<span class="w"> </span>delete<span class="w"> </span>build<span class="w"> </span>path
+<span class="w">    </span>menuconfig<span class="w"> </span>-<span class="w"> </span>Configuration<span class="w"> </span>project<span class="w"> </span>features
+<span class="w">    </span>savedef<span class="w">    </span>-<span class="w"> </span>Saves<span class="w"> </span>minimal<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>app_default.config<span class="o">)</span>
+<span class="w">    </span>set_example<span class="w">  </span>-<span class="w"> </span>Set<span class="w"> </span>examples<span class="w"> </span>from<span class="w"> </span>platform
+<span class="w">    </span>new_platform<span class="w"> </span>-<span class="w"> </span>New<span class="w"> </span>platform<span class="w"> </span><span class="o">[</span>platform_name<span class="o">]</span>
+<span class="w">    </span>update<span class="w">     </span>-<span class="w"> </span>Update<span class="w"> </span>the<span class="w"> </span>platforms<span class="w"> </span>according<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>platform_config.yaml
+<span class="w">    </span><span class="nb">help</span><span class="w">       </span>-<span class="w"> </span>Help<span class="w"> </span>information
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>使用示例<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3>查看版本<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tos<span class="w"> </span>version
+<span class="m">2</span>.0.0
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>环境检测<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tos<span class="w"> </span>check
+Check<span class="w"> </span><span class="nb">command</span><span class="w"> </span>and<span class="w"> </span>version<span class="w"> </span>...
+Check<span class="w"> </span><span class="o">[</span>bash<span class="o">](</span><span class="m">5</span>.2.21<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">4</span>.0.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span><span class="o">[</span>grep<span class="o">](</span><span class="m">3</span>.11
+<span class="m">10</span>.42<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">3</span>.0.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span><span class="o">[</span>sed<span class="o">](</span><span class="m">4</span>.9<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">4</span>.0.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span><span class="o">[</span>python3<span class="o">](</span><span class="m">3</span>.12.3<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">3</span>.6.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span><span class="o">[</span>git<span class="o">](</span><span class="m">2</span>.43.0<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">2</span>.0.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span><span class="o">[</span>ninja<span class="o">](</span><span class="m">1</span>.11.1<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">1</span>.6.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span><span class="o">[</span>cmake<span class="o">](</span><span class="m">3</span>.28.3<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span><span class="m">3</span>.16.0<span class="o">]</span>:<span class="w"> </span>OK.
+Check<span class="w"> </span>submodules.
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>当检测不通过时会提示所需最低版本，例如：
+<code class="docutils literal notranslate"><span class="pre">Please</span> <span class="pre">install</span> <span class="pre">[lcov],</span> <span class="pre">and</span> <span class="pre">version</span> <span class="pre">&gt;</span> <span class="pre">[1.14]</span></code>
+请根据提示安装对应依赖</p>
+</div>
+</section>
+<section id="id5">
+<h3>创建项目<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>基础命令：</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tos<span class="w"> </span>new
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>操作流程：</p>
+<ol class="arabic simple">
+<li><p>输入项目名称（如 <code class="docutils literal notranslate"><span class="pre">hello_world</span></code>）</p></li>
+<li><p>选择开发板：</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tos<span class="w"> </span>menuconfig
+</pre></div>
+</div>
+</li>
+<li><p>生成目录结构：</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>├── CMakeLists.txt
+├── app_default.config
+└── src
+    └── hello_world.c
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>文件</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CMakeLists.txt</p></td>
+<td><p>项目编译配置文件</p></td>
+</tr>
+<tr class="row-odd"><td><p>app_default.config</p></td>
+<td><p>项目配置（需通过 <code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">savedef</span></code> 保存差异配置）</p></td>
+</tr>
+<tr class="row-even"><td><p>src/</p></td>
+<td><p>项目源码目录</p></td>
+</tr>
+<tr class="row-odd"><td><p>src/hello_world.c</p></td>
+<td><p>项目源码文件，用于存放项目源码。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3>项目编译<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>hello_world
+$<span class="w"> </span>tos<span class="w"> </span>build
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">小技巧</p>
+<p>首次编译会自动下载工具链，建议保持网络通畅</p>
+</div>
+</section>
+<section id="id7">
+<h3>配置管理<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>命令</p></th>
+<th class="head"><p>功能描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">menuconfig</span></code></p></td>
+<td><p>交互式配置项目</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">clean</span></code></p></td>
+<td><p>清理编译产物</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">fullclean</span></code></p></td>
+<td><p>深度清理（含 build 目录）</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">savedef</span></code></p></td>
+<td><p>保存配置差异到 app_default.config</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">config_choice</span></code></p></td>
+<td><p>该命令会选择 config 目录中的配置文件
+代替 app_defalut.config 文件</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">set_example</span></code></p></td>
+<td><p>该命令用来设置不同芯片平台的示例展示
+会改变目录 <cite>examples</cite> 的内容</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">update</span></code></p></td>
+<td><p>更新 tos 工具</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>该命令 <code class="docutils literal notranslate"><span class="pre">tos</span> <span class="pre">savedef</span></code> 会将menuconfig配置结果与默认值的差异内容，保存在`app_default.config`文件中。</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../quick_start/gui-flash.html" class="btn btn-neutral float-left" title="GUI 烧录工具指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../examples/index.html" class="btn btn-neutral float-right" title="示例工程" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021-2025, 杭州涂鸦信息技术有限公司。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="index.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

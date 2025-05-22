@@ -1,0 +1,613 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coding Style Guide &mdash; TuyaOpen Development Guide 1.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/code_style_guide/index.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=1f29e9d3"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FAQ" href="../faq/index.html" />
+    <link rel="prev" title="Contribution Guide" href="../contribute_guide/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#install-dependencies">Install Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#clone-repository">Clone Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#setup-and-compilation">Setup and Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1-set-environment-variables">step1. Set Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2-select-project-to-compile">step2. Select Project to Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3-compile">step3. Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig-configuration">step4. menuconfig Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#flashing-and-authorization">Flashing and Authorization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#command-line-flashing">Command Line Flashing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui-tool-flashing">GUI Tool Flashing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">Command Line Flashing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI Flashing Tool Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#command-list">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#check-version">Check Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#environment-check">Environment Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#create-project">Create Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#project-compilation">Project Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#configuration-management">Configuration Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Example Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#select-the-project-to-be-compiled">Select the project to be compiled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#compile-the-example">Compile the example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">Application Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#create-a-product-and-obtain-the-product-pid">Create a product and obtain the product PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#confirm-the-tuyaopen-authorization-code">Confirm the TuyaOpen authorization code:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#build-and-flash">Build and Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#network-configuration-and-device-activation">Network Configuration and Device Activation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#typical-applications-of-tuyaopen">Typical Applications of TuyaOpen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#directory">Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#supported-hardware">Supported Hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">Peripheral Development And Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">Adding and Adapting Platforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#platform-adaptation">Platform Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#generate-new-platform-directory">Generate New Platform Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#completing-adaptation">Completing Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig-configuration">Kconfig Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#updating-platform-config-yaml">Updating platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#interface-implementation">Interface Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#example-projects">Example Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#submission">Submission</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">Adding and Adapting Boards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#board-naming">Board Naming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#mandatory-fields">Mandatory Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#optional-fields">Optional Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#naming-rules">Naming Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#adding-new-board">Adding New Board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#create-directory">Create Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-kconfig-file">Add Kconfig File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-board-to-selection-list">Add Board to Selection List</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#application-adaptation">Application Adaptation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#contribution">Contribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#making-changes">Making Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#preparation">Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#submitting-pull-requests">Submitting Pull Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Coding Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#directories-and-files">Directories and Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#header-files">Header Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-header-description">File Header Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#function-naming">Function Naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#input-parameters">Input Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#return-values">Return Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-declaration">Function Declaration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#indentation">Indentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#spaces-and-parentheses">Spaces and Parentheses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loops">Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#do-while">Do-While</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conditionals-statements">Conditionals Statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#if-else-if-else-statements">if-else if-else statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch-case">Switch-Case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#macros-and-enums">Macros and Enums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-formatting">Code Formatting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">Environment setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">Build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#already-pulled-latest-source-code-via-git-pull-but-still-encounter-compilation-errors-when-building-apps">1. Already pulled latest source code via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> but still encounter compilation errors when building apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen Development Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Coding Style Guide</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/en/code_style_guide/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../contribute_guide/index.html" class="btn btn-neutral float-left" title="Contribution Guide" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../faq/index.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="coding-style-guide">
+<span id="code-style-guide"></span><h1>Coding Style Guide<a class="headerlink" href="#coding-style-guide" title="Link to this heading"></a></h1>
+<p>This style guide aims to encourage TuyaOpen developers to adopt unified coding conventions, improving code readability and maintainability.</p>
+<p>TuyaOpen’s coding style is based on the <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html">Linux kernel coding style</a> with some modifications and simplifications.</p>
+<section id="directories-and-files">
+<h2>Directories and Files<a class="headerlink" href="#directories-and-files" title="Link to this heading"></a></h2>
+<p>Both directories and files should be named in lowercase, with names reflecting the content they represent. For commands combining multiple meanings, use an underscore “_” to connect them. It is recommended that directory and file names do not exceed three combined components.</p>
+<section id="header-files">
+<h3>Header Files<a class="headerlink" href="#header-files" title="Link to this heading"></a></h3>
+<p>C language header files should define a symbol to avoid multiple inclusions. The definition style should be as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef __TCP_TRANSPORTER_H__</span>
+<span class="cp">#define __TCP_TRANSPORTER_H__</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#endif</span>
+
+<span class="p">...</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// extern &quot;C&quot;</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#endif </span><span class="cm">/* __TCP_TRANSPORTER_H__ */</span>
+</pre></div>
+</div>
+<p>Macro names should be consistent with file names, using uppercase letters, starting and ending with double underscores “__”, and converting all non-alphabetic symbols to underscores.</p>
+<p>To ensure that C functions work correctly in a C++ environment, use the extern “C” macro in header files to ensure the determinism of function declarations.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifdef __cplusplus</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p>All content in header files must be placed within macro protection areas.</p>
+</section>
+<section id="file-header-description">
+<h3>File Header Description<a class="headerlink" href="#file-header-description" title="Link to this heading"></a></h3>
+<p>File headers should include descriptive comments describing the file’s description, version, copyright, etc.
+.. code-block:: c</p>
+<blockquote>
+<div><p>/**
+* &#64;file tcp_transporter.h
+* &#64;brief Header file for TCP transporter functions.
+*
+* This file declares the interface for creating and destroying TCP transporters
+* within the Tuya AI+IoT SDK. A TCP transporter is responsible for establishing
+* and managing TCP connections, enabling the transmission of data between Tuya
+* devices and the Tuya cloud platform or other networked services. The
+* functions provided here allow for the creation of a TCP transporter instance
+* and its subsequent destruction, facilitating clean resource management and
+* termination of TCP connections.
+*
+* The creation function initializes a new TCP transporter and returns a handle
+* for further operations, while the destruction function releases any resources
+* allocated to the TCP transporter and properly closes the TCP connection.
+*
+* &#64;copyright Copyright (c) 2021-2024 Tuya Inc. All Rights Reserved.
+*
+<a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
+</div></blockquote>
+</section>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<section id="function-naming">
+<h3>Function Naming<a class="headerlink" href="#function-naming" title="Link to this heading"></a></h3>
+<p>Function names should be composed of lowercase letters and underscores, with words connected by “_”. Commands should follow the subject-verb structure, such as <code class="docutils literal notranslate"><span class="pre">set_xxx</span></code>, <code class="docutils literal notranslate"><span class="pre">get_xxx</span></code>.</p>
+<p>Module internal function interfaces should start with double underscores “__” and are recommended to be declared as static;</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">__function</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="input-parameters">
+<h3>Input Parameters<a class="headerlink" href="#input-parameters" title="Link to this heading"></a></h3>
+<p>If the function entry parameters are empty, void must be used as the entry parameter.</p>
+</section>
+<section id="return-values">
+<h3>Return Values<a class="headerlink" href="#return-values" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Functions must specify return values;</p></li>
+<li><p>For functions with clear return values, the return values of called functions must be checked, and exceptions must be handled;</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tal_malloc</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">NULL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PR_ERR</span><span class="p">(</span><span class="s">&quot;tal_malloc Fails %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">OPRT_MALLOC_FAILED</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">...</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Return values and names should be kept on the same line, and if a line break is needed, it should maintain a reasonable alignment.</p></li>
+</ul>
+</section>
+<section id="function-declaration">
+<h3>Function Declaration<a class="headerlink" href="#function-declaration" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>API interfaces provided for external use must be declared in the corresponding header file;</p></li>
+<li><p>Function declarations can be obtained through header file references, rather than using the extern way; it is advisable to avoid using extern for functions.</p></li>
+</ul>
+</section>
+<section id="comments">
+<h3>Comments<a class="headerlink" href="#comments" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Good code should be self-descriptive, but not every coder can achieve this. It is recommended that code should include rich comments to help us record, understand, and track the code.</p></li>
+<li><p>External interfaces should be declared in the header file and provide detailed comments, describing the function’s functionality, parameters, and return values.</p></li>
+<li><p>Function header comments should help understand the function’s purpose, parameter usage, and how to handle return values, helping users understand how to use the function and understand the issues and risks it may have in special scenarios.</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Controls the TLS transporter.</span>
+<span class="cm"> *</span>
+<span class="cm"> * This function is used to control the TLS transporter by sending different</span>
+<span class="cm"> * commands.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param t The TLS transporter to control.</span>
+<span class="cm"> * @param cmd The command to send.</span>
+<span class="cm"> * @param args The arguments for the command.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return The result of the operation.</span>
+<span class="cm"> */</span>
+</pre></div>
+</div>
+<p>Where:</p>
+<ol class="arabic simple">
+<li><p>&#64;brief + Briefly describe the function’s purpose. In the description, emphasize the function’s purpose, capitalize the first letter of each sentence, and end with an English period.</p></li>
+<li><p>Function description. Points about the function’s functionality or purpose that were not covered in the brief description can be explained, with each sentence starting with a capital letter and ending with an English period.</p></li>
+<li><p>&#64;param + Use the parameter as the subject + be verb + describe, explaining the meaning or source of the parameter.</p></li>
+<li><p>&#64;return + Enumerate return values + describe the meaning of the return value. If the return value is data, directly introduce the function of the data.</p></li>
+<li><p>&#64;warning + Points to note when using the function. In the use of the function, describe the points to note, such as the use environment and use method. Each sentence starts with a capital letter and ends with an English period.</p></li>
+</ol>
+</section>
+</section>
+<section id="indentation">
+<h2>Indentation<a class="headerlink" href="#indentation" title="Link to this heading"></a></h2>
+<p>We use the K&amp;R indentation style.</p>
+<section id="spaces-and-parentheses">
+<h3>Spaces and Parentheses<a class="headerlink" href="#spaces-and-parentheses" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Program blocks should be written in indentation style, with each level of indentation being 4 spaces, and consistency should be maintained.</p></li>
+<li><p>Add a space after keywords, and do not add spaces after left parentheses and before right parentheses:</p></li>
+<li><p>Left braces and conditions, loop conditions should be on the same line</p></li>
+<li><p>Right braces should be on a separate line (except for do-while and if-else if)</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">action</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="loops">
+<h3>Loops<a class="headerlink" href="#loops" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>For loops should follow the indentation standard of functions</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAX</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">do_something</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="do-while">
+<h3>Do-While<a class="headerlink" href="#do-while" title="Link to this heading"></a></h3>
+<p>The left brace should immediately follow the do keyword and be indented by one space; the right brace and the while keyword should be on the same line and be indented by one space.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">body</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="k">do</span><span class="o">-</span><span class="n">loop</span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="conditionals-statements">
+<h3>Conditionals Statements<a class="headerlink" href="#conditionals-statements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>在一个条件、循环中超过一个语句的情况也同样需要使用括号：</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">test</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">do_something</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="if-else-if-else-statements">
+<h3>if-else if-else statements<a class="headerlink" href="#if-else-if-else-statements" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">..</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">....</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="switch-case">
+<h3>Switch-Case<a class="headerlink" href="#switch-case" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Each case should be on its own line, and cases should be aligned with the switch.</p></li>
+<li><p>Each case’s execution body should be protected with braces, to avoid variables exceeding their scope.</p></li>
+<li><p>Do not forget the default.</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">suffix</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">case</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">:</span>
+<span class="k">case</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="k">case</span><span class="w"> </span><span class="sc">&#39;B&#39;</span><span class="p">:</span>
+<span class="k">case</span><span class="w"> </span><span class="sc">&#39;b&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="cm">/* fall through */</span>
+<span class="k">default</span><span class="o">:</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="macros-and-enums">
+<h2>Macros and Enums<a class="headerlink" href="#macros-and-enums" title="Link to this heading"></a></h2>
+<p>Use uppercase with underscores:
+Macro names and labels in enums should all be in uppercase letters, with words connected by “_”.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define CONSTANT 0x12345</span>
+</pre></div>
+</div>
+<p>Prefer enums for related constants:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">STATE_IDLE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_START</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_DATA_LOAD</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_ENDPOINT_GET</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_ENDPOINT_UPDATE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_TOKEN_PENDING</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_ACTIVATING</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_NETWORK_CHECK</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_NETWORK_RECONNECT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_STARTUP_UPDATE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_MQTT_CONNECT_START</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_MQTT_CONNECTING</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_MQTT_RECONNECT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_MQTT_YIELD</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_RESTART</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_RESET</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_STOP</span><span class="p">,</span>
+<span class="w">    </span><span class="n">STATE_EXIT</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">tuya_run_state_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="code-formatting">
+<h2>Code Formatting<a class="headerlink" href="#code-formatting" title="Link to this heading"></a></h2>
+<p>TuyaOpen supports code formatting with clang-format. Please install clang-format 14 or above, and manually or automatically format the code currently modified.</p>
+<ul class="simple">
+<li><p>Manual formatting:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>clang-format<span class="w"> </span>-style<span class="o">=</span>file<span class="w"> </span>-i<span class="w"> </span>&lt;file&gt;
+</pre></div>
+</div>
+<p>Where &lt;file&gt; is the file to be formatted.</p>
+<ul class="simple">
+<li><p>Automatic formatting:</p></li>
+</ul>
+<p>The TuyaOpen directory tools/hooks/pre-commit file will be automatically copied to the .git/hooks directory during compilation.</p>
+<p>The pre-commit command will automatically call clang-format to format the files that have already been added with the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> command when committing code with the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> command.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../contribute_guide/index.html" class="btn btn-neutral float-left" title="Contribution Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../faq/index.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2025, Tuya Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="index.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

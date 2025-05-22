@@ -1,0 +1,774 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADC 驱动 &mdash; TuyaOpen 开发指南 1.3.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/tkl-api/tkl_adc.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4ebe3ea6"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">快速上手</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id2">安装依赖</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id3">克隆仓库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id4">设置与编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1">step1. 设置环境变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2">step2. 选择待编译项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3">step3. 编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig">step4. menuconfig 配置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id5">烧录与授权</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#id6">命令行烧录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui">GUI 工具烧录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">命令行烧录指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI 烧录工具指南</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos 使用指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id1">命令列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id2">使用示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id3">查看版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id4">环境检测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id5">创建项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id6">项目编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id7">配置管理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">示例工程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id2">选择待编译项目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id3">编译示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">应用开发</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#pid">创建产品并获取产品的 PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#tuyaopen">TuyaOpen 授权码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id3">编译烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id4">配网激活</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id5">TuyaOpen 典型应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT 应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id1">目录结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id2">支持硬件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id3">编译</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI 应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">外设开发与应用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">platform 新增与适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id2">移植适配 platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id3">生成新 platform 目录</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id4">完成编译适配</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig">Kconfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-yaml">修改platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id5">编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#default-config">修改 default.config 默认值</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id6">完成接口适配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id7">示例程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id8">测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id10">提交</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">board 新增和适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id1">定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id2">board 命名</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id3">必选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id4">可选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id5">命名规则</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id6">新增 board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id7">新建文件夹</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#kconfig">添加 Kconfig 文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id8">将 Board 添加到选择列表中</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id9">适配应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id10">贡献代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">贡献指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id2">修改内容</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id3">准备工作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id4">提交 Push Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">编码风格指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id2">目录与文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id3">头文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id4">文件头描述信息</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id5">函数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id6">函数名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id7">入参</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id8">返回值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id9">函数声明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id10">注释</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id11">缩进</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id12">空格与括号</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id13">循环</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">do-while 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id14">条件判断</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else">if-else if-else 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">switch-case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id15">宏与枚举</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id16">格式化代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">环境搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#git-pull-tuyaopen-master-apps">1. 已经通过 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> 拉取 TuyaOpen 仓库 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支最新源代码，但在编译具体 apps 下项目时候编译依然出错</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen 开发指南</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ADC 驱动</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/zh/tkl-api/tkl_adc.md" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="adc">
+<h1>ADC 驱动<a class="headerlink" href="#adc" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2>说明<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="id2">
+<h3>简介<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>ADC，Analog to Digital Converter，模拟/数字转换器，通常是指一个将时间连续、幅值也连续的模拟信号转变为时间离散、幅值也离散的数字信号的电子元件。</p>
+<p>A/D 转换一般要经过取样、保持、量化及编码 4 个过程。在实际电路中，这些过程有的是合并进行的，例如，取样和保持，量化和编码往往都是在转换过程中同时实现的。</p>
+</section>
+<section id="id3">
+<h3>分类<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>直接 ADC</th>
+<th>并联比较型 ADC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>逐次逼近型 ADC</td>
+</tr>
+<tr>
+<td></td>
+<td>闪存型 ADC</td>
+</tr>
+<tr>
+<td>间接 ADC</td>
+<td>双积分型 ADC</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h3>技术指标<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>分辨率：理论上 ADC 对输入信号的分辨能力，一般有 8 位、10 位、12 位、16 位等</p>
+<p>精度：实际模拟电压与采样电压之间的差值，差值的最大值为绝对精度，差值的最大值与满刻度模拟电压得百分比称为相对误差</p>
+<p>转换时间：每次采样所需的时间，表征 ADC 的转换速度，与 ADC 的时钟频率、采样周期、转换周期有关</p>
+<p>数据输出方式：并口输出、串口输出</p>
+<p>工作电压：需要注意 ADC 的工作电压范围、能否直接测量负电压等；</p>
+</section>
+</section>
+<section id="api">
+<h2>API 描述<a class="headerlink" href="#api" title="Link to this heading"></a></h2>
+<section id="tkl-adc-init">
+<h3>tkl_adc_init<a class="headerlink" href="#tkl-adc-init" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_adc_init</span><span class="p">(</span><span class="n">TUYA_ADC_NUM_E</span><span class="w"> </span><span class="n">port_num</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_ADC_BASE_CFG_T</span><span class="w"> </span><span class="o">*</span><span class="n">cfg</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述：</p>
+<ul class="simple">
+<li><p>ADC 初始化</p></li>
+</ul>
+</li>
+<li><p>参数：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port_num</span></code>：ADC 端口号，一个端口对应一个 ADC 实体器件（一般有多个通道），取值如下：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>名字</p></th>
+<th class="head text-left"><p>定义</p></th>
+<th class="head text-left"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>TUYA_ADC_NUM_0</p></td>
+<td class="text-left"><p>ADC 端口 0</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>TUYA_ADC_NUM_1</p></td>
+<td class="text-left"><p>ADC 端口 1</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>TUYA_ADC_NUM_2</p></td>
+<td class="text-left"><p>ADC 端口 2</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>TUYA_ADC_NUM_3</p></td>
+<td class="text-left"><p>ADC 端口 3</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>TUYA_ADC_NUM_4</p></td>
+<td class="text-left"><p>ADC 端口 4</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>TUYA_ADC_NUM_5</p></td>
+<td class="text-left"><p>ADC 端口 5</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cfg</span></code>：ADC 基础配置，取值如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TUYA_AD_DA_CH_LIST_U</span><span class="w">  </span><span class="n">ch_list</span><span class="p">;</span><span class="w">  </span><span class="c1">// ADC 通道列表</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ch_nums</span><span class="p">;</span><span class="w">        </span><span class="c1">// 需要采集的ADC 通道个数</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">  </span><span class="n">width</span><span class="p">;</span><span class="w">         </span><span class="c1">// 分辨率（位宽）</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">freq</span><span class="p">;</span><span class="w">          </span><span class="c1">// 采样频率</span>
+<span class="w">    </span><span class="n">TUYA_ADC_TYPE_E</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w">	</span><span class="c1">// ADC 采样类型</span>
+<span class="w">    </span><span class="n">TUYA_ADC_MODE_E</span><span class="w"> </span><span class="n">mode</span><span class="p">;</span><span class="w">   </span><span class="c1">// ADC 采样模式</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">   </span><span class="n">conv_cnt</span><span class="p">;</span><span class="w">    </span><span class="c1">// ADC 采样次数</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w">   </span><span class="n">ref_vol</span><span class="p">;</span><span class="w">     </span><span class="c1">// ADC 参考电压（单位：mv）</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TUYA_ADC_BASE_CFG_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<p class="rubric" id="tuya-ad-da-ch-list-u">TUYA_AD_DA_CH_LIST_U：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TUYA_AD_DA_CH_LIST_BIT_T</span><span class="w"> </span><span class="n">bits</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="p">}</span><span class="n">TUYA_AD_DA_CH_LIST_U</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_0</span><span class="w">             </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_1</span><span class="w">             </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_2</span><span class="w">             </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_3</span><span class="w">             </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_4</span><span class="w">             </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_5</span><span class="w">             </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_6</span><span class="w">             </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_7</span><span class="w">             </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_8</span><span class="w">             </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_9</span><span class="w">             </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_10</span><span class="w">            </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_11</span><span class="w">            </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_12</span><span class="w">            </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_13</span><span class="w">            </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_14</span><span class="w">            </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ch_15</span><span class="w">            </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">rsv</span><span class="w">              </span><span class="o">:</span><span class="mi">16</span><span class="p">;</span>
+<span class="p">}</span><span class="n">TUYA_AD_DA_CH_LIST_BIT_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>采集通道列表可以使用 bit 位操作，也可以通过 data 操作，两者效果相同。</p>
+<p><code class="docutils literal notranslate"><span class="pre">ch_nums</span></code> 采集的通道数量。</p>
+<p class="rubric" id="tuya-adc-type-e">TUYA_ADC_TYPE_E：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>名字</p></th>
+<th class="head text-left"><p>定义</p></th>
+<th class="head text-left"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>TUYA_ADC_INNER_SAMPLE_VOL</p></td>
+<td class="text-left"><p>ADC 采样内部电压（例如电源电压）</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>TUYA_ADC_EXTERNAL_SAMPLE_VOL</p></td>
+<td class="text-left"><p>ADC 采样外部电压（例如外部引脚电压）</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric" id="tuya-adc-mode-e">TUYA_ADC_MODE_E：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TUYA_ADC_SINGLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">       </span><span class="c1">///&lt; Single conversion mode</span>
+<span class="w">    </span><span class="n">TUYA_ADC_CONTINUOUS</span><span class="p">,</span><span class="w">       </span><span class="c1">///&lt; Continuous conversion mode</span>
+<span class="w">    </span><span class="n">TUYA_ADC_SCAN</span><span class="p">,</span><span class="w">             </span><span class="c1">///&lt; Scan mode</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TUYA_ADC_MODE_E</span><span class="p">;</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>名字</p></th>
+<th class="head text-left"><p>定义</p></th>
+<th class="head text-left"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>TUYA_ADC_SINGLE</p></td>
+<td class="text-left"><p>单通道采集</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>TUYA_ADC_CONTINUOUS</p></td>
+<td class="text-left"><p>单通道多次采集</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>TUYA_ADC_SCAN</p></td>
+<td class="text-left"><p>扫描模式采集</p></td>
+<td class="text-left"><p>可多通道采集</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">conv_cnt</span></code> 指定采集模式下的采集次数。</p>
+</li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<ul class="simple">
+<li><p>OPRT_OK - 成功</p></li>
+<li><p>其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中 <code class="docutils literal notranslate"><span class="pre">OS_ADAPTER_ADC</span></code> 定义部分</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-adc-deinit">
+<h3>tkl_adc_deinit<a class="headerlink" href="#tkl-adc-deinit" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_adc_deinit</span><span class="p">(</span><span class="n">TUYA_ADC_NUM_E</span><span class="w"> </span><span class="n">port_num</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述：</p>
+<ul>
+<li><p>ADC 去初始化状态</p></li>
+</ul>
+</li>
+<li><p>参数：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port_num</span></code>：ADC 端口号</p></li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li><p>OPRT_OK - 成功</p></li>
+<li><p>其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中 <code class="docutils literal notranslate"><span class="pre">OS_ADAPTER_ADC</span></code> 定义部分</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-adc-width-get">
+<h3>tkl_adc_width_get<a class="headerlink" href="#tkl-adc-width-get" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">tkl_adc_width_get</span><span class="p">(</span><span class="n">TUYA_ADC_NUM_E</span><span class="w"> </span><span class="n">port_num</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述：</p>
+<ul>
+<li><p>ADC 查询分辨率（位宽）</p></li>
+</ul>
+</li>
+<li><p>参数：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port_num</span></code>：ADC 端口号</p></li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li><p>OPRT_OK - 成功</p></li>
+<li><p>其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中 <code class="docutils literal notranslate"><span class="pre">OS_ADAPTER_ADC</span></code> 定义部分</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-adc-ref-voltage-get">
+<h3>tkl_adc_ref_voltage_get<a class="headerlink" href="#tkl-adc-ref-voltage-get" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">tkl_adc_ref_voltage_get</span><span class="p">(</span><span class="n">TUYA_ADC_NUM_E</span><span class="w"> </span><span class="n">port_num</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述：</p>
+<ul>
+<li><p>ADC 查询参考电压</p></li>
+</ul>
+</li>
+<li><p>参数：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port_num</span></code>：ADC 端口号</p></li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li><p>OPRT_OK - 成功</p></li>
+<li><p>其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中 <code class="docutils literal notranslate"><span class="pre">OS_ADAPTER_ADC</span></code> 定义部分</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-adc-temperature-get">
+<h3>tkl_adc_temperature_get<a class="headerlink" href="#tkl-adc-temperature-get" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span><span class="w"> </span><span class="nf">tkl_adc_temperature_get</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述：</p>
+<ul>
+<li><p>ADC 查询温度（此处指查询芯片温度）</p></li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li><p>OPRT_OK - 成功</p></li>
+<li><p>其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中 <code class="docutils literal notranslate"><span class="pre">OS_ADAPTER_ADC</span></code> 定义部分</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-adc-read-data">
+<h3>tkl_adc_read_data<a class="headerlink" href="#tkl-adc-read-data" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_adc_read_data</span><span class="p">(</span><span class="n">TUYA_ADC_NUM_E</span><span class="w"> </span><span class="n">port_num</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="n">buff</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述：</p>
+<ul>
+<li><p>ADC 读取数据</p></li>
+</ul>
+</li>
+<li><p>参数：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port_num</span></code>：ADC 端口号</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buff</span></code>：ADC 数据缓冲区</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len</span></code>：ADC 数据缓冲区的长度</p></li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li><p>OPRT_OK - 成功</p></li>
+<li><p>其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中 <code class="docutils literal notranslate"><span class="pre">OS_ADAPTER_ADC</span></code> 定义部分</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-adc-read-single-channel">
+<h3>tkl_adc_read_single_channel<a class="headerlink" href="#tkl-adc-read-single-channel" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_adc_read_single_channel</span><span class="p">(</span><span class="n">TUYA_ADC_NUM_E</span><span class="w"> </span><span class="n">port_num</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ch_id</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述：</p>
+<ul>
+<li><p>ADC 读取数据（单通道）</p></li>
+</ul>
+</li>
+<li><p>参数：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port_num</span></code>：ADC 端口号</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch_id</span></code>：ADC 通道号</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>：ADC 数据缓冲区</p></li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li><p>OPRT_OK - 成功</p></li>
+<li><p>其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中 <code class="docutils literal notranslate"><span class="pre">OS_ADAPTER_ADC</span></code> 定义部分</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-adc-read-voltage">
+<h3>tkl_adc_read_voltage<a class="headerlink" href="#tkl-adc-read-voltage" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_adc_read_voltage</span><span class="p">(</span><span class="n">TUYA_ADC_NUM_E</span><span class="w"> </span><span class="n">port_num</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="n">buff</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>功能描述：</p>
+<ul>
+<li><p>ADC 读取电压</p></li>
+</ul>
+</li>
+<li><p>参数：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">port_num</span></code>：ADC 端口号</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>：ADC 电压缓冲区</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len</span></code>：ADC 电压缓冲区长度</p></li>
+</ul>
+</li>
+<li><p>返回值：</p>
+<ul>
+<li><p>OPRT_OK - 成功</p></li>
+<li><p>其他请参考文件 <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code> 中 <code class="docutils literal notranslate"><span class="pre">OS_ADAPTER_ADC</span></code> 定义部分</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="id5">
+<h2>示例<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id6">
+<h3>示例 1<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">tuya_adc_single_channel_test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TUYA_ADC_BASE_CFG_T</span><span class="w"> </span><span class="n">adc_cfg</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">adc_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">channel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">ch_list</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// or adc_cfg.ch_list.bits.ch_0 = 1;</span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">ch_nums</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_ADC_INNER_SAMPLE_VOL</span><span class="p">;</span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_ADC_SINGLE</span><span class="p">;</span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">conv_cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">   </span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_adc_init</span><span class="p">(</span><span class="n">ADC_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adc_cfg</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// failed</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_adc_read_single_channel</span><span class="p">(</span><span class="n">ADC_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="n">channel</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adc_value</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// failed</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 输出 adc_value 的值</span>
+
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_adc_deinit</span><span class="p">(</span><span class="n">ADC_NUM_0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// failed</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>示例 2<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define ADC_CHANNEL_NUM 3</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">tuya_adc_multi_channel_test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TUYA_ADC_BASE_CFG_T</span><span class="w"> </span><span class="n">adc_cfg</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">adc_value</span><span class="p">[</span><span class="n">ADC_CHANNEL_NUM</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">ch_list</span><span class="p">.</span><span class="n">bits</span><span class="p">.</span><span class="n">ch_0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">ch_list</span><span class="p">.</span><span class="n">bits</span><span class="p">.</span><span class="n">ch_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">ch_list</span><span class="p">.</span><span class="n">bits</span><span class="p">.</span><span class="n">ch_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">ch_nums</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_CHANNEL_NUM</span><span class="p">;</span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_ADC_INNER_SAMPLE_VOL</span><span class="p">;</span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TUYA_ADC_SCAN</span><span class="p">;</span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="n">adc_cfg</span><span class="p">.</span><span class="n">conv_cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_adc_init</span><span class="p">(</span><span class="n">ADC_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adc_cfg</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// failed</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_adc_read_data</span><span class="p">(</span><span class="n">ADC_NUM_0</span><span class="p">,</span><span class="w"> </span><span class="n">adc_value</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_CHANNEL_NUM</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// failed</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 输出 adc_value[ADC_CHANNEL_NUM] 的值</span>
+
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tkl_adc_deinit</span><span class="p">(</span><span class="n">ADC_NUM_0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OPRT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// failed</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021-2025, 杭州涂鸦信息技术有限公司。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="tkl_adc.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

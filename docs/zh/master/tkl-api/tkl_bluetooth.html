@@ -1,0 +1,1289 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLUETOOTH &mdash; TuyaOpen 开发指南 1.3.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/tkl-api/tkl_bluetooth.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4ebe3ea6"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">快速上手</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id2">安装依赖</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id3">克隆仓库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id4">设置与编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1">step1. 设置环境变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2">step2. 选择待编译项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3">step3. 编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig">step4. menuconfig 配置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#id5">烧录与授权</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#id6">命令行烧录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui">GUI 工具烧录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">命令行烧录指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI 烧录工具指南</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos 使用指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id1">命令列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#id2">使用示例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id3">查看版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id4">环境检测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id5">创建项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id6">项目编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#id7">配置管理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">示例工程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id2">选择待编译项目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#id3">编译示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">应用开发</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#pid">创建产品并获取产品的 PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#tuyaopen">TuyaOpen 授权码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id3">编译烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id4">配网激活</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#id5">TuyaOpen 典型应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT 应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id1">目录结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id2">支持硬件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#id3">编译</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI 应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">外设开发与应用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">platform 新增与适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id2">移植适配 platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id3">生成新 platform 目录</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id4">完成编译适配</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig">Kconfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-yaml">修改platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#id5">编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#default-config">修改 default.config 默认值</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id6">完成接口适配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id7">示例程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id8">测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#id10">提交</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">board 新增和适配</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id1">定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id2">board 命名</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id3">必选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id4">可选字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id5">命名规则</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id6">新增 board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id7">新建文件夹</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#kconfig">添加 Kconfig 文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#id8">将 Board 添加到选择列表中</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id9">适配应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#id10">贡献代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">贡献指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id2">修改内容</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id3">准备工作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#id4">提交 Push Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">编码风格指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id2">目录与文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id3">头文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id4">文件头描述信息</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id5">函数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id6">函数名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id7">入参</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id8">返回值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id9">函数声明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id10">注释</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id11">缩进</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id12">空格与括号</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id13">循环</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">do-while 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#id14">条件判断</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else">if-else if-else 语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">switch-case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id15">宏与枚举</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#id16">格式化代码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">环境搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">编译</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#git-pull-tuyaopen-master-apps">1. 已经通过 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> 拉取 TuyaOpen 仓库 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支最新源代码，但在编译具体 apps 下项目时候编译依然出错</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen 开发指南</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">BLUETOOTH</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/zh/tkl-api/tkl_bluetooth.md" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bluetooth">
+<h1>BLUETOOTH<a class="headerlink" href="#bluetooth" title="Link to this heading"></a></h1>
+</section>
+<section id="api">
+<h1>API 描述<a class="headerlink" href="#api" title="Link to this heading"></a></h1>
+<section id="tkl-ble-stack-init">
+<h2>tkl_ble_stack_init<a class="headerlink" href="#tkl-ble-stack-init" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_stack_init</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">role</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>初始化 ble 协议栈</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>role</td>
+<td>ble 角色配置</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th style="text-align: left;">名字</th>
+<th style="text-align: left;">定义</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">TKL_BLE_ROLE_SERVER</td>
+<td style="text-align: left;">BLE 服务器</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">TKL_BLE_ROLE_CLIENT</td>
+<td style="text-align: left;">BLE 客户端</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-stack-deinit">
+<h2>tkl_ble_stack_deinit<a class="headerlink" href="#tkl-ble-stack-deinit" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_stack_deinit</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">role</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>去初始化 ble 协议栈</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>role</td>
+<td>ble 角色，如下所示</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th style="text-align: left;">名字</th>
+<th style="text-align: left;">定义</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">TKL_BLE_ROLE_SERVER</td>
+<td style="text-align: left;">BLE 服务器</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">TKL_BLE_ROLE_CLIENT</td>
+<td style="text-align: left;">BLE 客户端</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-callback-register">
+<h2>tkl_ble_gap_callback_register<a class="headerlink" href="#tkl-ble-gap-callback-register" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_callback_register</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TKL_BLE_GAP_EVT_FUNC_CB</span><span class="w"> </span><span class="n">gap_evt</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>注册 gap 回调函数</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>gap_evt</td>
+<td>注册 gap 回调函数，如下定义</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">TKL_BLE_GAP_EVT_FUNC_CB</span><span class="p">)(</span><span class="n">TKL_BLE_GAP_PARAMS_EVT_T</span><span class="w"> </span><span class="o">*</span><span class="n">p_event</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>TKL_BLE_GAP_PARAMS_EVT_T</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">TKL_BLE_GAP_EVT_TYPE_E</span><span class="w">          </span><span class="n">type</span><span class="p">;</span><span class="w">           </span><span class="cm">/**&lt; Gap Event */</span>
+<span class="w">      </span><span class="kt">uint16_t</span><span class="w">                        </span><span class="n">conn_handle</span><span class="p">;</span><span class="w">    </span><span class="cm">/**&lt; Connection Handle */</span>
+<span class="w">      </span><span class="kt">int</span><span class="w">                           </span><span class="n">result</span><span class="p">;</span><span class="w">         </span><span class="cm">/**&lt; Will Refer to HOST STACK Error Code */</span>
+
+<span class="w">      </span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="n">TKL_BLE_GAP_CONNECT_EVT_T</span><span class="w">       </span><span class="n">connect</span><span class="p">;</span><span class="w">        </span><span class="cm">/**&lt; Receive connect callback, This value can be used with TKL_BLE_EVT_PERIPHERAL_CONNECT and TKL_BLE_EVT_CENTRAL_CONNECT_DISCOVERY*/</span>
+<span class="w">          </span><span class="n">TKL_BLE_GAP_DISCONNECT_EVT_T</span><span class="w">    </span><span class="n">disconnect</span><span class="p">;</span><span class="w">     </span><span class="cm">/**&lt; Receive disconnect callback*/</span>
+<span class="w">          </span><span class="n">TKL_BLE_GAP_ADV_REPORT_T</span><span class="w">        </span><span class="n">adv_report</span><span class="p">;</span><span class="w">     </span><span class="cm">/**&lt; Receive Adv and Respond report*/</span>
+<span class="w">          </span><span class="n">TKL_BLE_GAP_CONN_PARAMS_T</span><span class="w">       </span><span class="n">conn_param</span><span class="p">;</span><span class="w">     </span><span class="cm">/**&lt; We will update connect parameters.This value can be used with TKL_BLE_EVT_CONN_PARAM_REQ and TKL_BLE_EVT_CONN_PARAM_UPDATE*/</span>
+<span class="w">          </span><span class="kt">char</span><span class="w">                          </span><span class="n">link_rssi</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; Peer device RSSI value */</span>
+<span class="w">      </span><span class="p">}</span><span class="n">gap_event</span><span class="p">;</span>
+
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">TKL_BLE_GAP_PARAMS_EVT_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatt-callback-register">
+<h2>tkl_ble_gatt_callback_register<a class="headerlink" href="#tkl-ble-gatt-callback-register" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatt_callback_register</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TKL_BLE_GATT_EVT_FUNC_CB</span><span class="w"> </span><span class="n">gatt_evt</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>注册GATT回调函数</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>gatt_evt</td>
+<td>GATT 回调函数</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">TKL_BLE_GATT_EVT_FUNC_CB</span><span class="p">)(</span><span class="n">TKL_BLE_GATT_PARAMS_EVT_T</span><span class="w"> </span><span class="o">*</span><span class="n">p_event</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>TKL_BLE_GATT_PARAMS_EVT_T</strong></p>
+<p>gatt事件定义如下:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TKL_BLE_GATT_EVT_TYPE_E</span><span class="w">             </span><span class="n">type</span><span class="p">;</span><span class="w">           </span><span class="cm">/**&lt; Gatt Event */</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                            </span><span class="n">conn_handle</span><span class="p">;</span><span class="w">    </span><span class="cm">/**&lt; Connection Handle */</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">                               </span><span class="n">result</span><span class="p">;</span><span class="w">         </span><span class="cm">/**&lt; Will Refer to HOST STACK Error Code */</span>
+
+<span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w">                        </span><span class="n">exchange_mtu</span><span class="p">;</span><span class="w">   </span><span class="cm">/**&lt; This value can be used with TKL_BLE_GATT_EVT_MTU_REQUEST and TKL_BLE_GATT_EVT_MTU_RSP*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_GATT_SVC_DISC_TYPE_T</span><span class="w">    </span><span class="n">svc_disc</span><span class="p">;</span><span class="w">       </span><span class="cm">/**&lt; Discovery All Service */</span>
+<span class="w">        </span><span class="n">TKL_BLE_GATT_CHAR_DISC_TYPE_T</span><span class="w">   </span><span class="n">char_disc</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; Discovery Specific Characteristic */</span>
+<span class="w">        </span><span class="n">TKL_BLE_GATT_DESC_DISC_TYPE_T</span><span class="w">   </span><span class="n">desc_disc</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; Discovery Specific Descriptors*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_NOTIFY_RESULT_EVT_T</span><span class="w">     </span><span class="n">notify_result</span><span class="p">;</span><span class="w">  </span><span class="cm">/**&lt; This value can be used with TKL_BLE_GATT_EVT_NOTIFY_TX*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_DATA_REPORT_T</span><span class="w">           </span><span class="n">write_report</span><span class="p">;</span><span class="w">   </span><span class="cm">/**&lt; This value can be used with TKL_BLE_GATT_EVT_WRITE_REQ*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_DATA_REPORT_T</span><span class="w">           </span><span class="n">data_report</span><span class="p">;</span><span class="w">    </span><span class="cm">/**&lt; This value can be used with TKL_BLE_GATT_EVT_NOTIFY_INDICATE_RX*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_DATA_REPORT_T</span><span class="w">           </span><span class="n">data_read</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; After we do read attr in central mode, we will get the callback*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_SUBSCRBE_EVT_T</span><span class="w">          </span><span class="n">subscribe</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; ccc callback event, used with TKL_BLE_GATT_EVT_SUBSCRIBE*/</span>
+<span class="w">        </span><span class="n">TKL_BLE_READ_CHAR_EVT_T</span><span class="w">         </span><span class="n">char_read</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; read char event, used with TKL_BLE_GATT_EVT_READ_CHAR_VALUE*/</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">gatt_event</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TKL_BLE_GATT_PARAMS_EVT_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-addr-set">
+<h2>tkl_ble_gap_addr_set<a class="headerlink" href="#tkl-ble-gap-addr-set" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_addr_set</span><span class="p">(</span><span class="n">TKL_BLE_GAP_ADDR_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_peer_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>设置Ble mac地址</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>p_peer_addr</td>
+<td>mac 地址，可选 public/random</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>返回值:</p>
+<ul class="simple">
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+<li><p><strong>备注</strong></p>
+<p>一般模组经过生产已带有 mac 地址，无需配置。</p>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-address-get">
+<h2>tkl_ble_gap_address_get<a class="headerlink" href="#tkl-ble-gap-address-get" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_address_get</span><span class="p">(</span><span class="n">TKL_BLE_GAP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">p_peer_addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>读取Ble设备mac地址</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[out]</td>
+<td>p_peer_addr</td>
+<td>设备mac地址</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>返回值:</p>
+<ul class="simple">
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+<li><p><strong>备注</strong></p>
+<p>很少使用</p>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-adv-start">
+<h2>tkl_ble_gap_adv_start<a class="headerlink" href="#tkl-ble-gap-adv-start" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_adv_start</span><span class="p">(</span><span class="n">TKL_BLE_GAP_ADV_PARAMS_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_adv_params</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>开启ble广播</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>p_adv_params</td>
+<td>广播参数，如下所示</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TKL_BLE_GAP_ADV_PARAMS_T</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">adv_type</span><span class="p">;</span><span class="w">                   </span><span class="cm">/**&lt; Adv Type. Refer to TKL_BLE_GAP_ADV_TYPE_CONN_SCANNABLE_UNDIRECTED etc.*/</span>
+<span class="w">    </span><span class="n">TKL_BLE_GAP_ADDR_T</span><span class="w">      </span><span class="n">direct_addr</span><span class="p">;</span><span class="w">                </span><span class="cm">/**&lt; For Directed Advertising, you can fill in direct address */</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                </span><span class="n">adv_interval_min</span><span class="p">;</span><span class="w">           </span><span class="cm">/**&lt; Range: 0x0020 to 0x4000  Time = N * 0.625 msec Time Range: 20 ms to 10.24 sec */</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                </span><span class="n">adv_interval_max</span><span class="p">;</span><span class="w">           </span><span class="cm">/**&lt; Range: 0x0020 to 0x4000  Time = N * 0.625 msec Time Range: 20 ms to 10.24 sec */</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">adv_channel_map</span><span class="p">;</span><span class="w">            </span><span class="cm">/**&lt; Advertising Channel Map, 0x01 = adv channel index 37,  0x02 = adv channel index 38,</span>
+<span class="cm">                                                                0x04 = adv channel index 39. Default Value: 0x07*/</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TKL_BLE_GAP_ADV_PARAMS_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-adv-stop">
+<h2>tkl_ble_gap_adv_stop<a class="headerlink" href="#tkl-ble-gap-adv-stop" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_adv_stop</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>关闭ble广播</p>
+</li>
+<li><p>参数：</p>
+<p>无</p>
+</li>
+<li><p>返回值:</p>
+<ul class="simple">
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-adv-rsp-data-set">
+<h2>tkl_ble_gap_adv_rsp_data_set<a class="headerlink" href="#tkl-ble-gap-adv-rsp-data-set" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_adv_rsp_data_set</span><span class="p">(</span><span class="n">TKL_BLE_DATA_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_adv</span><span class="p">,</span><span class="w"> </span><span class="n">TKL_BLE_DATA_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_scan_rsp</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>设置广播数据</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>p_adv</td>
+<td>广播数据</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_scan_rsp</td>
+<td>扫描响应数据</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>返回值:</li>
+</ul>
+<ul class="simple">
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</section>
+<section id="tkl-ble-gap-adv-rsp-data-update">
+<h2>tkl_ble_gap_adv_rsp_data_update<a class="headerlink" href="#tkl-ble-gap-adv-rsp-data-update" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_adv_rsp_data_update</span><span class="p">(</span><span class="n">TKL_BLE_DATA_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_adv</span><span class="p">,</span><span class="w"> </span><span class="n">TKL_BLE_DATA_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_scan_rsp</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>更新广播数据</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>p_adv</td>
+<td>广播数据</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_scan_rsp</td>
+<td>扫描响应数据</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>返回值:</li>
+</ul>
+<ul class="simple">
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</section>
+<section id="tkl-ble-gap-scan-start">
+<h2><strong>tkl_ble_gap_scan_start</strong><a class="headerlink" href="#tkl-ble-gap-scan-start" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_ble_gap_scan_start</span><span class="p">(</span><span class="n">TKL_BLE_GAP_SCAN_PARAMS_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_scan_params</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>打开扫描</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>p_scan_params</td>
+<td>扫描参数，如下所示</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TKL_BLE_GAP_SCAN_PARAMS_T</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">extended</span><span class="p">;</span><span class="w">                   </span><span class="cm">/**&lt; If 1, the scanner will accept extended advertising packets.</span>
+<span class="cm">                                                            If set to 0, the scanner will not receive advertising packets</span>
+<span class="cm">                                                            on secondary advertising channels, and will not be able</span>
+<span class="cm">                                                            to receive long advertising PDUs. */</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">active</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                 </span><span class="cm">/**&lt; [Tuya Need]!!!! If 1, perform active scanning by sending scan requests.</span>
+<span class="cm">                                                            This parameter is ignored when used with @ref tkl_ble_gap_connect. */</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">scan_phys</span><span class="p">;</span><span class="w">                  </span><span class="cm">/**&lt; Refer to @TKL_BLE_GAP_PHY_1MBPS. TKL_BLE_GAP_PHY_2MBPS*/</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                </span><span class="n">interval</span><span class="p">;</span><span class="w">                   </span><span class="cm">/**&lt; Scan interval in 625 us units. */</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                </span><span class="n">window</span><span class="p">;</span><span class="w">                     </span><span class="cm">/**&lt; Scan window in 625 us units. */</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w">                </span><span class="n">timeout</span><span class="p">;</span><span class="w">                    </span><span class="cm">/**&lt; Scan timeout in 10 ms units. */</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">scan_channel_map</span><span class="p">;</span><span class="w">           </span><span class="cm">/**&lt; Scan Channel Index, refer to @TKL_BLE_GAP_ADV_PARAMS_T*/</span>
+<span class="p">}</span><span class="w"> </span><span class="n">TKL_BLE_GAP_SCAN_PARAMS_T</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul>
+<li><p>返回值:</p>
+<ul class="simple">
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+<li><p>备注</p>
+<p>tkl_ble_gap_scan_start 在开启遥控器或支持 central 模式时使用。</p>
+</li>
+</ul>
+<section id="tkl-ble-gap-scan-stop">
+<h3>tkl_ble_gap_scan_stop<a class="headerlink" href="#tkl-ble-gap-scan-stop" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_ble_gap_scan_stop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>关闭蓝牙扫描</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<p>​		无</p>
+<ul class="simple">
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-connect">
+<h3>tkl_ble_gap_connect<a class="headerlink" href="#tkl-ble-gap-connect" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="n">tkl_ble_gap_connect</span><span class="p">(</span><span class="n">TKL_BLE_GAP_ADDR_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_peer_addr</span><span class="p">,</span><span class="w"> </span><span class="n">TKL_BLE_GAP_SCAN_PARAMS_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_scan_params</span><span class="p">,</span><span class="w"> </span><span class="n">TKL_BLE_GAP_CONN_PARAMS_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_conn_params</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>作为client时，发起连接。</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>p_peer_addr</td>
+<td>对端地址</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_scan_params</td>
+<td>扫描参数</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_conn_params</td>
+<td>连接参数</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>返回值:</li>
+</ul>
+<ul>
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+<li><p><strong>说明</strong></p>
+<p>只有作为 central 需要适配。</p>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-disconnect">
+<h3>tkl_ble_gap_disconnect<a class="headerlink" href="#tkl-ble-gap-disconnect" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_disconnect</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">hci_reason</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>断开ble连接</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>连接 handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_conn_params</td>
+<td>断连原因，非异常情况下，主动断连使用 0x13。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>返回值:</p>
+<ul class="simple">
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+<li><p><strong>备注</strong></p>
+<p>client 和 server 均会用到</p>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gap-conn-param-update">
+<h3>tkl_ble_gap_conn_param_update<a class="headerlink" href="#tkl-ble-gap-conn-param-update" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gap_conn_param_update</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="n">TKL_BLE_GAP_CONN_PARAMS_T</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">p_conn_params</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>gap 连接参数更新</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>连接 handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_conn_params</td>
+<td>连接参数</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatts-service-add">
+<h3>tkl_ble_gatts_service_add<a class="headerlink" href="#tkl-ble-gatts-service-add" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatts_service_add</span><span class="p">(</span><span class="n">TKL_BLE_GATTS_PARAMS_T</span><span class="w"> </span><span class="o">*</span><span class="n">p_service</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>gatt 添加服务，server 使用。</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in/out]</td>
+<td>p_service</td>
+<td>GATT 服务</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TKL_BLE_GATTS_PARAMS_T</strong></p>
+<p><code>c
+  typedef struct {
+      uint8_t                     svc_num;                /**&lt; If we only use service(0xFD50), the svc_num will be set into 1 */
+      TKL_BLE_SERVICE_PARAMS_T    *p_service;
+  } TKL_BLE_GATTS_PARAMS_T;</code></p>
+<p><strong>TKL_BLE_SERVICE_PARAMS_T</strong></p>
+<p>handle 下发时默认 0xFF，添加完服务之后会更新对应的 handle 值。</p>
+<p>```c
+  typedef struct {
+      uint16_t                    handle;                 /*<em>&lt; After init the service, we will get the svc-handle </em>/</p>
+<pre><code>  TKL_BLE_UUID_T              svc_uuid;               /**&lt; Service UUID */
+  TKL_BLE_SERVICE_TYPE_E      type;                   /**&lt; Service Type */
+<p>uint8_t                     char_num;               /<strong>&lt; Number of characteristic */
+TKL_BLE_CHAR_PARAMS_T       *p_char;                /</strong>&lt; Pointer of characteristic */
+</code></pre></p>
+<p>} TKL_BLE_SERVICE_PARAMS_T;
+  ```</p>
+<ul>
+<li>返回值:</li>
+</ul>
+<ul class="simple">
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</section>
+<section id="tkl-ble-gatts-value-set">
+<h3>tkl_ble_gatts_value_set<a class="headerlink" href="#tkl-ble-gatts-value-set" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatts_value_set</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">char_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>gatt 更新属性值，如配置 read 特征值，可以使用该函数更新</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>连接 handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>char_handle</td>
+<td>特征值 handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_data</td>
+<td>数据</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>length</td>
+<td>数据长度</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>返回值:</p>
+<p>OPRT_OK : 成功
+Others ：失败</p>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatts-value-get">
+<h3>tkl_ble_gatts_value_get<a class="headerlink" href="#tkl-ble-gatts-value-get" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatts_value_get</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">char_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>GATT读取属性值，暂未用到</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>连接 handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>char_handle</td>
+<td>特征值 handle</td>
+</tr>
+<tr>
+<td>[out]</td>
+<td>p_data</td>
+<td>读取数据</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>length</td>
+<td>读取长度</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatts-value-notify">
+<h3>tkl_ble_gatts_value_notify<a class="headerlink" href="#tkl-ble-gatts-value-notify" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatts_value_notify</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">char_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>服务器发送通知数据。</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>连接 handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>char_handle</td>
+<td>特征值 handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_data</td>
+<td>通知的数据</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>length</td>
+<td>通知的数据长度</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatts-value-indicate">
+<h3>tkl_ble_gatts_value_indicate<a class="headerlink" href="#tkl-ble-gatts-value-indicate" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatts_value_indicate</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">char_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>服务器发送指示数据。</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>连接 handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>char_handle</td>
+<td>特征值 handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>p_data</td>
+<td>指示的数据</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>length</td>
+<td>指示的数据长度</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tkl-ble-gatts-exchange-mtu-reply">
+<h3>tkl_ble_gatts_exchange_mtu_reply<a class="headerlink" href="#tkl-ble-gatts-exchange-mtu-reply" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_ble_gatts_exchange_mtu_reply</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">server_rx_mtu</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>功能描述:</p>
+<p>服务器配置 MTU，即通过向客户端发送交换 MTU 响应，回复客户端 MTU 交换的请求</p>
+</li>
+<li><p>参数：</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入/输出</th>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[in]</td>
+<td>conn_handle</td>
+<td>连接 handle</td>
+</tr>
+<tr>
+<td>[in]</td>
+<td>server_rx_mtu</td>
+<td>server侧接收 mtu 大小</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>返回值:</p>
+<ul>
+<li><p>OPRT_OK : 成功</p></li>
+<li><p>Others ：失败</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021-2025, 杭州涂鸦信息技术有限公司。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="tkl_bluetooth.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

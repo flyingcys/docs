@@ -1,0 +1,1120 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network &mdash; TuyaOpen Development Guide 1.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e452ba07" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+    <link rel="canonical" href="https://github.com/tuya/TuyaOpen/tkl-api/tkl_network.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=1f29e9d3"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/js/custom.js"></script>
+      <script src="../_static/js/include_html.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/TuyaOpen.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/index.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#install-dependencies">Install Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#ubuntu-and-debian">Ubuntu and Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#clone-repository">Clone Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#setup-and-compilation">Setup and Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step1-set-environment-variables">step1. Set Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step2-select-project-to-compile">step2. Select Project to Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step3-compile">step3. Compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#step4-menuconfig-configuration">step4. menuconfig Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quick_start/index.html#flashing-and-authorization">Flashing and Authorization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#command-line-flashing">Command Line Flashing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quick_start/index.html#gui-tool-flashing">GUI Tool Flashing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/cli-flash.html">Command Line Flashing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../quick_start/gui-flash.html">GUI Flashing Tool Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tos_guide/index.html">tos User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#command-list">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tos_guide/index.html#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#check-version">Check Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#environment-check">Environment Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#create-project">Create Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#project-compilation">Project Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tos_guide/index.html#configuration-management">Configuration Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Example Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#select-the-project-to-be-compiled">Select the project to be compiled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#compile-the-example">Compile the example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/index.html">Application Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#create-a-product-and-obtain-the-product-pid">Create a product and obtain the product PID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#confirm-the-tuyaopen-authorization-code">Confirm the TuyaOpen authorization code:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#build-and-flash">Build and Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#network-configuration-and-device-activation">Network Configuration and Device Activation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/index.html#typical-applications-of-tuyaopen">Typical Applications of TuyaOpen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../applications/IoT.html">IoT Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#directory">Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#supported-hardware">Supported Hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../applications/IoT.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../applications/ai.html">AI Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../peripherals/index.html">Peripheral Development And Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/touch.html">Touch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../peripherals/encoder.html">Encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_platform/index.html">Adding and Adapting Platforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#platform-adaptation">Platform Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#generate-new-platform-directory">Generate New Platform Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#completing-adaptation">Completing Adaptation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#kconfig-configuration">Kconfig Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#platform-config-cmake">platform_config.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#toolchain-file-cmake">toolchain_file.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#updating-platform-config-yaml">Updating platform_config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_platform/index.html#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#interface-implementation">Interface Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#example-projects">Example Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_platform/index.html#submission">Submission</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_board/index.html">Adding and Adapting Boards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#board-naming">Board Naming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#mandatory-fields">Mandatory Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#optional-fields">Optional Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#naming-rules">Naming Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#adding-new-board">Adding New Board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#create-directory">Create Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-kconfig-file">Add Kconfig File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../new_board/index.html#add-board-to-selection-list">Add Board to Selection List</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#application-adaptation">Application Adaptation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../new_board/index.html#contribution">Contribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute_guide/index.html">Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#making-changes">Making Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#preparation">Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute_guide/index.html#submitting-pull-requests">Submitting Pull Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_style_guide/index.html">Coding Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#directories-and-files">Directories and Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#header-files">Header Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#file-header-description">File Header Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-naming">Function Naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#input-parameters">Input Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#return-values">Return Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#function-declaration">Function Declaration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#comments">Comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#indentation">Indentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#spaces-and-parentheses">Spaces and Parentheses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#loops">Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#do-while">Do-While</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#conditionals-statements">Conditionals Statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#if-else-if-else-statements">if-else if-else statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code_style_guide/index.html#switch-case">Switch-Case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#macros-and-enums">Macros and Enums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_style_guide/index.html#code-formatting">Code Formatting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/development-setup.html">Environment setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build.html">Build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq/build.html#already-pulled-latest-source-code-via-git-pull-but-still-encounter-compilation-errors-when-building-apps">1. Already pulled latest source code via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> but still encounter compilation errors when building apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TuyaOpen Development Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Network</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/tuya/TuyaOpen/blob/master/docs/en/tkl-api/tkl_network.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="network">
+<h1>Network<a class="headerlink" href="#network" title="Link to this heading"></a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">tkl_network.c</span></code> file provides a series of APIs required for network communication processes to adapt to different network interfaces. These APIs include creating sockets, connecting, binding, listening, sending data, receiving data, setting and getting socket options, and other network operations. The file defines common handling of network APIs and allows for cross-platform network communication through these encapsulated functions.</p>
+<section id="api-description">
+<h2>API Description<a class="headerlink" href="#api-description" title="Link to this heading"></a></h2>
+<section id="tkl-net-get-errno">
+<h3>tkl_net_get_errno<a class="headerlink" href="#tkl-net-get-errno" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_get_errno</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="function">
+<h4>Function<a class="headerlink" href="#function" title="Link to this heading"></a></h4>
+<p>Retrieves the network error code.</p>
+</section>
+<section id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h4>
+<p>No parameters.</p>
+</section>
+<section id="return-value">
+<h4>Return Value<a class="headerlink" href="#return-value" title="Link to this heading"></a></h4>
+<p>Returns 0 on success, otherwise returns an error code specific to the target system.</p>
+</section>
+</section>
+<section id="tkl-net-fd-set">
+<h3>tkl_net_fd_set<a class="headerlink" href="#tkl-net-fd-set" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_fd_set</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_FD_SET_T</span><span class="o">*</span><span class="w"> </span><span class="n">fds</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id1">
+<h4>Function<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<p>Adds a file descriptor to the set.</p>
+</section>
+<section id="id2">
+<h4>Parameters<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: The file descriptor to be added.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fds</span></code>: Pointer to the file descriptor set.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h4>Return Value<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-fd-clear">
+<h3>tkl_net_fd_clear<a class="headerlink" href="#tkl-net-fd-clear" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_fd_clear</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_FD_SET_T</span><span class="o">*</span><span class="w"> </span><span class="n">fds</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id4">
+<h4>Function<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<p>Removes a file descriptor from the set.</p>
+</section>
+<section id="id5">
+<h4>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: The file descriptor to be cleared.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fds</span></code>: Pointer to the file descriptor set.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h4>Return Value<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-fd-isset">
+<h3>tkl_net_fd_isset<a class="headerlink" href="#tkl-net-fd-isset" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_fd_isset</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_FD_SET_T</span><span class="o">*</span><span class="w"> </span><span class="n">fds</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id7">
+<h4>Function<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<p>Checks if a file descriptor is in the set.</p>
+</section>
+<section id="id8">
+<h4>Parameters<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: The file descriptor to be checked.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fds</span></code>: Pointer to the file descriptor set.</p></li>
+</ul>
+</section>
+<section id="id9">
+<h4>Return Value<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> if the file descriptor is in the set, otherwise returns <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-fd-zero">
+<h3>tkl_net_fd_zero<a class="headerlink" href="#tkl-net-fd-zero" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_fd_zero</span><span class="p">(</span><span class="n">TUYA_FD_SET_T</span><span class="o">*</span><span class="w"> </span><span class="n">fds</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id10">
+<h4>Function<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<p>Clears all file descriptors in the file descriptor set.</p>
+</section>
+<section id="id11">
+<h4>Parameters<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fds</span></code>: Pointer to the file descriptor set.</p></li>
+</ul>
+</section>
+<section id="id12">
+<h4>Return Value<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-select">
+<h3>tkl_net_select<a class="headerlink" href="#tkl-net-select" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">tkl_net_select</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxfd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_FD_SET_T</span><span class="w"> </span><span class="o">*</span><span class="n">readfds</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_FD_SET_T</span><span class="w"> </span><span class="o">*</span><span class="n">writefds</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_FD_SET_T</span><span class="w"> </span><span class="o">*</span><span class="n">errorfds</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ms_timeout</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id13">
+<h4>Function<a class="headerlink" href="#id13" title="Link to this heading"></a></h4>
+<p>Retrieves the set of available file descriptors.</p>
+</section>
+<section id="id14">
+<h4>Parameters<a class="headerlink" href="#id14" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">maxfd</span></code>: One more than the maximum number of file descriptors to be checked.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">readfds</span></code>: Pointer to the set of readable file descriptors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">writefds</span></code>: Pointer to the set of writable file descriptors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">errorfds</span></code>: Pointer to the set of erroneous file descriptors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ms_timeout</span></code>: Timeout period in milliseconds.</p></li>
+</ul>
+</section>
+<section id="id15">
+<h4>Return Value<a class="headerlink" href="#id15" title="Link to this heading"></a></h4>
+<p>Returns the number of available file descriptors; returns a value less than or equal to 0 on error.</p>
+</section>
+</section>
+<section id="tkl-net-get-nonblock">
+<h3>tkl_net_get_nonblock<a class="headerlink" href="#tkl-net-get-nonblock" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">tkl_net_get_nonblock</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id16">
+<h4>Function<a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
+<p>Retrieves a non-blocking file descriptor.</p>
+</section>
+<section id="id17">
+<h4>Parameters<a class="headerlink" href="#id17" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: The file descriptor.</p></li>
+</ul>
+</section>
+<section id="id18">
+<h4>Return Value<a class="headerlink" href="#id18" title="Link to this heading"></a></h4>
+<p>Returns the number of non-blocking file descriptors on success; returns a value less than or equal to 0 on error.</p>
+</section>
+</section>
+<section id="tkl-net-set-block">
+<h3>tkl_net_set_block<a class="headerlink" href="#tkl-net-set-block" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_block</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BOOL_T</span><span class="w"> </span><span class="n">block</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id19">
+<h4>Function<a class="headerlink" href="#id19" title="Link to this heading"></a></h4>
+<p>Sets the blocking flag for a file descriptor.</p>
+</section>
+<section id="id20">
+<h4>Parameters<a class="headerlink" href="#id20" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: The file descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">block</span></code>: If <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, sets to blocking mode; if <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, sets to non-blocking mode.</p></li>
+</ul>
+</section>
+<section id="id21">
+<h4>Return Value<a class="headerlink" href="#id21" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-close">
+<h3>tkl_net_close<a class="headerlink" href="#tkl-net-close" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_close</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id22">
+<h4>Function<a class="headerlink" href="#id22" title="Link to this heading"></a></h4>
+<p>Closes a file descriptor.</p>
+</section>
+<section id="id23">
+<h4>Parameters<a class="headerlink" href="#id23" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: The file descriptor.</p></li>
+</ul>
+</section>
+<section id="id24">
+<h4>Return Value<a class="headerlink" href="#id24" title="Link to this heading"></a></h4>
+<p>Returns 0 on success, otherwise returns an error code specific to the target system.</p>
+</section>
+</section>
+<section id="tkl-net-shutdown">
+<h3>tkl_net_shutdown<a class="headerlink" href="#tkl-net-shutdown" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_shutdown</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">how</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id25">
+<h4>Function<a class="headerlink" href="#id25" title="Link to this heading"></a></h4>
+<p>Shuts down read/write operations on a file descriptor.</p>
+</section>
+<section id="id26">
+<h4>Parameters<a class="headerlink" href="#id26" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: The file descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">how</span></code>: The type of shutdown.</p></li>
+</ul>
+</section>
+<section id="id27">
+<h4>Return Value<a class="headerlink" href="#id27" title="Link to this heading"></a></h4>
+<p>Returns 0 on success, otherwise returns an error code specific to the target system.</p>
+</section>
+</section>
+<section id="tkl-net-socket-create">
+<h3>tkl_net_socket_create<a class="headerlink" href="#tkl-net-socket-create" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">tkl_net_socket_create</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_PROTOCOL_TYPE_E</span><span class="w"> </span><span class="n">type</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id28">
+<h4>Function<a class="headerlink" href="#id28" title="Link to this heading"></a></h4>
+<p>Creates a TCP or UDP socket.</p>
+</section>
+<section id="id29">
+<h4>Parameters<a class="headerlink" href="#id29" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: The protocol type, either TCP or UDP.</p></li>
+</ul>
+</section>
+<section id="id30">
+<h4>Return Value<a class="headerlink" href="#id30" title="Link to this heading"></a></h4>
+<p>Returns the file descriptor.</p>
+</section>
+</section>
+<section id="tkl-net-connect">
+<h3>tkl_net_connect<a class="headerlink" href="#tkl-net-connect" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_connect</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id31">
+<h4>Function<a class="headerlink" href="#id31" title="Link to this heading"></a></h4>
+<p>Connects to a network.</p>
+</section>
+<section id="id32">
+<h4>Parameters<a class="headerlink" href="#id32" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: The file descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>: Server address information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Server port information.</p></li>
+</ul>
+</section>
+<section id="id33">
+<h4>Return Value<a class="headerlink" href="#id33" title="Link to this heading"></a></h4>
+<p>Returns 0 on success, otherwise returns an error code specific to the target system.</p>
+</section>
+</section>
+<section id="tkl-net-connect-raw">
+<h3>tkl_net_connect_raw<a class="headerlink" href="#tkl-net-connect-raw" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_connect_raw</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_socket_addr</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id34">
+<h4>Function<a class="headerlink" href="#id34" title="Link to this heading"></a></h4>
+<p>Connects to a network using raw data.</p>
+</section>
+<section id="id35">
+<h4>Parameters<a class="headerlink" href="#id35" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: The file descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p_socket_addr</span></code>: Raw socket data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len</span></code>: Length of the data.</p></li>
+</ul>
+</section>
+<section id="id36">
+<h4>Return Value<a class="headerlink" href="#id36" title="Link to this heading"></a></h4>
+<p>Returns 0 on success, otherwise returns an error code specific to the target system.</p>
+</section>
+</section>
+<section id="tkl-net-bind">
+<h3>tkl_net_bind<a class="headerlink" href="#tkl-net-bind" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_bind</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id37">
+<h4>Function<a class="headerlink" href="#id37" title="Link to this heading"></a></h4>
+<p>Binds a socket to a network.</p>
+</section>
+<section id="id38">
+<h4>Parameters<a class="headerlink" href="#id38" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: The file descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>: Server address information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Server port information.</p></li>
+</ul>
+</section>
+<section id="id39">
+<h4>Return Value<a class="headerlink" href="#id39" title="Link to this heading"></a></h4>
+<p>Returns 0 on success, otherwise returns an error code specific to the target system.</p>
+</section>
+</section>
+<section id="tkl-net-listen">
+<h3>tkl_net_listen<a class="headerlink" href="#tkl-net-listen" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_listen</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">backlog</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id40">
+<h4>Function<a class="headerlink" href="#id40" title="Link to this heading"></a></h4>
+<p>Listens for network connection requests.</p>
+</section>
+<section id="id41">
+<h4>Parameters<a class="headerlink" href="#id41" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backlog</span></code>: The maximum number of pending connections the queue can hold.</p></li>
+</ul>
+</section>
+<section id="id42">
+<h4>Return Value<a class="headerlink" href="#id42" title="Link to this heading"></a></h4>
+<p>Returns 0 on success, otherwise returns an error code specific to the target system.</p>
+</section>
+</section>
+<section id="tkl-net-accept">
+<h3>tkl_net_accept<a class="headerlink" href="#tkl-net-accept" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_accept</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id43">
+<h4>Function<a class="headerlink" href="#id43" title="Link to this heading"></a></h4>
+<p>Accepts a network connection request.</p>
+</section>
+<section id="id44">
+<h4>Parameters<a class="headerlink" href="#id44" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>: The IP address of the receiver.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: The port number of the receiver.</p></li>
+</ul>
+</section>
+<section id="id45">
+<h4>Return Value<a class="headerlink" href="#id45" title="Link to this heading"></a></h4>
+<p>Returns 0 on success, otherwise returns an error code specific to the target system.</p>
+</section>
+</section>
+<section id="tkl-net-send">
+<h3>tkl_net_send<a class="headerlink" href="#tkl-net-send" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_send</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nbytes</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id46">
+<h4>Function<a class="headerlink" href="#id46" title="Link to this heading"></a></h4>
+<p>Sends data over the network.</p>
+</section>
+<section id="id47">
+<h4>Parameters<a class="headerlink" href="#id47" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>: The buffer containing the data to be sent.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nbytes</span></code>: The length of the buffer.</p></li>
+</ul>
+</section>
+<section id="id48">
+<h4>Return Value<a class="headerlink" href="#id48" title="Link to this heading"></a></h4>
+<p>The number of bytes sent; returns a negative value on error.</p>
+</section>
+</section>
+<section id="tkl-net-send-to">
+<h3>tkl_net_send_to<a class="headerlink" href="#tkl-net-send-to" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_send_to</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nbytes</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id49">
+<h4>Function<a class="headerlink" href="#id49" title="Link to this heading"></a></h4>
+<p>Sends data to a specified server.</p>
+</section>
+<section id="id50">
+<h4>Parameters<a class="headerlink" href="#id50" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>: The buffer containing the data to be sent.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nbytes</span></code>: The length of the buffer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>: Server address information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Server port information.</p></li>
+</ul>
+</section>
+<section id="id51">
+<h4>Return Value<a class="headerlink" href="#id51" title="Link to this heading"></a></h4>
+<p>The number of bytes sent; returns a negative value on error.</p>
+</section>
+</section>
+<section id="tkl-net-recv">
+<h3>tkl_net_recv<a class="headerlink" href="#tkl-net-recv" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_recv</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nbytes</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id52">
+<h4>Function<a class="headerlink" href="#id52" title="Link to this heading"></a></h4>
+<p>Receives data from the network.</p>
+</section>
+<section id="id53">
+<h4>Parameters<a class="headerlink" href="#id53" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>: The buffer to store the received data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nbytes</span></code>: The length of the buffer.</p></li>
+</ul>
+</section>
+<section id="id54">
+<h4>Return Value<a class="headerlink" href="#id54" title="Link to this heading"></a></h4>
+<p>The number of bytes received; returns a negative value on error.</p>
+</section>
+</section>
+<section id="tkl-net-recv-nd-size">
+<h3>tkl_net_recv_nd_size<a class="headerlink" href="#tkl-net-recv-nd-size" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">tkl_net_recv_nd_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">buf_size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nd_size</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id55">
+<h4>Function<a class="headerlink" href="#id55" title="Link to this heading"></a></h4>
+<p>Receives data of a specified size from the network.</p>
+</section>
+<section id="id56">
+<h4>Parameters<a class="headerlink" href="#id56" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>: The buffer to store the received data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf_size</span></code>: The size of the buffer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nd_size</span></code>: The expected size of the data to be received.</p></li>
+</ul>
+</section>
+<section id="id57">
+<h4>Return Value<a class="headerlink" href="#id57" title="Link to this heading"></a></h4>
+<p>The actual amount of data received on success, or a negative value on error.</p>
+</section>
+</section>
+<section id="tkl-net-recvfrom">
+<h3>tkl_net_recvfrom<a class="headerlink" href="#tkl-net-recvfrom" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_ERRNO</span><span class="w"> </span><span class="nf">tkl_net_recvfrom</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nbytes</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id58">
+<h4>Function<a class="headerlink" href="#id58" title="Link to this heading"></a></h4>
+<p>Receives data from a specified server.</p>
+</section>
+<section id="id59">
+<h4>Parameters<a class="headerlink" href="#id59" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>: The buffer to store the received data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nbytes</span></code>: The length of the buffer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>[OUT]: Server address information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>[OUT]: Server port information.</p></li>
+</ul>
+</section>
+<section id="id60">
+<h4>Return Value<a class="headerlink" href="#id60" title="Link to this heading"></a></h4>
+<p>The number of bytes received; returns a negative value on error.</p>
+</section>
+</section>
+<section id="tkl-net-gethostbyname">
+<h3>tkl_net_gethostbyname<a class="headerlink" href="#tkl-net-gethostbyname" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_gethostbyname</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">domain</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id61">
+<h4>Function<a class="headerlink" href="#id61" title="Link to this heading"></a></h4>
+<p>Obtains address information by domain name.</p>
+</section>
+<section id="id62">
+<h4>Parameters<a class="headerlink" href="#id62" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">domain</span></code>: Domain name information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>: Pointer to store the address information.</p></li>
+</ul>
+</section>
+<section id="id63">
+<h4>Return Value<a class="headerlink" href="#id63" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-socket-bind">
+<h3>tkl_net_socket_bind<a class="headerlink" href="#tkl-net-socket-bind" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_socket_bind</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ip</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id64">
+<h4>Function<a class="headerlink" href="#id64" title="Link to this heading"></a></h4>
+<p>Binds the socket to a network with the specified IP.</p>
+</section>
+<section id="id65">
+<h4>Parameters<a class="headerlink" href="#id65" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ip</span></code>: IP address.</p></li>
+</ul>
+</section>
+<section id="id66">
+<h4>Return Value<a class="headerlink" href="#id66" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-set-cloexec">
+<h3>tkl_net_set_cloexec<a class="headerlink" href="#tkl-net-set-cloexec" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_cloexec</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id67">
+<h4>Function<a class="headerlink" href="#id67" title="Link to this heading"></a></h4>
+<p>Sets the socket to remain open in child processes after a <code class="docutils literal notranslate"><span class="pre">fork</span></code> call.</p>
+</section>
+<section id="id68">
+<h4>Parameters<a class="headerlink" href="#id68" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+</ul>
+</section>
+<section id="id69">
+<h4>Return Value<a class="headerlink" href="#id69" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-get-socket-ip">
+<h3>tkl_net_get_socket_ip<a class="headerlink" href="#tkl-net-get-socket-ip" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_get_socket_ip</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id70">
+<h4>Function<a class="headerlink" href="#id70" title="Link to this heading"></a></h4>
+<p>Obtains the IP address via the socket descriptor.</p>
+</section>
+<section id="id71">
+<h4>Parameters<a class="headerlink" href="#id71" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>: Pointer to store the IP address.</p></li>
+</ul>
+</section>
+<section id="id72">
+<h4>Return Value<a class="headerlink" href="#id72" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-str2addr">
+<h3>tkl_net_str2addr<a class="headerlink" href="#tkl-net-str2addr" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="nf">tkl_net_str2addr</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ip_str</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id73">
+<h4>Function<a class="headerlink" href="#id73" title="Link to this heading"></a></h4>
+<p>Converts an IP string to an address.</p>
+</section>
+<section id="id74">
+<h4>Parameters<a class="headerlink" href="#id74" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ip_str</span></code>: IP string.</p></li>
+</ul>
+</section>
+<section id="id75">
+<h4>Return Value<a class="headerlink" href="#id75" title="Link to this heading"></a></h4>
+<p>Returns the converted IP address.</p>
+</section>
+</section>
+<section id="tkl-net-setsockopt">
+<h3>tkl_net_setsockopt<a class="headerlink" href="#tkl-net-setsockopt" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_setsockopt</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_OPT_LEVEL</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_OPT_NAME</span><span class="w"> </span><span class="n">optname</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">optval</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">optlen</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id76">
+<h4>Function<a class="headerlink" href="#id76" title="Link to this heading"></a></h4>
+<p>Sets socket options.</p>
+</section>
+<section id="id77">
+<h4>Parameters<a class="headerlink" href="#id77" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">level</span></code>: The level at which the option is defined.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optname</span></code>: The option name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optval</span></code>: A pointer to the option value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optlen</span></code>: The length of the option value.</p></li>
+</ul>
+</section>
+<section id="id78">
+<h4>Return Value<a class="headerlink" href="#id78" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-getsockopt">
+<h3>tkl_net_getsockopt<a class="headerlink" href="#tkl-net-getsockopt" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_getsockopt</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_OPT_LEVEL</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_OPT_NAME</span><span class="w"> </span><span class="n">optname</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">optval</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">optlen</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id79">
+<h4>Function<a class="headerlink" href="#id79" title="Link to this heading"></a></h4>
+<p>Gets the socket option value.</p>
+</section>
+<section id="id80">
+<h4>Parameters<a class="headerlink" href="#id80" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">level</span></code>: The level at which the option is defined.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optname</span></code>: The option name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optval</span></code>: A pointer to where the option value will be stored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optlen</span></code>: A pointer to where the length of the option value will be stored.</p></li>
+</ul>
+</section>
+<section id="id81">
+<h4>Return Value<a class="headerlink" href="#id81" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-set-timeout">
+<h3>tkl_net_set_timeout<a class="headerlink" href="#tkl-net-set-timeout" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_timeout</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ms_timeout</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_TRANS_TYPE_E</span><span class="w"> </span><span class="n">type</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id82">
+<h4>Function<a class="headerlink" href="#id82" title="Link to this heading"></a></h4>
+<p>Sets the socket timeout option.</p>
+</section>
+<section id="id83">
+<h4>Parameters<a class="headerlink" href="#id83" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ms_timeout</span></code>: Timeout period in milliseconds.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: Type of transmission, either receiving or sending.</p></li>
+</ul>
+</section>
+<section id="id84">
+<h4>Return Value<a class="headerlink" href="#id84" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-set-bufsize">
+<h3>tkl_net_set_bufsize<a class="headerlink" href="#tkl-net-set-bufsize" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_bufsize</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">buf_size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TUYA_TRANS_TYPE_E</span><span class="w"> </span><span class="n">type</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id85">
+<h4>Function<a class="headerlink" href="#id85" title="Link to this heading"></a></h4>
+<p>Sets the socket buffer size option.</p>
+</section>
+<section id="id86">
+<h4>Parameters<a class="headerlink" href="#id86" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buf_size</span></code>: Buffer size in bytes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: Type of transmission, either receiving or sending.</p></li>
+</ul>
+</section>
+<section id="id87">
+<h4>Return Value<a class="headerlink" href="#id87" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-set-reuse">
+<h3>tkl_net_set_reuse<a class="headerlink" href="#tkl-net-set-reuse" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_reuse</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id88">
+<h4>Function<a class="headerlink" href="#id88" title="Link to this heading"></a></h4>
+<p>Enables the socket reuse option.</p>
+</section>
+<section id="id89">
+<h4>Parameters<a class="headerlink" href="#id89" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+</ul>
+</section>
+<section id="id90">
+<h4>Return Value<a class="headerlink" href="#id90" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-disable-nagle">
+<h3>tkl_net_disable_nagle<a class="headerlink" href="#tkl-net-disable-nagle" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_disable_nagle</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id91">
+<h4>Function<a class="headerlink" href="#id91" title="Link to this heading"></a></h4>
+<p>Disables the Nagle algorithm for the socket.</p>
+</section>
+<section id="id92">
+<h4>Parameters<a class="headerlink" href="#id92" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+</ul>
+</section>
+<section id="id93">
+<h4>Return Value<a class="headerlink" href="#id93" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-set-broadcast">
+<h3>tkl_net_set_broadcast<a class="headerlink" href="#tkl-net-set-broadcast" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_broadcast</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id94">
+<h4>Function<a class="headerlink" href="#id94" title="Link to this heading"></a></h4>
+<p>Enables the socket broadcast option.</p>
+</section>
+<section id="id95">
+<h4>Parameters<a class="headerlink" href="#id95" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+</ul>
+</section>
+<section id="id96">
+<h4>Return Value<a class="headerlink" href="#id96" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-set-keepalive">
+<h3>tkl_net_set_keepalive<a class="headerlink" href="#tkl-net-set-keepalive" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_set_keepalive</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BOOL_T</span><span class="w"> </span><span class="n">alive</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">idle</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">intr</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">cnt</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id97">
+<h4>Function<a class="headerlink" href="#id97" title="Link to this heading"></a></h4>
+<p>Sets the <code class="docutils literal notranslate"><span class="pre">keepalive</span></code> option for the socket to monitor the connection.</p>
+</section>
+<section id="id98">
+<h4>Parameters<a class="headerlink" href="#id98" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alive</span></code>: <code class="docutils literal notranslate"><span class="pre">keepalive</span></code> option, enable or disable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">idle</span></code>: <code class="docutils literal notranslate"><span class="pre">keep</span> <span class="pre">idle</span></code> option, idle time (seconds); if there is no data exchange in this time, the probe starts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intr</span></code>: <code class="docutils literal notranslate"><span class="pre">keep</span> <span class="pre">interval</span></code> option, probe interval.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cnt</span></code>: <code class="docutils literal notranslate"><span class="pre">keep</span> <span class="pre">count</span></code> option, number of probes.</p></li>
+</ul>
+</section>
+<section id="id99">
+<h4>Return Value<a class="headerlink" href="#id99" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-getsockname">
+<h3>tkl_net_getsockname<a class="headerlink" href="#tkl-net-getsockname" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_getsockname</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id100">
+<h4>Function<a class="headerlink" href="#id100" title="Link to this heading"></a></h4>
+<p>Gets information about a specific socket.</p>
+</section>
+<section id="id101">
+<h4>Parameters<a class="headerlink" href="#id101" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>: Source IP address.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Source port.</p></li>
+</ul>
+</section>
+<section id="id102">
+<h4>Return Value<a class="headerlink" href="#id102" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-getpeername">
+<h3>tkl_net_getpeername<a class="headerlink" href="#tkl-net-getpeername" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_getpeername</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">TUYA_IP_ADDR_T</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">port</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id103">
+<h4>Function<a class="headerlink" href="#id103" title="Link to this heading"></a></h4>
+<p>Gets the destination information of a specific socket.</p>
+</section>
+<section id="id104">
+<h4>Parameters<a class="headerlink" href="#id104" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fd</span></code>: File descriptor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addr</span></code>: Destination IP address.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Destination port.</p></li>
+</ul>
+</section>
+<section id="id105">
+<h4>Return Value<a class="headerlink" href="#id105" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+<section id="tkl-net-sethostname">
+<h3>tkl_net_sethostname<a class="headerlink" href="#tkl-net-sethostname" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OPERATE_RET</span><span class="w"> </span><span class="nf">tkl_net_sethostname</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">hostname</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id106">
+<h4>Function<a class="headerlink" href="#id106" title="Link to this heading"></a></h4>
+<p>Sets the system hostname, which will be displayed on the router.</p>
+</section>
+<section id="id107">
+<h4>Parameters<a class="headerlink" href="#id107" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hostname</span></code>: Hostname.</p></li>
+</ul>
+</section>
+<section id="id108">
+<h4>Return Value<a class="headerlink" href="#id108" title="Link to this heading"></a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">OPRT_OK</span></code> on success, otherwise refer to error codes in <code class="docutils literal notranslate"><span class="pre">tuya_error_code.h</span></code>.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2025, Tuya Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="version-selector-wrapper">
+  
+    <select class="version-select">
+      
+      
+        
+        
+          <option value="tkl_network.html" selected>master</option>
+        
+      
+    </select>
+  
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取logo和搜索框元素
+  const logo = document.querySelector('.wy-side-nav-search .logo');
+  const searchBox = document.querySelector('.wy-side-nav-search .wy-form');
+  
+  if (logo && searchBox) {
+    const selector = document.querySelector('.version-selector-wrapper');
+    // 在logo之后、搜索框之前插入
+    searchBox.parentNode.insertBefore(selector, searchBox);
+  }
+  
+  // 添加版本切换事件监听
+  const select = document.querySelector('.version-select');
+  if (select) {
+    select.addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  }
+});
+</script>
+
+<style>
+.version-selector-wrapper {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.version-select {
+  width: auto;
+  min-width: 120px;
+  max-width: 180px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  background: white;
+  color: #333;
+  font-size: 13px;
+  display: block;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .version-selector-wrapper {
+    padding: 8px 10px;
+  }
+}
+</style><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
